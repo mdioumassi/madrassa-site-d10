@@ -1,0 +1,11 @@
+administer parent:
+  title: 'Administer parents'
+  restrict access: true
+view parent:
+  title: 'View parent'
+edit parent:
+  title: 'Edit parent'
+delete parent:
+  title: 'Delete parent'
+create parent:
+  title: 'Create parent'

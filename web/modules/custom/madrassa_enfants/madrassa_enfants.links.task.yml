@@ -1,0 +1,22 @@
+entity.children.settings:
+  title: 'Settings'
+  route_name: entity.children.settings
+  base_route: entity.children.settings
+entity.children.view:
+  title: 'View'
+  route_name: entity.children.canonical
+  base_route: entity.children.canonical
+entity.children.edit_form:
+  title: 'Edit'
+  route_name: entity.children.edit_form
+  base_route: entity.children.canonical
+entity.children.delete_form:
+  title: 'Delete'
+  route_name: entity.children.delete_form
+  base_route: entity.children.canonical
+  weight: 10
+entity.children.collection:
+  title: 'Enfants'
+  route_name: entity.children.collection
+  base_route: system.admin_content
+  weight: 10

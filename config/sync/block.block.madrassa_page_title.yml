@@ -1,0 +1,20 @@
+uuid: 307fa666-9f15-4c98-9c64-dd0a78a743fe
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - madrassa
+_core:
+  default_config_hash: ommujYsovQaZh8NAJCp0t3oDc3JqzOgbXWYNTPvatgc
+id: madrassa_page_title
+theme: madrassa
+region: content
+weight: -6
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Titre de page'
+  label_display: '0'
+  provider: core
+visibility: {  }

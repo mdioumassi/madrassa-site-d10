@@ -1,0 +1,7 @@
+entity.children.settings:
+  path: 'admin/structure/children'
+  defaults:
+    _form: '\Drupal\madrassa_enfants\Form\ChildrenSettingsForm'
+    _title: 'Enfant'
+  requirements:
+    _permission: 'administer children'

@@ -1,0 +1,17 @@
+entity.children.settings:
+  title: 'Enfant'
+  description: 'Configure an Enfant entity type.'
+  route_name:  entity.children.settings
+  parent: system.admin_structure
+
+entity.children.collection:
+  title: 'Enfants'
+  description: 'List of enfants.'
+  route_name: entity.children.collection
+  parent: system.admin_content
+
+entity.parent.collection:
+  title: 'Parents'
+  description: 'List of parentss.'
+  # route_name: entity.children.collection
+  # parent: system.admin_content

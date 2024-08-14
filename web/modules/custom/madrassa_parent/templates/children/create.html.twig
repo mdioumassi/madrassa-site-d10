@@ -1,0 +1,42 @@
+<form method="POST" action="{{ path('madrassa_parent.child.store', {'parentId': parent_id}) }}">
+	<div class="row mb-3">
+		<div class="col-md-6">
+			<label for="genre">Genre</label>
+			<select id="gender" class="form-control" name="gender">
+				<option value="" selected="selected">Choisir le genre</option>
+				<option value="boy">Garçon</option>
+				<option value="girl">Fille</option>
+			</select>
+		</div>
+
+		<div class="col-md-6">
+			<label for="firstname">Prénom</label>
+			<input id="firstname" type="text" class="form-control" name="firstname" required>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<div class="col-md-6">
+			<label for="lastname">Nom</label>
+			<input id="lastname" type="text" class="form-control" name="lastname" required>
+		</div>
+		<div class="col-md-6">
+			<label for="birthdate">Date de naissance</label>
+			<input id="birthdate" type="date" class="form-control" name="birthdate" required>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<div class="col-md-6">
+			<label for="frenchclass" class="">Classe Française</label>
+			<input id="frenchclass" type="text" class="form-control" name="frenchclass">
+		</div>
+		<div class="col-md-6">
+			<label for="old" class="">Age</label>
+			<input id="old" type="text" class="form-control" name="">
+		</div>
+		<input type="hidden" name="parent_id" value="{{ parent_id }}">
+	</div>
+
+    <button type="submit" class="btn btn-primary">Valider</button>
+</form>

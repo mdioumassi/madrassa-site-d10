@@ -1,0 +1,184 @@
+uuid: fa9b9a8f-619b-44f0-9be8-3df4dddfd1c5
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.full
+    - field.field.user.user.field_address
+    - field.field.user.user.field_civility
+    - field.field.user.user.field_firstname
+    - field.field.user.user.field_fonction
+    - field.field.user.user.field_lastname
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_user_type
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - image
+    - layout_builder
+    - layout_discovery
+    - options
+    - telephone
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          a0f2cf20-f83a-47dc-87c8-f6a3968a9b8c:
+            uuid: a0f2cf20-f83a-47dc-87c8-f6a3968a9b8c
+            region: content
+            configuration:
+              id: 'field_block:user:user:user_picture'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: content
+                  image_style: thumbnail
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          945161cc-abfe-4d83-8082-d405ca365253:
+            uuid: 945161cc-abfe-4d83-8082-d405ca365253
+            region: content
+            configuration:
+              id: 'extra_field_block:user:user:member_for'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
+          471971c7-b4cb-49f0-978b-abcf1700b717:
+            uuid: 471971c7-b4cb-49f0-978b-abcf1700b717
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_civility'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: visually_hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          60f0ed6a-afb4-4536-9bcf-16899cb122ea:
+            uuid: 60f0ed6a-afb4-4536-9bcf-16899cb122ea
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_phone'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: telephone_link
+                label: visually_hidden
+                settings:
+                  title: ''
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          87a2c8b9-c09f-4554-b75f-772cc327ceed:
+            uuid: 87a2c8b9-c09f-4554-b75f-772cc327ceed
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_address'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: visually_hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          afd0b652-bfd3-4f6e-8913-7b04e5a0dc04:
+            uuid: afd0b652-bfd3-4f6e-8913-7b04e5a0dc04
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_fonction'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: visually_hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+        third_party_settings: {  }
+_core:
+  default_config_hash: mZLyuWM9CQx2ZJVqFGSbzgFnHzudVbHBYmdU256A5Wk
+id: user.user.full
+targetEntityType: user
+bundle: user
+mode: full
+content:
+  field_address:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_civility:
+    type: list_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_fonction:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_phone:
+    type: telephone_link
+    label: visually_hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  member_for:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  user_picture:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_firstname: true
+  field_lastname: true
+  field_user_type: true
+  langcode: true

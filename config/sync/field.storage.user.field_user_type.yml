@@ -1,0 +1,36 @@
+uuid: 8cd7fad7-d817-4d8d-9a32-8e0e2e2805f7
+langcode: fr
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_user_type
+field_name: field_user_type
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: pere
+      label: Père
+    -
+      value: mere
+      label: Mère
+    -
+      value: oncle
+      label: Oncle
+    -
+      value: tante
+      label: Tante
+    -
+      value: tuteur
+      label: Tuteur
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+uuid: e6e8734a-55db-4aa9-98ba-b69ed88a17ae
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - madrassa
+_core:
+  default_config_hash: 2ZY3P2vDfKRcNLMSF7yt2HqwQxy6rHBASyBQYi9Qp7U
+id: madrassa_messages
+theme: madrassa
+region: content
+weight: -7
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }

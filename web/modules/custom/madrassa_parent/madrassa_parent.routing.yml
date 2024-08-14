@@ -1,0 +1,32 @@
+madrassa_parent.user.create:
+  path: '/user/{type}/create'
+  defaults:
+    _controller: '\Drupal\madrassa_parent\Controller\UserController::createTypeUser'
+  requirements:
+    _permission: 'access content'
+
+madrassa_parent.user.store:
+  path: '/user/store'
+  defaults:
+    _title: 'Parent'
+    _controller: '\Drupal\madrassa_parent\Controller\UserController::storeUser'
+  methods:  [POST]
+  requirements:
+    _permission: 'access content'
+
+madrassa_parent.child.create:
+  path: '/parent/{parentId}/child/create'
+  defaults:
+    _controller: '\Drupal\madrassa_parent\Controller\UserController::createChild'
+  requirements:
+    _permission: 'access content'
+
+madrassa_parent.child.store:
+  path: '/parent/{parentId}/child/store'
+  defaults:
+    _controller: '\Drupal\madrassa_parent\Controller\UserController::storeChild'
+  methods:  [POST]
+  requirements:
+    _permission: 'access content'
+
+

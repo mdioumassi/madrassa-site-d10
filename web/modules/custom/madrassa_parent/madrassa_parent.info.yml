@@ -1,0 +1,7 @@
+name: 'Madrassa parent'
+type: module
+description: 'Gestion des parents'
+package: Madrassa
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:user

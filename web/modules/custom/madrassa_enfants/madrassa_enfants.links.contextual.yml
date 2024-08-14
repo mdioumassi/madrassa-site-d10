@@ -1,0 +1,10 @@
+entity.children.edit_form:
+  route_name: entity.children.edit_form
+  group: children
+  title: 'Edit'
+
+entity.children.delete_form:
+  route_name: entity.children.delete_form
+  group: children
+  title: 'Delete'
+  weight: 10

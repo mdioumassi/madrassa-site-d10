@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - madrassa_parent
+id: parent_save_action
+label: 'Save parents'
+type: parent
+plugin: entity:save_action:parent
+configuration: {  }

@@ -1,0 +1,67 @@
+<?php
+
+use Drupal\Core\Entity\EntityTypeInterface;
+/**
+ * @file
+ * Primary module hooks for Madrassa parent module.
+ */
+
+ function madrassa_parent_theme() {
+    return [
+        'madrassa_user_create' => [
+            'path' => 'modules/custom/madrassa_parent/templates/users',
+            'template' => 'create',
+            'variables' => [
+                'type' => NULL,
+                'title' => NULL,
+            ],
+        ],
+        'madrassa_parent_create_child' => [
+            'path' => 'modules/custom/madrassa_parent/templates/children',
+            'template' => 'create',
+            'variables' => [
+                'parent_id' => NULL,
+                'title' => NULL,
+            ],
+        ],
+    ];
+}
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_theme().
+ */
+// function madrassa_parent_theme(): array {
+//   return [
+//     'parent' => ['render element' => 'elements'],
+//   ];
+// }
+
+/**
+ * Prepares variables for parent templates.
+ *
+ * Default template: parent.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the parent information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_parent(array &$variables): void {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+
+/**
+ * hook_entity_type_build()
+ * @param EntityTypeInterface[] $entity_types
+ */
+function madrassa_parent_entity_type_build(array &$entity_types) {
+    if (isset($entity_types['user'])) {
+        $entity_types['user']->setClass('Drupal\madrassa_parent\Entity\MadrassaParent');
+    }
+}
