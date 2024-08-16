@@ -1,0 +1,5 @@
+name: 'Madrassa webmaster'
+type: module
+description: 'Gestion des menus'
+package: Madrassa
+core_version_requirement: ^10 || ^11

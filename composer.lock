@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "537ea775ca12d2c270b2122f4bbff526",
+    "content-hash": "cbedc31190f5399f21ee0dcc67fabc5e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1897,30 +1897,33 @@
         },
         {
             "name": "drupal/devel",
-            "version": "5.2.1",
+            "version": "5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/devel.git",
-                "reference": "5.2.1"
+                "reference": "5.3.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/devel-5.2.1.zip",
-                "reference": "5.2.1",
-                "shasum": "793861751e01092fe8bc7c0cd47589ebea2bb8df"
+                "url": "https://ftp.drupal.org/files/projects/devel-5.3.1.zip",
+                "reference": "5.3.1",
+                "shasum": "6a5f13bdf93dc5f7f194b6af847589ae15e37b63"
             },
             "require": {
                 "doctrine/common": "^2.7 || ^3.4",
-                "drupal/core": ">=10.0 <12.0.0-stable",
+                "drupal/core": "^10.3 || ^11 || ^12",
                 "php": ">=8.1",
-                "symfony/var-dumper": "^4 || ^5 || ^6"
+                "symfony/var-dumper": "^4 || ^5 || ^6 || ^7"
             },
             "conflict": {
+                "drupal/core": "<10.3",
                 "drush/drush": "<12.5.1",
                 "kint-php/kint": "<3"
             },
             "require-dev": {
-                "drush/drush": "^12.5.1"
+                "drush/drush": "^13",
+                "firephp/firephp-core": "^0.5.3",
+                "kint-php/kint": "^5.1"
             },
             "suggest": {
                 "kint-php/kint": "Kint provides an informative display of arrays/objects. Useful for debugging and developing."
@@ -1928,8 +1931,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "5.2.1",
-                    "datestamp": "1711328410",
+                    "version": "5.3.1",
+                    "datestamp": "1723258446",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2415,6 +2418,128 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/module_filter",
                 "issues": "https://www.drupal.org/project/issues/module_filter"
+            }
+        },
+        {
+            "name": "drupal/token",
+            "version": "1.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/token.git",
+                "reference": "8.x-1.15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.15.zip",
+                "reference": "8.x-1.15",
+                "shasum": "5916fbccc86458a5f51e71f832ac70ff4c84ebdf"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10 || ^11"
+            },
+            "require-dev": {
+                "drupal/book": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.15",
+                    "datestamp": "1722206211",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": ">=9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "eaton",
+                    "homepage": "https://www.drupal.org/user/16496"
+                },
+                {
+                    "name": "fago",
+                    "homepage": "https://www.drupal.org/user/16747"
+                },
+                {
+                    "name": "greggles",
+                    "homepage": "https://www.drupal.org/user/36762"
+                },
+                {
+                    "name": "mikeryan",
+                    "homepage": "https://www.drupal.org/user/4420"
+                }
+            ],
+            "description": "Provides a user interface for the Token API, some missing core tokens.",
+            "homepage": "https://www.drupal.org/project/token",
+            "support": {
+                "source": "https://git.drupalcode.org/project/token"
+            }
+        },
+        {
+            "name": "drupal/views_add_button",
+            "version": "2.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/views_add_button.git",
+                "reference": "2.0.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_add_button-2.0.8.zip",
+                "reference": "2.0.8",
+                "shasum": "a8e755efb598742062d53c95489d9edd6aee7838"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10",
+                "drupal/token": "~1.5"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.8",
+                    "datestamp": "1689686062",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "laboratory.mike",
+                    "homepage": "https://www.drupal.org/user/131390"
+                },
+                {
+                    "name": "Shawn2516",
+                    "homepage": "https://www.drupal.org/user/3154563"
+                }
+            ],
+            "description": "Views Add Button",
+            "homepage": "https://www.drupal.org/project/views_add_button",
+            "support": {
+                "source": "https://git.drupalcode.org/project/views_add_button",
+                "issues": "https://www.drupal.org/project/issues/search/views_add_button"
             }
         },
         {

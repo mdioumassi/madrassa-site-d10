@@ -25,6 +25,8 @@
         "drupal/gin": "^3.0@RC",
         "drupal/gin_toolbar": "^1.0@RC",
         "drupal/module_filter": "^4.0",
+        "drupal/token": "^1.15",
+        "drupal/views_add_button": "^2.0",
         "drush/drush": "^12.1"
     },
     "conflict": {

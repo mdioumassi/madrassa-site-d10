@@ -1,4 +1,4 @@
-uuid: 0f505b70-e082-4ee9-ac73-fb997dff7f7c
+uuid: 668de22e-531f-4eb8-b54a-9f0eccc00f48
 langcode: fr
 status: true
 dependencies:
@@ -7,7 +7,7 @@ dependencies:
   module:
     - user
 id: user_add_role_action.student_role
-label: 'Ajouter le rôle Etudiant aux utilisateurs sélectionnés'
+label: 'Ajouter le rôle student_role aux utilisateurs sélectionnés'
 type: user
 plugin: user_add_role_action
 configuration:

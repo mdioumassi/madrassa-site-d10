@@ -1,4 +1,4 @@
-uuid: ca329a32-8d0b-489a-915e-ab5fcee90da3
+uuid: 92c73636-1d77-41f0-a74e-01dd340583d8
 langcode: fr
 status: true
 dependencies:
@@ -28,7 +28,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Personnes - Parents'
+      title: Parents
       fields:
         user_bulk_form:
           id: user_bulk_form
@@ -794,11 +794,7 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              content_editor: '0'
               administrator: '0'
-              parent_role: '0'
-              teacher_role: '0'
-              adult_role: '0'
             reduce: false
           is_grouped: false
           group_info:

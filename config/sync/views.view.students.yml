@@ -1,4 +1,4 @@
-uuid: 83473b4c-b11c-4656-864a-eea9af825585
+uuid: 5619e14e-31a7-44e8-855d-590ea0f4f303
 langcode: fr
 status: true
 dependencies:
@@ -28,7 +28,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Personnes - etudiants'
+      title: Etudiants
       fields:
         user_bulk_form:
           id: user_bulk_form
@@ -794,11 +794,7 @@ display:
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
-              content_editor: '0'
               administrator: '0'
-              parent_role: '0'
-              teacher_role: '0'
-              adult_role: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1033,6 +1029,20 @@ display:
       use_more_text: plus
       link_display: page_1
       link_url: ''
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: '<a class="add-button-user" href="/user/etudiant/create">Ajouter un etudiant</a>'
+            format: full_html
+          tokenize: false
       display_comment: ''
       hide_attachment_summary: false
       display_extenders: {  }
@@ -1060,7 +1070,7 @@ display:
       display_description: ''
       show_admin_links: false
       display_extenders: {  }
-      path: admin/students/list
+      path: admin/etudiants/list
       menu:
         type: 'default tab'
         title: Lister

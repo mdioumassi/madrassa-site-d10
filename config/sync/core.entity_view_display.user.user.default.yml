@@ -78,10 +78,10 @@ content:
     region: content
   field_user_type:
     type: list_default
-    label: above
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 6
     region: content
   user_picture:
     type: image

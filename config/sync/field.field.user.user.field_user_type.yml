@@ -1,4 +1,4 @@
-uuid: 6b3bef73-df95-47c3-81d7-92efad0e403c
+uuid: 9962cf46-4618-4a60-afd8-9e49355512ad
 langcode: fr
 status: true
 dependencies:
@@ -11,9 +11,9 @@ id: user.user.field_user_type
 field_name: field_user_type
 entity_type: user
 bundle: user
-label: Type
+label: 'Type utilisateur'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

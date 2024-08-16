@@ -122,6 +122,21 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 6
             additional: {  }
+          dca1f6a4-3b4b-49fc-8b7d-305c2fae5f4d:
+            uuid: dca1f6a4-3b4b-49fc-8b7d-305c2fae5f4d
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_user_type'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: visually_hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
         third_party_settings: {  }
 _core:
   default_config_hash: mZLyuWM9CQx2ZJVqFGSbzgFnHzudVbHBYmdU256A5Wk
@@ -161,6 +176,13 @@ content:
     third_party_settings: {  }
     weight: 8
     region: content
+  field_user_type:
+    type: list_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
   member_for:
     settings: {  }
     third_party_settings: {  }
@@ -180,5 +202,4 @@ content:
 hidden:
   field_firstname: true
   field_lastname: true
-  field_user_type: true
   langcode: true

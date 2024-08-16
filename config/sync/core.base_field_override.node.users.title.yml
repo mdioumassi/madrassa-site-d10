@@ -1,0 +1,18 @@
+uuid: 0a999670-2e5b-43f0-867b-18cc578b91ed
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.users
+id: node.users.title
+field_name: title
+entity_type: node
+bundle: users
+label: 'Nom & prenom'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

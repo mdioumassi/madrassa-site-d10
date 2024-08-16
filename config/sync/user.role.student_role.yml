@@ -1,9 +1,9 @@
-uuid: b40523ba-97d2-4a20-813f-5c04b5126874
+uuid: 99777e84-e150-4ae2-a89b-b577ad6c872d
 langcode: fr
 status: true
 dependencies: {  }
 id: student_role
 label: Etudiant
-weight: 8
+weight: 6
 is_admin: null
 permissions: {  }

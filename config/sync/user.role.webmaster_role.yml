@@ -1,9 +1,0 @@
-uuid: a58edbf5-92ac-4cb2-949b-e9e962feffc7
-langcode: fr
-status: true
-dependencies: {  }
-id: webmaster_role
-label: Webmaster
-weight: 7
-is_admin: null
-permissions: {  }
