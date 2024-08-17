@@ -1,14 +1,14 @@
-uuid: 0a999670-2e5b-43f0-867b-18cc578b91ed
+uuid: ca1dfac3-f0ea-45ac-91d4-4d18f198491a
 langcode: fr
 status: true
 dependencies:
   config:
-    - node.type.users
-id: node.users.title
+    - node.type.child
+id: node.child.title
 field_name: title
 entity_type: node
-bundle: users
-label: 'Nom & prenom'
+bundle: child
+label: 'Nom & Prénom'
 description: ''
 required: true
 translatable: true

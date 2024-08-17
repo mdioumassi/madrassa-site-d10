@@ -1,13 +1,13 @@
-uuid: f0dfc551-6c71-44db-a146-d2a55bdba117
+uuid: 68ad29cb-0550-4343-a5c0-69f1d27b6f96
 langcode: fr
 status: true
 dependencies:
   config:
-    - node.type.users
-id: node.users.promote
+    - node.type.child
+id: node.child.promote
 field_name: promote
 entity_type: node
-bundle: users
+bundle: child
 label: "Promu en page d'accueil"
 description: ''
 required: false

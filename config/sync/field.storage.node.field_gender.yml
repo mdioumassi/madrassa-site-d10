@@ -1,0 +1,27 @@
+uuid: d718d562-0e9a-4b5a-b63f-b8a864498e1a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_gender
+field_name: field_gender
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: boy
+      label: Garçon
+    -
+      value: fille
+      label: girl
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

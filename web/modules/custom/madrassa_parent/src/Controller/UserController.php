@@ -8,6 +8,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Url;
 use Drupal\madrassa_enfants\Entity\Children;
 use Drupal\madrassa_parent\Entity\MadrassaParent;
+use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
 use Drupal\user\UserAuthenticationInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -33,7 +34,6 @@ final class UserController extends ControllerBase {
       return $build;
   }
 
-
   public function storeUser(Request $request) {
     if ($request->isMethod('POST')) {
       $data = $request->request->all();
@@ -54,7 +54,7 @@ final class UserController extends ControllerBase {
       User::create($values)->save();
     }
     if ($data['typeUser'] === 'parent') {
-      $parent_id = $this->getUserId('parent', $data['mail']);
+      $parent_id = $this->getUserId('mail', $data['mail']);
       if (isset($parent_id)) {
         return $this->redirect('madrassa_parent.child.create', ['parentId' => $parent_id]);
       }
@@ -95,17 +95,24 @@ final class UserController extends ControllerBase {
   public function storeChild(Request $request) 
   {
     $data = $request->request->all();
-    $values = [];
-    $values['firstname'] = $data['firstname'];
-    $values['lastname'] = $data['lastname'];
-    $values['field_birthday'] = $data['birthdate'];
-    $values['gender'] = $data['gender'];
-    $values['frenchclass'] = $data['frenchclass'];
-    $values['parent_id'] = $data['parent_id'];
-    $values['status'] = 1;
+    // $values = [];
+    // $values['label'] = $data['firstname'].' '.$data['lastname'];
+    // $values['field_birthday'] = $data['birthdate'];
+    // $values['field_gender'] = $data['gender'];
+    // $values['field_frenchclass'] = $data['frenchclass'];
+    // $values['field_parent_id'] = $data['parent_id'];
+    // $values['status'] = 1;
 
-    $child = Children::create($values)->save();
-
+    $node = Node::create([
+      'type' => 'child',
+      'title' => $data['firstname'].' '.$data['lastname'],
+      'field_birthday' => $data['birthdate'],
+      'field_gender' => $data['gender'],
+      'field_frenchclass' => $data['frenchclass'],
+      'field_parent_id' => $data['parent_id'],
+      'status' => 1,
+      ]);
+      $child = $node->save();
     dd($child);
   }
 }

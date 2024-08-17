@@ -1,4 +1,4 @@
-uuid: ea9b330c-6904-4813-ae1d-e11b8e4064eb
+uuid: 9950ba2f-337d-40d1-b295-5aaad539bf2e
 langcode: fr
 status: true
 dependencies:
@@ -9,10 +9,10 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-name: Users
-type: users
+name: Enfant
+type: child
 description: null
 help: null
 new_revision: false
-preview_mode: 1
+preview_mode: 0
 display_submitted: false

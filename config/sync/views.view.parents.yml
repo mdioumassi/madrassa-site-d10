@@ -9,6 +9,7 @@ dependencies:
     - field.storage.user.field_phone
     - user.role.parent_role
   module:
+    - node
     - options
     - telephone
     - user
@@ -1020,6 +1021,17 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
+      relationships:
+        reverse__node__field_parent_id:
+          id: reverse__node__field_parent_id
+          table: users_field_data
+          field: reverse__node__field_parent_id
+          relationship: none
+          group_type: group
+          admin_label: field_parent_id
+          entity_type: user
+          plugin_id: entity_reverse
+          required: true
       css_class: ''
       use_ajax: false
       group_by: false
@@ -1029,6 +1041,20 @@ display:
       use_more_text: plus
       link_display: page_1
       link_url: ''
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: '<a class="button button--action button--primary" href="/user/parent/create" style="float:right;margin-bottom:25px">Ajouter un parent</a>'
+            format: full_html
+          tokenize: false
       display_comment: ''
       hide_attachment_summary: false
       display_extenders: {  }

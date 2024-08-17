@@ -1029,6 +1029,20 @@ display:
       use_more_text: plus
       link_display: page_1
       link_url: ''
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: '<a class="button button--action button--primary" href="/user/enseignant/create" style="float:right;margin-bottom:25px">Ajouter un enseignant</a>'
+            format: full_html
+          tokenize: false
       display_comment: ''
       hide_attachment_summary: false
       display_extenders: {  }

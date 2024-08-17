@@ -1040,7 +1040,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: '<a class="add-button-user" href="/user/etudiant/create">Ajouter un etudiant</a>'
+            value: '<a class="button button--action button--primary" href="/user/etudiant/create" style="float:right;margin-bottom:25px">Ajouter un etudiant</a>'
             format: full_html
           tokenize: false
       display_comment: ''

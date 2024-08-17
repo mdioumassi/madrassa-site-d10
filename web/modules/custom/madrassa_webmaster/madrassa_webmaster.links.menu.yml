@@ -8,7 +8,7 @@ madrassa_webmaster.admin:
   parent: system.admin
 
 madrassa_webmaster.admin.users:
-  title: 'Utilisateurs'
+  title: 'Grstion des tilisateurs'
   description: ''
   url: internal:/admin/structure/paragraphs_typ
   parent: madrassa_webmaster.admin
@@ -32,6 +32,13 @@ madrassa_webmaster.admin.users.students:
   url: internal:/admin/etudiants
   parent: madrassa_webmaster.admin.users
 
+madrassa_webmaster.admin.children:
+  title: 'Gestion des enfants'
+  description: ''
+  url: internal:/admin/enfants
+  parent: madrassa_webmaster.admin
+  weight: 2
+
 
 
 # TAXOS
@@ -40,7 +47,7 @@ madrassa_webmaster.admin.taxonomy:
   description: 'Gestion des taxonomies'
   route_name: entity.taxonomy_vocabulary.collection
   parent: madrassa_webmaster.admin
-  weight: 2
+  weight: 3
 
 ## MENU PRINCIPAL
 madrassa_webmaster.admin.menus.main:
@@ -48,7 +55,7 @@ madrassa_webmaster.admin.menus.main:
   description: 'Menu principal'
   url: internal:/admin/structure/menu/manage/main
   parent: madrassa_webmaster.admin
-  weight: 3
+  weight: 4
 
 # PARAGRAPHS
 madrassa_webmaster.admin.paragraphs:
@@ -56,4 +63,4 @@ madrassa_webmaster.admin.paragraphs:
   description: 'Ajouter, modifier ou supprimer un paragraphe'
   url: internal:/admin/structure/paragraphs_type
   parent: madrassa_webmaster.admin
-  weight: 4
+  weight: 5
