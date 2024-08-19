@@ -37,6 +37,12 @@ final class UserController extends ControllerBase {
   public function storeUser(Request $request) {
     if ($request->isMethod('POST')) {
       $data = $request->request->all();
+      if ($this->getUserId('mail', $data['mail'])) {
+        $parent_id = $this->getUserId('mail', $data['mail']);
+        if (isset($parent_id)) {
+          return $this->redirect('madrassa_parent.child.create', ['parentId' => $parent_id]);
+        }
+      } 
       $values = [
         'field_civility' => $data['field_civility'] ?? '',
         'field_user_type' => $data['field_user_type'] ?? '',

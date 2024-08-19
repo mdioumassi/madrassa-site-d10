@@ -493,8 +493,8 @@ display:
         - 'config:field.storage.node.field_frenchclass'
         - 'config:field.storage.node.field_gender'
         - 'config:field.storage.node.field_parent_id'
-  page_1:
-    id: page_1
+  page_list_children:
+    id: page_list_children
     display_title: 'Liste des enfants'
     display_plugin: page
     position: 1

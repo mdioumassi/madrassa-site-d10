@@ -33,6 +33,7 @@ module:
   layout_discovery: 0
   link: 0
   locale: 0
+  madrassa_content: 0
   madrassa_parent: 0
   madrassa_webmaster: 0
   media: 0
