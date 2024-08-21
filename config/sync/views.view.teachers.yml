@@ -7,7 +7,9 @@ dependencies:
     - field.storage.user.field_firstname
     - field.storage.user.field_lastname
     - field.storage.user.field_phone
+    - user.role.administrator
     - user.role.teacher_role
+    - user.role.webmaster
   module:
     - options
     - telephone
@@ -638,9 +640,11 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'administer users'
+          role:
+            administrator: administrator
+            webmaster: webmaster
       cache:
         type: tag
       empty:
@@ -1053,7 +1057,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.user.field_civility'
         - 'config:field.storage.user.field_firstname'
@@ -1091,7 +1095,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.user.field_civility'
         - 'config:field.storage.user.field_firstname'

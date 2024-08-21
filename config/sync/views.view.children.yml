@@ -8,6 +8,9 @@ dependencies:
     - field.storage.node.field_gender
     - field.storage.node.field_parent_id
     - node.type.child
+    - user.role.administrator
+    - user.role.parent_role
+    - user.role.webmaster
   module:
     - datetime
     - node
@@ -409,9 +412,12 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
+            parent_role: parent_role
+            webmaster: webmaster
       cache:
         type: tag
         options: {  }
@@ -487,7 +493,7 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_birthday'
         - 'config:field.storage.node.field_frenchclass'
@@ -509,7 +515,7 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_birthday'
         - 'config:field.storage.node.field_frenchclass'

@@ -24,8 +24,13 @@
         "drupal/devel_entity_updates": "^4.1",
         "drupal/gin": "^3.0@RC",
         "drupal/gin_toolbar": "^1.0@RC",
+        "drupal/menu_per_role": "^1.7",
         "drupal/module_filter": "^4.0",
+        "drupal/paragraphs": "^1.18",
+        "drupal/profile": "^1.11",
         "drupal/token": "^1.15",
+        "drupal/twig_debugger": "^1.1",
+        "drupal/twig_tweak": "^3.4",
         "drupal/views_add_button": "^2.0",
         "drush/drush": "^12.1"
     },

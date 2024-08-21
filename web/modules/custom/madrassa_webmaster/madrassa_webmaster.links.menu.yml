@@ -4,13 +4,13 @@
 madrassa_webmaster.admin:
   title: 'Administration webmaster'
   description: 'Administration webmaster dashboard'
-  route_name: madrassa_webmaster.principal.admin
+  route_name: madrassa_webmaster.admin
   parent: system.admin
 
 madrassa_webmaster.admin.users:
   title: 'Grstion des tilisateurs'
   description: ''
-  url: internal:/admin/structure/paragraphs_typ
+  url: internal:/admin/people
   parent: madrassa_webmaster.admin
   weight: 1
 
@@ -48,19 +48,3 @@ madrassa_webmaster.admin.taxonomy:
   route_name: entity.taxonomy_vocabulary.collection
   parent: madrassa_webmaster.admin
   weight: 3
-
-## MENU PRINCIPAL
-madrassa_webmaster.admin.menus.main:
-  title: 'Menu principal'
-  description: 'Menu principal'
-  url: internal:/admin/structure/menu/manage/main
-  parent: madrassa_webmaster.admin
-  weight: 4
-
-# PARAGRAPHS
-madrassa_webmaster.admin.paragraphs:
-  title: 'Gestion des paragraphes'
-  description: 'Ajouter, modifier ou supprimer un paragraphe'
-  url: internal:/admin/structure/paragraphs_type
-  parent: madrassa_webmaster.admin
-  weight: 5

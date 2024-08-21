@@ -11,7 +11,7 @@ dependencies:
     - field.field.user.user.field_phone
     - field.field.user.user.field_user_type
     - field.field.user.user.user_picture
-    - image.style.thumbnail
+    - image.style.medium
   module:
     - image
     - telephone
@@ -100,7 +100,7 @@ content:
     region: content
     settings:
       progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: medium
     third_party_settings: {  }
 hidden:
   langcode: true

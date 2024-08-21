@@ -4,3 +4,20 @@
  * @file
  * madrassa theme file.
  */
+
+ /**
+ * Implements hook_theme_suggestions_user_alter().
+ */
+function madrassa_theme_suggestions_user_alter(array &$suggestions, array $variables) {
+    foreach ($variables['elements']['#user']->getRoles() as $role) {
+      $suggestions[] = 'user__' . $role;
+    }
+}
+
+function madrassa_preprocess_user(&$variables) {
+  $user = $variables['elements']['#user'];
+
+  if (!$user->user_picture->isEmpty()) {
+    $variables['uri_user_picture'] = $user->user_picture->entity->getFileUri();
+  }    
+}

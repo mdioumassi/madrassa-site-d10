@@ -1,0 +1,9 @@
+.field--name-user-picture img {
+    width:  174px;
+    border-radius: 100%;
+    height: 11rem;
+}
+
+.picture-default-user {
+    height: 11rem;
+}

@@ -30,3 +30,11 @@ madrassa_parent.child.store:
     _permission: 'access content'
 
 
+madrassa_parent.admin:
+  path: '/admin/parent/dashboard'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::overview'
+    link_id: 'madrassa_parent.admin'
+    _title: 'Dashboard Administration parent'
+  requirements:
+    _role: administrator+parent_role

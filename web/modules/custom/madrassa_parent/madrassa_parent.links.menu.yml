@@ -1,0 +1,5 @@
+madrassa_parent.admin:
+  title: 'Administration parent'
+  description: 'Administration parent dashboard'
+  route_name: madrassa_parent.principal.admin
+  parent: system.admin

@@ -1,4 +1,4 @@
-madrassa_webmaster.principal.admin:
+madrassa_webmaster.admin:
   path: 'admin/webmaster/dashboard'
   defaults:
     _controller: '\Drupal\system\Controller\SystemController::overview'

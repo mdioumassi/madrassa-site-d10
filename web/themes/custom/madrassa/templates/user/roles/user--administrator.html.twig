@@ -1,0 +1,78 @@
+{%
+    set picture = {
+        '#name': 'image_style',
+        '#image_style': 'thumbnail',
+        '#uri': user.user_picture.entity.uri.value,
+        '#alt': user.name.value,
+        '#attributes': {
+            'class': 'img-fluid rounded-circle',
+        }
+    }
+%}
+<div class="card">
+	<div class="card-header">
+		<h4 class="card-title">Mon profil</h4>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-2">
+				{% if user.user_picture is not empty %}
+					{{ drupal_field('user_picture', 'user', user.id) }}
+				{% else %}
+					<img src="/{{ base_path ~ directory }}/images/profile/avatar.jpg" class="img-fluid rounded-circle picture-default-user" alt="{{ user.name.value }}">
+				{% endif %}
+			</div>
+			<div class="col">
+				<div class="row">
+					<div class="col">
+						<label>
+							Nom utilisateur:</label>
+						<input id="username" type="text" class="form-control" value="{{ user.name.value }}">
+					</div>
+					<div class="col">
+						<label>
+							E-mail:</label>
+						<input id="email" type="text" class="form-control" value="{{ user.mail.value }}"></div>
+					<div class="col">
+						<label>
+							Mot de passe:</label>
+						<input id="pass" type="password" class="form-control" value="{{ user.pass.value }}">
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col">
+						<label>Civilité</label>
+						<select id="field_civilite" class="form-select" value="{{ user.field_civilite.value }}">
+							<option value="Monsieur">Monsieur</option>
+							<option value="Madame">Madame</option>
+							<option value="Mademoiselle">Mademoiselle</option>
+						</select>
+					</div>
+					<div class="col">
+						<label>
+							Prénom:</label>
+						<input id="field_firstname" type="text" class="form-control" value="{{ user.field_firstname.value }}">
+					</div>
+					<div class="col">
+						<label>
+							Nom:</label>
+						<input id="field_lastname" type="text" class="form-control" value="{{ user.field_lastname.value }}">
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col">
+						<label>
+							Téléphone:</label>
+						<input id="field_phone" type="text" class="form-control" value="{{ user.field_phone.value }}">
+					</div>
+					<div class="col">
+						<label>
+							Adresse:</label>
+						<input id="field_adresse" type="text" class="form-control" value="{{ user.field_address.value }}">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
