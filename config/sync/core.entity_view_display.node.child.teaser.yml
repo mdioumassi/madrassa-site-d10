@@ -7,23 +7,67 @@ dependencies:
     - field.field.node.child.field_birthday
     - field.field.node.child.field_frenchclass
     - field.field.node.child.field_gender
+    - field.field.node.child.field_old
     - field.field.node.child.field_parent_id
+    - field.field.node.child.field_photo
     - node.type.child
   module:
+    - datetime
+    - options
     - user
 id: node.child.teaser
 targetEntityType: node
 bundle: child
 mode: teaser
 content:
-  links:
+  field_birthday:
+    type: datetime_plain
+    label: visually_hidden
+    settings:
+      timezone_override: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_frenchclass:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_gender:
+    type: list_default
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 4
+    region: content
+  field_old:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_parent_id:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_photo:
+    type: entity_reference_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
-  field_birthday: true
-  field_frenchclass: true
-  field_gender: true
-  field_parent_id: true
   langcode: true
+  links: true

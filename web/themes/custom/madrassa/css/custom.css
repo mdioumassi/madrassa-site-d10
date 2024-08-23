@@ -7,3 +7,13 @@
 .picture-default-user {
     height: 11rem;
 }
+
+.picture-child {
+    height: 9rem;
+    width: 11rem;
+}
+
+.picture-child-grid {
+    height: 9rem;
+    width: 11rem;
+}

@@ -1,0 +1,10 @@
+extra.admin:
+  js:
+    js/admin.js: {}
+  css:
+    component:
+      css/admin.css: { }
+      css/w3.css: { }
+  dependencies:
+    - core/jquery
+    - core/drupal

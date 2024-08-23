@@ -101,14 +101,6 @@ final class UserController extends ControllerBase {
   public function storeChild(Request $request) 
   {
     $data = $request->request->all();
-    // $values = [];
-    // $values['label'] = $data['firstname'].' '.$data['lastname'];
-    // $values['field_birthday'] = $data['birthdate'];
-    // $values['field_gender'] = $data['gender'];
-    // $values['field_frenchclass'] = $data['frenchclass'];
-    // $values['field_parent_id'] = $data['parent_id'];
-    // $values['status'] = 1;
-
     $node = Node::create([
       'type' => 'child',
       'title' => $data['firstname'].' '.$data['lastname'],
@@ -121,4 +113,19 @@ final class UserController extends ControllerBase {
       $child = $node->save();
     dd($child);
   }
+
+  public function listChildren($parentId)
+  {
+    $build['content'] = [
+      '#theme' => 'madrassa_parent_list_children',
+      '#attached' => [
+        'library' => [
+          'madrassa_parent/madrassa_parent',
+        ],
+      ],
+      '#title' => $this->t('List of children'),
+    ];
+
+    return $build;
+  } 
 }

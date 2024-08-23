@@ -1,23 +1,22 @@
 <?php
 
-use Drupal\views\Plugin\views\query\QueryPluginBase;
-use Drupal\views\ViewExecutable;
 
 /**
- * hook_views_query_alte
+ * hook_form_alter()
  */
-// function madrassa_content_views_query_alter(ViewExecutable $view, QueryPluginBase $query) 
-// {
-    // if ($view->id() == 'children' && $view->current_display == 'page_list_children') {
-// 
-        // $definition = [
-            // 'table' => 'node__field_parent_id',
-            // 'field' => 'field_parent_id_target_id',
-            // 'left_table' => 'users_field_data',
-            // 'left_field' => 'uid',
-        // ];
-        // $join = \Drupal::service('plugin.manager.views.join')->createInstance('standard', $definition);
-        // $query->addRelationship('node__field_parent_id', $join, 'users_field_data');
-        //$query->addWhereExpression('AND', 'users_field_data.uid = :uid', [':uid' => \Drupal::currentUser()->id()]);
-    // }
-// }
+function madrassa_content_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  if (in_array($form_id, ['node_child_form', 'node_child_edit_form'])) {
+    //$form['field_old']['widget'][0]['value']['#default_value'] = 'test';
+  } 
+}
+
+/**
+ * hook_page_attachments()
+ */
+function madrassa_content_page_attachments(array &$attachments) {
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  if ($theme == 'gin') {
+    $attachments['#attached']['library'][] = 'madrassa_content/extra.admin';
+  }
+}

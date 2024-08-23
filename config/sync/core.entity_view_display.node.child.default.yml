@@ -6,7 +6,9 @@ dependencies:
     - field.field.node.child.field_birthday
     - field.field.node.child.field_frenchclass
     - field.field.node.child.field_gender
+    - field.field.node.child.field_old
     - field.field.node.child.field_parent_id
+    - field.field.node.child.field_photo
     - node.type.child
   module:
     - datetime
@@ -41,6 +43,14 @@ content:
     third_party_settings: {  }
     weight: 104
     region: content
+  field_old:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 107
+    region: content
   field_parent_id:
     type: entity_reference_label
     label: above
@@ -48,6 +58,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 106
+    region: content
+  field_photo:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 108
     region: content
   links:
     settings: {  }

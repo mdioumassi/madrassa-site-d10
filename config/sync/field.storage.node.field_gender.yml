@@ -16,7 +16,10 @@ settings:
       label: Garçon
     -
       value: fille
-      label: girl
+      label: fille
+    -
+      value: girl
+      label: Fille
   allowed_values_function: ''
 module: options
 locked: false

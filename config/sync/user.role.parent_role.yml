@@ -1,9 +1,15 @@
 uuid: d73315ce-fd1c-4624-97b5-8723727ff8f8
 langcode: fr
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.child
+  module:
+    - node
 id: parent_role
 label: Parent
 weight: 4
 is_admin: null
-permissions: {  }
+permissions:
+  - 'edit any child content'
+  - 'edit own child content'

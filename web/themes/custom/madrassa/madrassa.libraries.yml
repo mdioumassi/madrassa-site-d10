@@ -2,4 +2,5 @@ global-styling:
   css:
     theme:
       css/style.css: {}
+      css/w3.css: {}
       css/custom.css: {}

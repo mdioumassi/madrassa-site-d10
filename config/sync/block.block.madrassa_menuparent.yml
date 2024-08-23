@@ -1,6 +1,6 @@
 uuid: ee9b92c6-6690-44d8-88b0-1c0bdde7933f
 langcode: fr
-status: true
+status: false
 dependencies:
   config:
     - system.menu.menu-parent
