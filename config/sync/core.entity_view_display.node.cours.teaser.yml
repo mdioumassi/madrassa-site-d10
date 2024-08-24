@@ -1,0 +1,46 @@
+uuid: 9682a84b-9c0b-488b-81b5-e354cacfa20b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.cours.field_course_intended_for
+    - field.field.node.cours.field_course_levels
+    - field.field.node.cours.field_description
+    - node.type.cours
+  module:
+    - entity_reference_revisions
+    - text
+    - user
+id: node.cours.teaser
+targetEntityType: node
+bundle: cours
+mode: teaser
+content:
+  field_course_intended_for:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_course_levels:
+    type: entity_reference_revisions_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_description:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  langcode: true
+  links: true

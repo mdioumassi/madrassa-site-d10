@@ -1,0 +1,29 @@
+uuid: e2293375-758d-45f5-9838-b36e4adfabf8
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_intended_for
+    - node.type.cours
+    - taxonomy.vocabulary.keyword
+id: node.cours.field_course_intended_for
+field_name: field_course_intended_for
+entity_type: node
+bundle: cours
+label: 'Cours destiné à'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      keyword: keyword
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

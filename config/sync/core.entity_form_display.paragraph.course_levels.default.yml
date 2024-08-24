@@ -1,0 +1,37 @@
+uuid: 1bbdf825-d4f8-4e48-9a0c-a023a0e106bf
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.course_levels.field_levels
+    - paragraphs.paragraphs_type.course_levels
+  module:
+    - paragraphs
+id: paragraph.course_levels.default
+targetEntityType: paragraph
+bundle: course_levels
+mode: default
+content:
+  field_levels:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraphe
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: level
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

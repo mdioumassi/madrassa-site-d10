@@ -1,0 +1,24 @@
+uuid: ede0ecea-983a-4d3c-9b4f-8a16c323efa2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.course_levels.field_levels
+    - paragraphs.paragraphs_type.course_levels
+  module:
+    - entity_reference_revisions
+id: paragraph.course_levels.default
+targetEntityType: paragraph
+bundle: course_levels
+mode: default
+content:
+  field_levels:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

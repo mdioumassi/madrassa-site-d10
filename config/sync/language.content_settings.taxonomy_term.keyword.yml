@@ -1,0 +1,16 @@
+uuid: 6aabf4f9-793c-4f43-bb09-55914789ab99
+langcode: fr
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.keyword
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.keyword
+target_entity_type_id: taxonomy_term
+target_bundle: keyword
+default_langcode: site_default
+language_alterable: false

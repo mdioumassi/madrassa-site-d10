@@ -67,72 +67,11 @@
  *
  */
 #}
-{%
-  set classes = [
-    'node',
-    'node--type-' ~ node.bundle|clean_class,
-    node.isPromoted() ? 'node--promoted',
-    node.isSticky() ? 'node--sticky',
-    not node.isPublished() ? 'node--unpublished',
-    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
-  ]
-%}
-
-{% if node.field_gender.value == 'boy' %}
-	{% set photo =  base_path ~ directory ~ '/images/children/garcon.jpeg' %}
-	{% set gender = 'Garçon' %}
-{% elseif node.field_gender.value == 'girl' %}
-	{% set photo = base_path ~ directory ~ '/images/children/fille.png' %}
-	{% set gender = 'Fille' %}
-{% endif %}
-
-
-{{ attach_library('bootstrap5/node') }}
-<article{{attributes.addClass(classes)}}>
-	<div class="w3-container">
-			<div class="w3-card-4"> <header class="w3-container w3-indigo">
-				<h1>{{label}}</h1>
-			</header>
-
-			<div class="w3-container">
-				<div class="row">
-					<div class="col-3 picture-child-grid">
-						{% if node.field_photo.value is not empty %}
-							{{content.field_photo}}
-						{% else %}
-							<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ node.title.value }}">
-						{% endif %}
-					</div>
-					<div class="col">
-						<table class="w3-table w3-bordered">
-							<tr>
-								<td>Genre:</td>
-								<td>{{ gender }}</td>
-							</tr>
-							<tr>
-								<td>Date de naissance:</td>
-								<td>{{node.field_birthday.value}}</td>
-							</tr>
-							<tr>
-								<td>Age:</td>
-								<td>
-									<span>{{ node.field_old.value }}
-										ans</span>
-								</td>
-							</tr>
-							<tr>
-								<td>Classe française</td>
-								<td>{{node.field_frenchclass.value}}</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-
-			<footer class="w3-container w3-padding w3-panel w3-border">
-			{{ dump(node.nid.value) }}
-				<a href="" class="btn btn-success">Inscription</a>
-			</footer>
-		</div>
+<article>
+	<div class="w3-panel w3-blue w3-card-4">
+		<h1>{{ content.field_course_intended_for }}</h1>
+	</div>
+	<div id="paragraph" class="mb-5">
+		{{ content.field_course_levels }}
 	</div>
 </article>

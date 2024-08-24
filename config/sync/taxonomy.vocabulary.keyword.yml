@@ -1,0 +1,9 @@
+uuid: baea12ab-f9ed-4d1a-9f71-87cbb0233b66
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Mot clé cours'
+vid: keyword
+description: null
+weight: 0
+new_revision: false
