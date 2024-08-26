@@ -3,15 +3,24 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - field.field.paragraph.course_levels.field_color_banner_level
     - field.field.paragraph.course_levels.field_levels
     - paragraphs.paragraphs_type.course_levels
   module:
     - entity_reference_revisions
+    - options
 id: paragraph.course_levels.default
 targetEntityType: paragraph
 bundle: course_levels
 mode: default
 content:
+  field_color_banner_level:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_levels:
     type: entity_reference_revisions_entity_view
     label: above

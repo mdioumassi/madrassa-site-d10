@@ -1,12 +1,12 @@
-uuid: 4df10612-3e17-4075-858c-795014445cba
+uuid: a25e1722-5058-4939-8780-5b59ee82aab3
 langcode: fr
 status: true
 dependencies:
   module:
     - node
     - taxonomy
-id: node.field_course_intended_for
-field_name: field_course_intended_for
+id: node.field_type_of_course
+field_name: field_type_of_course
 entity_type: node
 type: entity_reference
 settings:

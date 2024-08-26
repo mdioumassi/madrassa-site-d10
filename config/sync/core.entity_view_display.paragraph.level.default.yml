@@ -7,9 +7,11 @@ dependencies:
     - field.field.paragraph.level.field_hours
     - field.field.paragraph.level.field_name
     - field.field.paragraph.level.field_registration_fees
+    - field.field.paragraph.level.field_subjects_level
     - field.field.paragraph.level.field_tarif
     - paragraphs.paragraphs_type.level
   module:
+    - entity_reference_revisions
     - text
 id: paragraph.level.default
 targetEntityType: paragraph
@@ -48,6 +50,15 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_subjects_level:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_tarif:
     type: number_integer

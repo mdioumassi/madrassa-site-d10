@@ -17,3 +17,12 @@
     height: 9rem;
     width: 11rem;
 }
+
+.row{
+    overflow: hidden; 
+}
+
+.paragraph--type--course-levels [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}

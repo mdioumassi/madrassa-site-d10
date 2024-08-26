@@ -45,45 +45,62 @@
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     not paragraph.isPublished() ? 'paragraph--unpublished'
   ]
+ 
 %}
+
+{% if content.field_color_banner_level.0['#markup'] is not empty %}
+	{%  set color = content.field_color_banner_level.0['#markup'] %}
+{% else %}
+	{% set color = 'blue' %}
+{% endif %}
+
 {% block paragraph %}
 	<div{{attributes.addClass(classes)}}>
 		{% block content %}
-			<div class="row">
-				{% for item in content.field_levels['#items'] %}
-					<div class="col-4">
-						<div class="w3-card-4 mb-4">
-							<header class="w3-container w3-blue">
-								<h1>{{ item.entity.field_name.value }}</h1>
-							</header>
+			<form action="{{path('madrasa_registration.children.course.lavel')}}" method='post'>
+				<div class="row">
+					{% for item in content.field_levels['#items'] %}
+						<div class="col-4">
+							<div class="w3-card-4 mb-4">
+								<header class="w3-container w3-{{ color }}">
+									<input class="w3-radio float-end mt-2" type="radio" name="levelId" value="{{ item.target_id }}">
+									<h2>{{ item.entity.field_name.value }}</h2>
+								</header>
 
-							<div class="w3-container">
-								<table class="w3-table w3-bordered">
-                                    <tr>
-										<td>Tarif:</td>
-										<td>{{ item.entity.field_tarif.value ~ ' €/an' }}</td>
-									</tr>
-									<tr>
-										<td>Frais d'inscription:</td>
-										<td>{{ item.entity.field_registration_fees.value ~ ' €'  }}</td>
-									</tr>
-									<tr>
-										<td>Horaires:</td>
-										<td>{{ item.entity.field_hours.value ~ ' h/semaine'  }}</td>
-									</tr>
-									{# <tr>
-										<td>{{ item.entity.field_description.value|raw }}</td>
-									</tr> #}
-                                </table>
-								{% if item.entity.field_description.value %}
-									<span><strong>Description:</strong></span>
-									{{ item.entity.field_description.value|raw }}
-								{% endif %}
+								<div class="w3-container">
+									<table class="w3-table w3-bordered">
+										<tr>
+											<td>Tarif:</td>
+											<td>
+												<span class="display-4">{{ item.entity.field_tarif.value }}€</span>/an</td>
+										</tr>
+										<tr>
+											<td>Frais d'inscription:</td>
+											<td>{{ item.entity.field_registration_fees.value ~ ' €'  }}</td>
+										</tr>
+										<tr>
+											<td>Horaires:</td>
+											<td>{{ item.entity.field_hours.value ~ ' h/semaine'  }}</td>
+										</tr>
+									</table>
+									{% for subject in item.entity.field_subjects_level %}
+										{% if subject.entity.field_subject_name.value is not empty %}
+											<strong>Matières:</strong>
+											{{subject.entity.field_subject_name.value|raw }}
+										{% endif %}
+									{% endfor %}
+									{% if item.entity.field_description.value %}
+										<strong>Description:</strong>
+										{{ item.entity.field_description.value|raw }}
+									{% endif %}
+								</div>
 							</div>
 						</div>
-					</div>
-				{% endfor %}
-			</div>
+					{% endfor %}
+				</div>
+				<div class="w3-center">
+					<button class="btn btn-success" type="submit">Suivant</button>
+			</form>
 		{% endblock %}
 	</div>
 {% endblock paragraph %}

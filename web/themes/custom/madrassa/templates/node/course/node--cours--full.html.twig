@@ -68,9 +68,21 @@
  */
 #}
 <article>
-	<div class="w3-panel w3-blue w3-card-4">
-		<h1>{{ content.field_course_intended_for }}</h1>
-	</div>
+	{% if node.field_banner_color.value is not empty %}
+		<div class="w3-panel w3-{{node.field_banner_color.value}} w3-card-4">
+			<h2>{{ label }}</h2>
+			<h4>
+				<span class="badge bg-success float-end mb-2">{{ content.field_course_intended_for }}</span>
+			</h4>
+		</div>
+	{% else %}
+		<div class="w3-panel w3-blue w3-card-4">
+			<h2>{{ label }}</h2>
+			<h4>
+				<span class="badge bg-success float-end">{{ content.field_course_intended_for }}</span>
+			</h4>
+		</div>
+	{% endif %}
 	<div id="paragraph" class="mb-5">
 		{{ content.field_course_levels }}
 	</div>

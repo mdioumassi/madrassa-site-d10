@@ -1,9 +1,9 @@
-uuid: baea12ab-f9ed-4d1a-9f71-87cbb0233b66
+uuid: ea3ff253-ae85-4504-b67e-35847b239734
 langcode: fr
 status: true
 dependencies: {  }
-name: 'Mot clé cours'
-vid: keyword
+name: 'Type de cours'
+vid: type_course
 description: null
 weight: 0
 new_revision: false

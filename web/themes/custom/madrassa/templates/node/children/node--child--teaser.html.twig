@@ -90,7 +90,8 @@
 {{ attach_library('bootstrap5/node') }}
 <article{{attributes.addClass(classes)}}>
 	<div class="w3-container">
-			<div class="w3-card-4"> <header class="w3-container w3-indigo">
+		<div class="w3-card-4">
+			<header class="w3-container w3-indigo">
 				<h1>{{label}}</h1>
 			</header>
 
@@ -130,8 +131,7 @@
 			</div>
 
 			<footer class="w3-container w3-padding w3-panel w3-border">
-			{{ dump(node.nid.value) }}
-				<a href="" class="btn btn-success">Inscription</a>
+				<a href="{{path('madrassa_registration.children.course', {'enfantId':node.nid.value})}}" class="btn btn-success">Inscription</a>
 			</footer>
 		</div>
 	</div>

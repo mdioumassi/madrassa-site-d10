@@ -3,12 +3,15 @@ langcode: fr
 status: true
 dependencies:
   config:
-    - field.field.node.cours.field_course_intended_for
+    - field.field.node.cours.field_banner_color
+    - field.field.node.cours.field_course_indented_for
     - field.field.node.cours.field_course_levels
     - field.field.node.cours.field_description
+    - field.field.node.cours.field_type_of_course
     - node.type.cours
   module:
     - entity_reference_revisions
+    - options
     - text
     - user
 id: node.cours.default
@@ -16,13 +19,19 @@ targetEntityType: node
 bundle: cours
 mode: default
 content:
-  field_course_intended_for:
-    type: entity_reference_label
-    label: visually_hidden
-    settings:
-      link: false
+  field_banner_color:
+    type: list_default
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 3
+    region: content
+  field_course_indented_for:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_course_levels:
     type: entity_reference_revisions_entity_view
@@ -39,6 +48,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_type_of_course:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
     region: content
 hidden:
   langcode: true

@@ -1,0 +1,23 @@
+uuid: 8ac1c3bf-f7c8-4576-98f2-4b366773b4ba
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_color
+    - node.type.cours
+  module:
+    - options
+id: node.cours.field_banner_color
+field_name: field_banner_color
+entity_type: node
+bundle: cours
+label: 'Couleur bandeau titre cours'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: indigo
+default_value_callback: ''
+settings: {  }
+field_type: list_string

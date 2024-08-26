@@ -9,7 +9,7 @@ id: paragraph.level.field_name
 field_name: field_name
 entity_type: paragraph
 bundle: level
-label: 'Nom niveau'
+label: Nom
 description: ''
 required: true
 translatable: false

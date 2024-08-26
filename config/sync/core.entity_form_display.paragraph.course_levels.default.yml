@@ -3,6 +3,7 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - field.field.paragraph.course_levels.field_color_banner_level
     - field.field.paragraph.course_levels.field_levels
     - paragraphs.paragraphs_type.course_levels
   module:
@@ -12,14 +13,20 @@ targetEntityType: paragraph
 bundle: course_levels
 mode: default
 content:
+  field_color_banner_level:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_levels:
     type: paragraphs
-    weight: 0
+    weight: 1
     region: content
     settings:
       title: Paragraphe
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
       closed_mode: summary
       autocollapse: none
       closed_mode_threshold: 0

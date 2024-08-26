@@ -4,12 +4,15 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.cours.field_course_intended_for
+    - field.field.node.cours.field_banner_color
+    - field.field.node.cours.field_course_indented_for
     - field.field.node.cours.field_course_levels
     - field.field.node.cours.field_description
+    - field.field.node.cours.field_type_of_course
     - node.type.cours
   module:
     - entity_reference_revisions
+    - options
     - text
     - user
 id: node.cours.teaser
@@ -17,13 +20,12 @@ targetEntityType: node
 bundle: cours
 mode: teaser
 content:
-  field_course_intended_for:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
+  field_course_indented_for:
+    type: list_default
+    label: visually_hidden
+    settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 3
     region: content
   field_course_levels:
     type: entity_reference_revisions_entity_view
@@ -32,15 +34,24 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   field_description:
     type: text_default
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
+  field_type_of_course:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
     weight: 2
     region: content
 hidden:
+  field_banner_color: true
   langcode: true
   links: true

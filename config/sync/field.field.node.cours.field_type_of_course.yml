@@ -1,16 +1,16 @@
-uuid: e2293375-758d-45f5-9838-b36e4adfabf8
+uuid: 3fae7eb1-34e5-465c-99c4-2036fe6eb9aa
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.storage.node.field_course_intended_for
+    - field.storage.node.field_type_of_course
     - node.type.cours
-    - taxonomy.vocabulary.keyword
-id: node.cours.field_course_intended_for
-field_name: field_course_intended_for
+    - taxonomy.vocabulary.type_course
+id: node.cours.field_type_of_course
+field_name: field_type_of_course
 entity_type: node
 bundle: cours
-label: 'Cours destiné à'
+label: 'Type de cours'
 description: ''
 required: true
 translatable: false
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      keyword: keyword
+      type_course: type_course
     sort:
       field: name
       direction: asc

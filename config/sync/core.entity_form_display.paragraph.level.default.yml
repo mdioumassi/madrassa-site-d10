@@ -7,9 +7,11 @@ dependencies:
     - field.field.paragraph.level.field_hours
     - field.field.paragraph.level.field_name
     - field.field.paragraph.level.field_registration_fees
+    - field.field.paragraph.level.field_subjects_level
     - field.field.paragraph.level.field_tarif
     - paragraphs.paragraphs_type.level
   module:
+    - paragraphs
     - text
 id: paragraph.level.default
 targetEntityType: paragraph
@@ -21,7 +23,7 @@ content:
     weight: 4
     region: content
     settings:
-      rows: 5
+      rows: 3
       placeholder: ''
     third_party_settings: {  }
   field_hours:
@@ -37,7 +39,7 @@ content:
     region: content
     settings:
       size: 60
-      placeholder: ''
+      placeholder: 'Veuillez renseigner le nom du nivieau du cours.'
     third_party_settings: {  }
   field_registration_fees:
     type: number
@@ -45,6 +47,18 @@ content:
     region: content
     settings:
       placeholder: ''
+    third_party_settings: {  }
+  field_subjects_level:
+    type: entity_reference_paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Paragraphe
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: subjects
     third_party_settings: {  }
   field_tarif:
     type: number

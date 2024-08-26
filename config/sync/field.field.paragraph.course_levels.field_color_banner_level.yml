@@ -1,0 +1,23 @@
+uuid: c9f57a94-1979-4a3d-a53b-8e55612915cb
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_color_banner_level
+    - paragraphs.paragraphs_type.course_levels
+  module:
+    - options
+id: paragraph.course_levels.field_color_banner_level
+field_name: field_color_banner_level
+entity_type: paragraph
+bundle: course_levels
+label: 'Couleur bandeau titre niveau'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: indigo
+default_value_callback: ''
+settings: {  }
+field_type: list_string
