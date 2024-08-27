@@ -5,8 +5,6 @@ dependencies:
   module:
     - madrassa_enfants
     - media
-_core:
-  default_config_hash: O2egBRx36cZwG68iAi8t8FHpfuJkLQ9j5GgBE8Fr1v0
 id: children.field_photo
 field_name: field_photo
 entity_type: children

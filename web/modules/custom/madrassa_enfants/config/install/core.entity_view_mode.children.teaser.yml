@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - madrassa_enfants
+_core:
+  default_config_hash: Ub0gojT5h-IwEA2wPj6NF8hhJfyiYpRrrHyrVTqaU6I
 id: children.teaser
 label: teaser
 description: ''

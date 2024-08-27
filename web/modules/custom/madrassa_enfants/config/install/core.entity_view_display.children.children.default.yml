@@ -10,6 +10,8 @@ dependencies:
     - madrassa_enfants
     - options
     - user
+_core:
+  default_config_hash: 1mw0UGdXb7zuo9hlP6pdEw6fnFzqR2UJfyto82wcmq8
 id: children.children.default
 targetEntityType: children
 bundle: children
