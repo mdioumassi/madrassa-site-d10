@@ -5,7 +5,7 @@ dependencies:
   module:
     - madrassa_enfants
 _core:
-  default_config_hash: fEd7ZbpL5F-hUA6mMxvxMGZXm898pBlGgb_nGCR7nxo
+  default_config_hash: tqdJyMrYKQPqIjPDTw7F0nrZ8AYLV9l9IRHAYnKk6J0
 id: children_of_parent
 label: "Enfants d'un parent"
 module: views

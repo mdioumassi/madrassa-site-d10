@@ -6,7 +6,7 @@ dependencies:
     - datetime
     - madrassa_enfants
 _core:
-  default_config_hash: QECQEmeHfd4jhtgMmnfBfGBgbFowTbdkeEyMqAie4vo
+  default_config_hash: 26ggBdjpJxhJUhO9LaBX4vBjW9zZj8Gcw-owptwkbSk
 id: children.field_birthday
 field_name: field_birthday
 entity_type: children

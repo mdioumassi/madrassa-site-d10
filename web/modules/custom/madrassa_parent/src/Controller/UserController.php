@@ -106,7 +106,7 @@ final class UserController extends ControllerBase {
       $child = Children::create([
         'firstname' => $data['firstname'],
         'lastname' => $data['lastname'],
-        'birthday' => $data['birthdate'],
+        'field_birthday' => $data['birthdate'],
         'gender' => $data['gender'],
         'frenchclass' => $data['frenchclass'],
         'parent_id' => $data['parent_id'],

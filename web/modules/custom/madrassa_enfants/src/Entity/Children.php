@@ -252,7 +252,10 @@ final class Children extends ContentEntityBase implements ChildrenInterface {
   }
 
   public function getBirthday(): string {
-    $date = new \DateTime($this->get('birthday')->value);
+    if (!$this->get('field_birthday')->value) {
+      return '';
+    }
+    $date = new \DateTime($this->get('field_birthday')->value);
     return $date->format('d/m/Y');
   }
 
@@ -277,7 +280,10 @@ final class Children extends ContentEntityBase implements ChildrenInterface {
   }
 
   public function getOldOfBirthday(): string {
-    $birthday = $this->get('birthday')->value;
+    if (!$this->get('field_birthday')->value) {
+      return '';
+    }
+    $birthday = $this->get('field_birthday')->value;
     $today = date("Y-m-d");
     $diff = date_diff(date_create($birthday), date_create($today));
 

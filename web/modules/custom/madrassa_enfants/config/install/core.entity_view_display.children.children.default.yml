@@ -5,101 +5,71 @@ dependencies:
   config:
     - field.field.children.children.field_birthday
     - field.field.children.children.field_photo
+    - image.style.medium
   module:
     - datetime
     - madrassa_enfants
+    - media
     - options
-    - user
 _core:
-  default_config_hash: 1mw0UGdXb7zuo9hlP6pdEw6fnFzqR2UJfyto82wcmq8
+  default_config_hash: WrL-HHqCrNaJ391YrbJZ56wUw99TzmXq7w4BFs5io5Q
 id: children.children.default
 targetEntityType: children
 bundle: children
 mode: default
 content:
-  created:
-    type: timestamp
-    label: above
-    settings:
-      date_format: medium
-      custom_date_format: ''
-      timezone: ''
-      tooltip:
-        date_format: long
-        custom_date_format: ''
-      time_diff:
-        enabled: false
-        future_format: '@interval hence'
-        past_format: '@interval ago'
-        granularity: 2
-        refresh: 60
-    third_party_settings: {  }
-    weight: 20
-    region: content
   field_birthday:
     type: datetime_default
-    label: above
+    label: visually_hidden
     settings:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 21
+    weight: 5
     region: content
   field_photo:
-    type: entity_reference_entity_view
-    label: above
+    type: media_thumbnail
+    label: visually_hidden
     settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
-    weight: 22
+    weight: 0
     region: content
   firstname:
     type: string
-    label: above
+    label: visually_hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 0
+    weight: 2
     region: content
   frenchclass:
     type: string
-    label: above
+    label: visually_hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 0
+    weight: 4
     region: content
   gender:
-    type: list_key
-    label: above
+    type: list_default
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
   lastname:
     type: string
-    label: above
+    label: visually_hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 0
+    weight: 3
     region: content
-  status:
-    type: boolean
-    label: above
-    settings:
-      format: enabled-disabled
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  uid:
-    type: author
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 15
-    region: content
-hidden: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
