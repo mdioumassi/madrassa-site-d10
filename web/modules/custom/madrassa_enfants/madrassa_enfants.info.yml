@@ -1,6 +1,6 @@
 name: 'Madrassa enfants'
 type: module
-description: 'Gestion des anfants'
+description: 'Gestion des enfants'
 package: Madrassa
 core_version_requirement: ^10 || ^11
 dependencies:

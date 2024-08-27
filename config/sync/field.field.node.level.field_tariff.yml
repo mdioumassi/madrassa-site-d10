@@ -1,0 +1,23 @@
+uuid: 9d37518a-cd72-4a03-97f0-ce4316561524
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tariff
+    - node.type.level
+id: node.level.field_tariff
+field_name: field_tariff
+entity_type: node
+bundle: level
+label: Tarif
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: €/an
+field_type: integer

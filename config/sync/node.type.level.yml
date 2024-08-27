@@ -1,0 +1,17 @@
+uuid: 30959a5f-dfae-4c5e-ba5e-86f3e2388d62
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Niveau
+type: level
+description: 'Gestions de niveaux(Niveau1, Niveau2....)'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: false

@@ -100,18 +100,21 @@ final class UserController extends ControllerBase {
 
   public function storeChild(Request $request) 
   {
-    $data = $request->request->all();
-    $node = Node::create([
-      'type' => 'child',
-      'title' => $data['firstname'].' '.$data['lastname'],
-      'field_birthday' => $data['birthdate'],
-      'field_gender' => $data['gender'],
-      'field_frenchclass' => $data['frenchclass'],
-      'field_parent_id' => $data['parent_id'],
-      'status' => 1,
+  
+    if ($request->isMethod('POST')) {
+      $data = $request->request->all();
+      $child = Children::create([
+        'firstname' => $data['firstname'],
+        'lastname' => $data['lastname'],
+        'birthday' => $data['birthdate'],
+        'gender' => $data['gender'],
+        'frenchclass' => $data['frenchclass'],
+        'parent_id' => $data['parent_id'],
+        'status' => 1,
       ]);
-      $child = $node->save();
-    dd($child);
+      $child_id = $child->save();
+    }
+    dd($child_id);
   }
 
   public function listChildren($parentId)

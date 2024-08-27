@@ -9,7 +9,6 @@ use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\image_test\Plugin\ImageToolkit\Operation\test\Failing;
 use Drupal\madrassa_enfants\ChildrenInterface;
 use Drupal\user\EntityOwnerTrait;
 
@@ -147,11 +146,45 @@ final class Children extends ContentEntityBase implements ChildrenInterface {
       ])
       ->setDisplayConfigurable('view', TRUE);
 
+      // $fields['birthday'] = BaseFieldDefinition::create('datetime')
+      // ->setLabel(t('Date de naissance'))
+      // ->setRequired(TRUE);
+      // ->setDisplayOptions('form', [
+      //   'type' => 'datetime',
+      //   'weight' => 0,
+      // ])
+      // ->setDisplayConfigurable('form', TRUE)
+      // ->setDisplayOptions('view', [
+      //   'label' => 'above',
+      //   'type' => 'datetime',
+      //   'weight' => 0,
+      // ])
+      // ->setDisplayConfigurable('view', TRUE);
+
       $fields['parent_id'] = BaseFieldDefinition::create('entity_reference')
         ->setLabel(t('Parent'))
         ->setDescription(t('The parent of the child.'))
         ->setSetting('target_type', 'user')
         ->setSetting('handler', 'default');
+        // ->setSetting('handler_settings', [
+        //   'target_bundles' => [
+        //     'madrassa_parent' => 'madrassa_parent',
+        //   ],
+        //   'sort' => [
+        //     'field' => '_none',
+        //   ],
+        // ])
+        // ->setDisplayOptions('form', [
+        //   'type' => 'entity_reference_autocomplete',
+        //   'weight' => 0,
+        // ])
+        // ->setDisplayConfigurable('form', TRUE)
+        // ->setDisplayOptions('view', [
+        //   'label' => 'above',
+        //   'type' => 'author',
+        //   'weight' => 0,
+        // ])
+        // ->setDisplayConfigurable('view', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Status'))
@@ -219,15 +252,21 @@ final class Children extends ContentEntityBase implements ChildrenInterface {
   }
 
   public function getBirthday(): string {
-    $date = new \DateTime($this->get('field_birthday')->value);
+    $date = new \DateTime($this->get('birthday')->value);
     return $date->format('d/m/Y');
   }
+
   public function getFullName(): string {
-    return $this->get('firstname')->value . ' ' . $this->get('lastname')->value;
+    return $this->get('firstname')->value.' '.$this->get('lastname')->value;
   }
 
-  public function getLink() {
+
+  public function getLinkFullName() {
     return $this->toLink($this->getFullName());
+  }
+
+  public function getParentLink() {
+    return $this->get('parent_id')->entity->toLink();
   }
 
   public function getParent() {
@@ -238,7 +277,7 @@ final class Children extends ContentEntityBase implements ChildrenInterface {
   }
 
   public function getOldOfBirthday(): string {
-    $birthday = $this->get('field_birthday')->value;
+    $birthday = $this->get('birthday')->value;
     $today = date("Y-m-d");
     $diff = date_diff(date_create($birthday), date_create($today));
 

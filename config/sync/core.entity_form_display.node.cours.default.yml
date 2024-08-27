@@ -5,12 +5,10 @@ dependencies:
   config:
     - field.field.node.cours.field_banner_color
     - field.field.node.cours.field_course_indented_for
-    - field.field.node.cours.field_course_levels
     - field.field.node.cours.field_description
     - field.field.node.cours.field_type_of_course
     - node.type.cours
   module:
-    - paragraphs
     - path
     - text
 id: node.cours.default
@@ -29,18 +27,6 @@ content:
     weight: 1
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_course_levels:
-    type: entity_reference_paragraphs
-    weight: 7
-    region: content
-    settings:
-      title: Paragraphe
-      title_plural: Paragraphs
-      edit_mode: open
-      add_mode: dropdown
-      form_display_mode: default
-      default_paragraph_type: course_levels
     third_party_settings: {  }
   field_description:
     type: text_textarea

@@ -1,0 +1,13 @@
+uuid: fa5d185f-addb-4689-8e9b-e1244597688f
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_enfants
+_core:
+  default_config_hash: MW3oMYw4bt2rgiBzSjADdGW0EX9F8OMDXmzwTdnuBcI
+id: children_save_action
+label: 'Save enfants'
+type: children
+plugin: 'entity:save_action:children'
+configuration: {  }

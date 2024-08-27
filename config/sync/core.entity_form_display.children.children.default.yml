@@ -1,0 +1,69 @@
+uuid: 78e79b68-e766-47d7-bedc-4c032a3c60ca
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.children.children.field_birthday
+    - field.field.children.children.field_photo
+  module:
+    - datetime
+    - madrassa_enfants
+    - media_library
+id: children.children.default
+targetEntityType: children
+bundle: children
+mode: default
+content:
+  birthday:
+    type: datetime_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_birthday:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_photo:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  firstname:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  frenchclass:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  gender:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  lastname:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true
