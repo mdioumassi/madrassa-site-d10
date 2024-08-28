@@ -27,11 +27,11 @@
     set fullname = content.field_parent_id.entity.field_firstname.value ~ ' ' ~ content.field_parent_id.entity.field_lastname.value
 %}
 
-{% if content.gender.0['#markup'] == 'Garçon' %}
-	{% set photo =  base_path ~ directory ~ '/images/children/garcon.jpeg' %}
+{% if children.getGender() == 'boy' %}
+	{% set photo =  children.getPath() ~ '/images/children/garcon.jpeg' %}
     {% set gender = 'Garçon' %}
-{% elseif content.gender.0['#markup']== 'Fille' %}
-	{% set photo = base_path ~ directory ~ '/images/children/fille.png' %}
+{% elseif children.getGender() == 'girl' %}
+	{% set photo = children.getPath() ~ '/images/children/fille.png' %}
      {% set gender = 'Fille' %}
 {% endif %}
 
@@ -46,7 +46,7 @@
 			<div class="w3-container">
 				<div class="row">
 					<div class="col-3 children mt-3">
-                    {% if content.field_photo %}
+                    {% if children.getPhoto() %}
 						{{ content.field_photo }}
                         {% else %}
                         <img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ content.title.value }}">

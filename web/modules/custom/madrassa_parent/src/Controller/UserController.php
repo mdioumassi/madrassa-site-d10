@@ -109,7 +109,7 @@ final class UserController extends ControllerBase {
         'field_birthday' => $data['birthdate'],
         'gender' => $data['gender'],
         'frenchclass' => $data['frenchclass'],
-        'parent_id' => $data['parent_id'],
+        'field_parent_id' => $data['parent_id'],
         'status' => 1,
       ]);
       $child_id = $child->save();

@@ -238,12 +238,12 @@ class Children extends ContentEntityBase implements ChildrenInterface {
   }
 
   public function getParentLink() {
-    return $this->get('parent_id')->entity->toLink();
+    return $this->get('field_parent_id')->entity->toLink();
   }
 
   public function getParent() {
     /**@var \Drupal\madrassa_parent\Entity\MadrassaParent */
-    $parent = \Drupal::entityTypeManager()->getStorage('user')->load($this->get('parent_id')->target_id);
+    $parent = \Drupal::entityTypeManager()->getStorage('user')->load($this->get('field_parent_id')->target_id);
 
     return $parent->get('field_firstname')->value.' '.$parent->get('field_lastname')->value;
   }
@@ -261,5 +261,13 @@ class Children extends ContentEntityBase implements ChildrenInterface {
 
   public function getPhoto() {
     return $this->get('field_photo')->entity;
+  }
+
+  public function getGender(): string {
+    return $this->get('gender')->value;
+  }
+
+  public function getPath() {
+    return \Drupal::service('module_handler')->getModule('madrassa_enfants')->getPath();
   }
 }

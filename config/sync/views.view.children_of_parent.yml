@@ -10,7 +10,6 @@ dependencies:
     - datetime
     - madrassa_enfants
     - media
-    - user
 _core:
   default_config_hash: CUfVS2FVzkpw_bVJx3qFjupERzNkO52GUkvtjHYCFD8
 id: children_of_parent
@@ -392,15 +391,13 @@ display:
       empty: {  }
       sorts: {  }
       arguments:
-        parent_id:
-          id: parent_id
-          table: children
-          field: parent_id
+        field_parent_id_target_id:
+          id: field_parent_id_target_id
+          table: children__field_parent_id
+          field: field_parent_id_target_id
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: children
-          entity_field: parent_id
           plugin_id: entity_target_id
           default_action: ignore
           exception:
@@ -450,18 +447,7 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships:
-        parent_id:
-          id: parent_id
-          table: children
-          field: parent_id
-          relationship: none
-          group_type: group
-          admin_label: Utilisateur
-          entity_type: children
-          entity_field: parent_id
-          plugin_id: standard
-          required: false
+      relationships: {  }
       header: {  }
       footer: {  }
       display_extenders: {  }
