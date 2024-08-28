@@ -1,0 +1,5 @@
+madrassa_course.add_form:
+  title: 'Ajouter un cours'
+  route_name: entity.madrassa_course.add_form
+  appears_on:
+    - entity.madrassa_course.collection

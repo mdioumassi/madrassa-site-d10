@@ -1,0 +1,11 @@
+entity.madrassa_course.settings:
+  title: 'Cours'
+  description: 'Configure a Cours entity type.'
+  route_name:  entity.madrassa_course.settings
+  parent: system.admin_structure
+
+entity.madrassa_course.collection:
+  title: 'Cours'
+  description: 'List of courss.'
+  route_name: entity.madrassa_course.collection
+  parent: system.admin_content
