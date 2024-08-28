@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% if title %}
+	<h3>{{ title }}</h3>
+{% endif %}
+<div class="row">
+	{% for row in rows %}
+		{% if row.content['#row']._entity.gender.value == 'boy' %}
+			{% set photo =  base_path ~ directory ~ '/images/children/garcon.jpeg' %}
+			{% set gender = 'Garçon' %}
+		{% elseif row.content['#row']._entity.gender.value == 'girl' %}
+			{% set photo = base_path ~ directory ~ '/images/children/fille.png' %}
+			{% set gender = 'Fille' %}
+		{% endif %}
+
+		<div class="col-4 mb-4">
+			<div class="w3-card-4">
+				<header class="w3-container w3-blue">
+					<h2>
+						{{ row.content['#row']._entity.firstname.value }}
+						{{ row.content['#row']._entity.lastname.value }}
+					</h2>
+				</header>
+				<div class="w3-container">
+					<div class="row mt-4">
+						<div class="col-4">
+							{% if row.content['#row']._entity.field_photo.value.0['target_id'] is not empty %}
+								{{ drupal_field('field_photo', 'children', row.content['#row']._entity.field_photo.value.0['target_id']) }}
+							{% else %}
+								<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ node.title.value }}">
+							{% endif %}
+						</div>
+						<div class="col">
+							<table class="w3-table w3-bordered">
+								<tr>
+									<td>Genre:</td>
+									<td>{{ gender }}</td>
+								</tr>
+								<tr>
+									<td>Date de naissance:</td>
+									<td>{{ row.content['#row']._entity.field_birthday.value }}</td>
+								</tr>
+								<tr>
+									<td>Age:</td>
+									<td>{{ row.content['#row']._entity.age }}</td>
+								</tr>
+								<tr>
+									<td>Classe Française:</td>
+									<td>{{ row.content['#row']._entity.frenchclass.value }}</td>
+								</tr>
+
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<footer class="w3-container w3-border">
+					<h5>id={{row.content['#row']._entity.id.value}}</h5>
+				</footer>
+			</div>
+		</div>
+	{% endfor %}
+</div>

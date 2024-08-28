@@ -1,15 +1,16 @@
-uuid: b3d1c874-342c-4d4b-9f04-04cd479dc6b0
+uuid: 5e31e6b9-bdd6-47b9-b5bc-c3e3509636b9
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.storage.node.field_parent_id
-    - node.type.child
-id: node.child.field_parent_id
+    - field.storage.children.field_parent_id
+  module:
+    - madrassa_enfants
+id: children.children.field_parent_id
 field_name: field_parent_id
-entity_type: node
-bundle: child
-label: Parent
+entity_type: children
+bundle: children
+label: 'Parent ID'
 description: ''
 required: false
 translatable: false

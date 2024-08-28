@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.children.children.field_birthday
+    - field.field.children.children.field_parent_id
     - field.field.children.children.field_photo
     - image.style.medium
   module:
@@ -12,20 +13,27 @@ dependencies:
     - media
     - options
 _core:
-  default_config_hash: WrL-HHqCrNaJ391YrbJZ56wUw99TzmXq7w4BFs5io5Q
+  default_config_hash: W-Z3EYNcs238eqhJEiHu2jM3ailNk8WdaBF5DxGXDlc
 id: children.children.default
 targetEntityType: children
 bundle: children
 mode: default
 content:
   field_birthday:
-    type: datetime_default
+    type: datetime_plain
     label: visually_hidden
     settings:
       timezone_override: ''
-      format_type: medium
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_parent_id:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_photo:
     type: media_thumbnail

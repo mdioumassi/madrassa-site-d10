@@ -56,7 +56,7 @@ use Drupal\user\EntityOwnerTrait;
  *   field_ui_base_route = "entity.children.settings",
  * )
  */
-final class Children extends ContentEntityBase implements ChildrenInterface {
+class Children extends ContentEntityBase implements ChildrenInterface {
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
@@ -146,45 +146,11 @@ final class Children extends ContentEntityBase implements ChildrenInterface {
       ])
       ->setDisplayConfigurable('view', TRUE);
 
-      // $fields['birthday'] = BaseFieldDefinition::create('datetime')
-      // ->setLabel(t('Date de naissance'))
-      // ->setRequired(TRUE);
-      // ->setDisplayOptions('form', [
-      //   'type' => 'datetime',
-      //   'weight' => 0,
-      // ])
-      // ->setDisplayConfigurable('form', TRUE)
-      // ->setDisplayOptions('view', [
-      //   'label' => 'above',
-      //   'type' => 'datetime',
-      //   'weight' => 0,
-      // ])
-      // ->setDisplayConfigurable('view', TRUE);
-
-      $fields['parent_id'] = BaseFieldDefinition::create('entity_reference')
-        ->setLabel(t('Parent'))
-        ->setDescription(t('The parent of the child.'))
-        ->setSetting('target_type', 'user')
-        ->setSetting('handler', 'default');
-        // ->setSetting('handler_settings', [
-        //   'target_bundles' => [
-        //     'madrassa_parent' => 'madrassa_parent',
-        //   ],
-        //   'sort' => [
-        //     'field' => '_none',
-        //   ],
-        // ])
-        // ->setDisplayOptions('form', [
-        //   'type' => 'entity_reference_autocomplete',
-        //   'weight' => 0,
-        // ])
-        // ->setDisplayConfigurable('form', TRUE)
-        // ->setDisplayOptions('view', [
-        //   'label' => 'above',
-        //   'type' => 'author',
-        //   'weight' => 0,
-        // ])
-        // ->setDisplayConfigurable('view', TRUE);
+      // $fields['parent_id'] = BaseFieldDefinition::create('entity_reference')
+      //   ->setLabel(t('Parent'))
+      //   ->setDescription(t('The parent of the child.'))
+      //   ->setSetting('target_type', 'user')
+      //   ->setSetting('handler', 'default');
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Status'))
@@ -263,6 +229,9 @@ final class Children extends ContentEntityBase implements ChildrenInterface {
     return $this->get('firstname')->value.' '.$this->get('lastname')->value;
   }
 
+  public function getFrenchClass(): string {
+    return $this->get('frenchclass')->value;
+  }
 
   public function getLinkFullName() {
     return $this->toLink($this->getFullName());
@@ -288,5 +257,9 @@ final class Children extends ContentEntityBase implements ChildrenInterface {
     $diff = date_diff(date_create($birthday), date_create($today));
 
     return $diff->format('%y'). ' ans';
+  }
+
+  public function getPhoto() {
+    return $this->get('field_photo')->entity;
   }
 }

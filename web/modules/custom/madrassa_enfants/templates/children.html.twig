@@ -13,7 +13,7 @@
  * @see template_preprocess_children()
  */
 #}
-<article{{ attributes }}>
+{# <article{{ attributes }}>
   {% if view_mode != 'full' %}
     {{ title_prefix }}
     {{ title_suffix }}
@@ -21,4 +21,69 @@
   {% if content %}
     {{- content -}}
   {% endif %}
+</article> #}
+{{ attach_library('madrassa_enfants/children') }}
+{% 
+    set fullname = content.field_parent_id.entity.field_firstname.value ~ ' ' ~ content.field_parent_id.entity.field_lastname.value
+%}
+
+{% if content.gender.0['#markup'] == 'Garçon' %}
+	{% set photo =  base_path ~ directory ~ '/images/children/garcon.jpeg' %}
+    {% set gender = 'Garçon' %}
+{% elseif content.gender.0['#markup']== 'Fille' %}
+	{% set photo = base_path ~ directory ~ '/images/children/fille.png' %}
+     {% set gender = 'Fille' %}
+{% endif %}
+
+
+<article{{ attributes }}>
+
+	<div class="mb-5">
+		<div class="w3-card-4" style="width:50%">
+			<header class="w3-container w3-indigo w3-padding">
+        <h1>{{ children.getFullName() }}</h1>
+			</header>
+			<div class="w3-container">
+				<div class="row">
+					<div class="col-3 children mt-3">
+                    {% if content.field_photo %}
+						{{ content.field_photo }}
+                        {% else %}
+                        <img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ content.title.value }}">
+                    {% endif %}
+					</div>
+					<div class="col">
+						<table class="w3-table w3-bordered">
+							<tr>
+								<td>Genre:</td>
+								<td>{{ gender }}</td>
+							</tr>
+							<tr>
+								<td>Date de naissance:</td>
+								<td>{{ children.getBirthday() }}</td>
+							</tr>
+							<tr>
+								<td>Age:</td>
+								<td>
+									<span>{{ children.getOldOfBirthday() }}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>Classe française:</td>
+								<td>{{ children.getFrenchClass() }}</td>
+							</tr>
+							<tr>
+								<td>Parent:</td>
+                                <td><a href="/user/{{content.field_parent_id.value.0['target_id']}}"><strong>{{ children.getParent() }}</string></a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<footer class="w3-container w3-blue">
+				<h5>Footer</h5>
+			</footer>
+		</div>
+	</div>
 </article>

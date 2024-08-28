@@ -1,16 +1,16 @@
-uuid: 1dc6ad45-711b-4dda-84c5-619109e43d99
+uuid: be65332e-a072-41ab-ae88-5fba475f9e19
 langcode: fr
 status: true
 dependencies:
   module:
-    - media
-    - node
-id: node.field_photo
-field_name: field_photo
-entity_type: node
+    - madrassa_enfants
+    - user
+id: children.field_parent_id
+field_name: field_parent_id
+entity_type: children
 type: entity_reference
 settings:
-  target_type: media
+  target_type: user
 module: core
 locked: false
 cardinality: 1

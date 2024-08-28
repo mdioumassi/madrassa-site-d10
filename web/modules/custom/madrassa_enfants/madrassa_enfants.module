@@ -13,7 +13,8 @@ use Drupal\user\UserInterface;
 /**
  * Implements hook_theme().
  */
-function madrassa_enfants_theme(): array {
+function madrassa_enfants_theme(): array
+{
   return [
     'children' => ['render element' => 'elements'],
   ];
@@ -30,17 +31,21 @@ function madrassa_enfants_theme(): array {
  *     fields attached to the entity.
  *   - attributes: HTML attributes for the containing element.
  */
-function template_preprocess_children(array &$variables): void {
+function template_preprocess_children(array &$variables): void
+{
   $variables['view_mode'] = $variables['elements']['#view_mode'];
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
+  $children = $variables['elements']['#children'];
+  $variables['children'] = $children;
 }
 
 /**
  * Implements hook_user_cancel().
  */
-function madrassa_enfants_user_cancel($edit, UserInterface $account, $method): void {
+function madrassa_enfants_user_cancel($edit, UserInterface $account, $method): void
+{
   switch ($method) {
     case 'user_cancel_block_unpublish':
       // Unpublish enfants.
@@ -72,7 +77,8 @@ function madrassa_enfants_user_cancel($edit, UserInterface $account, $method): v
 /**
  * Implements hook_ENTITY_TYPE_predelete() for user entities.
  */
-function madrassa_enfants_user_predelete(UserInterface $account): void {
+function madrassa_enfants_user_predelete(UserInterface $account): void
+{
   // Delete enfants that belong to this account.
   $storage = \Drupal::entityTypeManager()->getStorage('children');
   $children_ids = $storage->getQuery()
@@ -82,4 +88,17 @@ function madrassa_enfants_user_predelete(UserInterface $account): void {
   $storage->delete(
     $storage->loadMultiple($children_ids)
   );
+}
+
+/**
+ * Adds template possibility for view modes
+ * Implements hook_provider_theme_suggestions_hook_alter
+ */
+function madrassa_enfants_theme_suggestions_children_alter(array &$suggestions, array $variables): void
+{
+  if ($children = $variables['elements']['#children']) {
+    if (isset($variables['elements']['#view_mode'])) {
+      $suggestions[] = 'children__' . $variables['elements']['#view_mode'];
+    }
+  }
 }

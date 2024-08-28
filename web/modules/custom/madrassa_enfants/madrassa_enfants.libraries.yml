@@ -1,0 +1,10 @@
+# Custom library for general purposes.
+children:
+  js:
+    js/children.js: {}
+  css:
+    component:
+      css/children.css: {}
+  dependencies:
+    - core/drupalSettings
+    - madrassa_enfants/example_2

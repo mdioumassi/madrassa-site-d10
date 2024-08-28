@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.children.teaser
     - field.field.children.children.field_birthday
+    - field.field.children.children.field_parent_id
     - field.field.children.children.field_photo
     - image.style.medium
   module:
@@ -18,20 +19,27 @@ third_party_settings:
     enabled: false
     allow_custom: false
 _core:
-  default_config_hash: MX9lvV8lwBjtfbtKYhnsrckAfkLkGOKQxMxObLyvSSM
+  default_config_hash: tqrlcVfpWIvidlJcEkyPpp5SahQh2v6s_UYivBb9QWU
 id: children.children.teaser
 targetEntityType: children
 bundle: children
 mode: teaser
 content:
   field_birthday:
-    type: datetime_default
+    type: datetime_plain
     label: visually_hidden
     settings:
       timezone_override: ''
-      format_type: medium
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_parent_id:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_photo:
     type: media_thumbnail

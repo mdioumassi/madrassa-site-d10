@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.children.children.field_birthday
+    - field.field.children.children.field_parent_id
     - field.field.children.children.field_photo
   module:
     - datetime
@@ -21,6 +22,16 @@ content:
     weight: 4
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_parent_id:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_photo:
     type: media_library_widget

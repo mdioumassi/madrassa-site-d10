@@ -1,23 +1,29 @@
-uuid: 854505c9-c20c-4a68-a71a-8c1073d6a89f
+uuid: 1a85ffc7-5a09-49be-a187-d7b8be8c1238
 langcode: fr
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.children.full
     - field.field.children.children.field_birthday
     - field.field.children.children.field_parent_id
     - field.field.children.children.field_photo
     - image.style.medium
   module:
     - datetime
+    - layout_builder
     - madrassa_enfants
     - media
     - options
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
 _core:
   default_config_hash: W-Z3EYNcs238eqhJEiHu2jM3ailNk8WdaBF5DxGXDlc
-id: children.children.default
+id: children.children.full
 targetEntityType: children
 bundle: children
-mode: default
+mode: full
 content:
   field_birthday:
     type: datetime_plain
