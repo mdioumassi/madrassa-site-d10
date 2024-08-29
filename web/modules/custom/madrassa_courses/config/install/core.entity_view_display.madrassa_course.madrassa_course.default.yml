@@ -10,6 +10,8 @@ dependencies:
     - madrassa_courses
     - options
     - text
+_core:
+  default_config_hash: ktLYgxtXdki3QAw0L3JAd1Cs9maa266ZWXxPCdqZOqo
 id: madrassa_course.madrassa_course.default
 targetEntityType: madrassa_course
 bundle: madrassa_course

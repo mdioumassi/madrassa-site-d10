@@ -5,6 +5,8 @@ dependencies:
   module:
     - madrassa_courses
     - taxonomy
+_core:
+  default_config_hash: 3ou0DwcBSN3oEavHLF9rEUJ7swkPOB8Z7OU5G20aNIs
 id: madrassa_course.field_type_course
 field_name: field_type_course
 entity_type: madrassa_course

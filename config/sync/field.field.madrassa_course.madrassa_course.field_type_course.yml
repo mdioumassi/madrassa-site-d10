@@ -7,6 +7,8 @@ dependencies:
     - taxonomy.vocabulary.type_course
   module:
     - madrassa_courses
+_core:
+  default_config_hash: WL2Q_rtMIDIz7RAqDWVWonNCRguFb1t9c1OYcAt0r2A
 id: madrassa_course.madrassa_course.field_type_course
 field_name: field_type_course
 entity_type: madrassa_course

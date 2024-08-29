@@ -46,7 +46,7 @@ use Drupal\user\EntityOwnerTrait;
  *   entity_keys = {
  *     "id" = "id",
  *     "langcode" = "langcode",
- *     "label" = "Libellé",
+ *     "label" = "label",
  *     "uuid" = "uuid",
  *     "owner" = "uid",
  *   },
@@ -84,9 +84,9 @@ final class Course extends ContentEntityBase implements CourseInterface {
 
     $fields = parent::baseFieldDefinitions($entity_type);
 
-    $fields['libelle'] = BaseFieldDefinition::create('string')
+    $fields['label'] = BaseFieldDefinition::create('string')
       ->setTranslatable(TRUE)
-      ->setLabel(t('Libellé'))
+      ->setLabel(t('Label'))
       ->setRequired(TRUE)
       ->setSetting('max_length', 255)
       ->setDisplayOptions('form', [

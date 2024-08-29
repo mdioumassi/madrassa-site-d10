@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - madrassa_courses
+_core:
+  default_config_hash: zaD98aQGip069xRVqjqvW-YoyNAVyROPBVKH5KsDOM8
 id: madrassa_course.full
 label: full
 description: ''

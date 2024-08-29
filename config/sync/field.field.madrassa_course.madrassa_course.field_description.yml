@@ -8,6 +8,8 @@ dependencies:
   module:
     - madrassa_courses
     - text
+_core:
+  default_config_hash: yyOZMBV5AIbWH_8xerunheCfmi0iCoLMvuEAqqj0DWA
 id: madrassa_course.madrassa_course.field_description
 field_name: field_description
 entity_type: madrassa_course

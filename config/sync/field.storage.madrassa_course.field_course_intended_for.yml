@@ -5,6 +5,8 @@ dependencies:
   module:
     - madrassa_courses
     - options
+_core:
+  default_config_hash: Gygz5Yy9Z47Cby_gyZBRwIBxzg-ZcXn4X7WY_jLlnJs
 id: madrassa_course.field_course_intended_for
 field_name: field_course_intended_for
 entity_type: madrassa_course

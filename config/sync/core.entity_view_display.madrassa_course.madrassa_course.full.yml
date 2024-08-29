@@ -16,6 +16,8 @@ third_party_settings:
   layout_builder:
     enabled: false
     allow_custom: false
+_core:
+  default_config_hash: d-dpejtDscub9v-iyFwhL15iOhf2ThmbXE5Ui_AuPVI
 id: madrassa_course.madrassa_course.full
 targetEntityType: madrassa_course
 bundle: madrassa_course
@@ -43,6 +45,14 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   libelle:
     type: string
     label: visually_hidden

@@ -10,6 +10,8 @@ dependencies:
     - madrassa_courses
     - options
     - text
+_core:
+  default_config_hash: VYo0RyzNa4UA6TsPaM58cyb71QYRaob5Dd6W8DfskKg
 id: madrassa_course.madrassa_course.default
 targetEntityType: madrassa_course
 bundle: madrassa_course
@@ -37,6 +39,14 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   libelle:
     type: string
     label: visually_hidden
