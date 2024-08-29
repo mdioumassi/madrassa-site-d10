@@ -42,6 +42,7 @@ module:
   madrassa_content: 0
   madrassa_courses: 0
   madrassa_enfants: 0
+  madrassa_niveaux: 0
   madrassa_parent: 0
   madrassa_registration: 0
   madrassa_webmaster: 0

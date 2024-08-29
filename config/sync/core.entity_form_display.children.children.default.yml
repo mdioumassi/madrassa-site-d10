@@ -11,7 +11,7 @@ dependencies:
     - madrassa_enfants
     - media_library
 _core:
-  default_config_hash: 9WL_ZApLJfLPVCJbJnh-l12cvkyic0Fjj9wiBCeiI7o
+  default_config_hash: tyyZ8gjxKyjOSja2nnZmrSl5SZ0wN1lqnvbZsAVT4sQ
 id: children.children.default
 targetEntityType: children
 bundle: children

@@ -16,6 +16,8 @@ dependencies:
     - media
     - options
     - user
+_core:
+  default_config_hash: GUTMtVWR119GDQadQXqODmVr2Ao6Th0gdPD0kw2SYMw
 id: children
 label: Enfants
 module: views

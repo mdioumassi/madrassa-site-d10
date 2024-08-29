@@ -1,0 +1,22 @@
+entity.madrassa_level.settings:
+  title: 'Settings'
+  route_name: entity.madrassa_level.settings
+  base_route: entity.madrassa_level.settings
+entity.madrassa_level.view:
+  title: 'View'
+  route_name: entity.madrassa_level.canonical
+  base_route: entity.madrassa_level.canonical
+entity.madrassa_level.edit_form:
+  title: 'Edit'
+  route_name: entity.madrassa_level.edit_form
+  base_route: entity.madrassa_level.canonical
+entity.madrassa_level.delete_form:
+  title: 'Delete'
+  route_name: entity.madrassa_level.delete_form
+  base_route: entity.madrassa_level.canonical
+  weight: 10
+entity.madrassa_level.collection:
+  title: 'Niveaux'
+  route_name: entity.madrassa_level.collection
+  base_route: system.admin_content
+  weight: 10

@@ -6,6 +6,8 @@ dependencies:
     - field.storage.children.field_parent_id
   module:
     - madrassa_enfants
+_core:
+  default_config_hash: IlN43vGPVrSLIsgX-gwtx_ezoZHb6-ihKd2L_YS2Tm4
 id: children.children.field_parent_id
 field_name: field_parent_id
 entity_type: children

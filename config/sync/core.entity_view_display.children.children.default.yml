@@ -13,7 +13,7 @@ dependencies:
     - media
     - options
 _core:
-  default_config_hash: W-Z3EYNcs238eqhJEiHu2jM3ailNk8WdaBF5DxGXDlc
+  default_config_hash: rH4ezksl5PlCi-WZ43XhUdr249GAG-NqPK9SichJpvU
 id: children.children.default
 targetEntityType: children
 bundle: children

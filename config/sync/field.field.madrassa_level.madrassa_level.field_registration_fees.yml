@@ -1,0 +1,26 @@
+uuid: b63ecbae-f980-4cc8-8a45-abd6cbf66556
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_level.field_registration_fees
+  module:
+    - madrassa_niveaux
+_core:
+  default_config_hash: 1CwG0Am-5cQoMAuqTNvtnyOPYcijb1tJ3G2j3qb8L1E
+id: madrassa_level.madrassa_level.field_registration_fees
+field_name: field_registration_fees
+entity_type: madrassa_level
+bundle: madrassa_level
+label: "Frais d'inscription"
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: €
+field_type: integer

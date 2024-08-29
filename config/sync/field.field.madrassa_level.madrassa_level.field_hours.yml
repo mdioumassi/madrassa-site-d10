@@ -1,0 +1,26 @@
+uuid: e01074d5-b4c5-4612-8b28-b91d200e5405
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_level.field_hours
+  module:
+    - madrassa_niveaux
+_core:
+  default_config_hash: Gs1-l7zxr8-gZZnt6H0AqxOXq_wcoPj-OuAibDgzIu8
+id: madrassa_level.madrassa_level.field_hours
+field_name: field_hours
+entity_type: madrassa_level
+bundle: madrassa_level
+label: Horaires
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: h/semaines
+field_type: integer

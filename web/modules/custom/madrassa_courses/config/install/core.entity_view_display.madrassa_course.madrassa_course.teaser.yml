@@ -1,0 +1,60 @@
+uuid: e7689c49-3e56-4a95-98a5-b35dee298c24
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.madrassa_course.teaser
+    - field.field.madrassa_course.madrassa_course.field_course_intended_for
+    - field.field.madrassa_course.madrassa_course.field_description
+    - field.field.madrassa_course.madrassa_course.field_type_course
+  module:
+    - layout_builder
+    - madrassa_courses
+    - options
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: Tn2uMemaGEuanKrO1v3JfZILAGdyOdh9e9kIDtBbAr0
+id: madrassa_course.madrassa_course.teaser
+targetEntityType: madrassa_course
+bundle: madrassa_course
+mode: teaser
+content:
+  field_course_intended_for:
+    type: list_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_description:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_type_course:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  libelle:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  status: true
+  uid: true

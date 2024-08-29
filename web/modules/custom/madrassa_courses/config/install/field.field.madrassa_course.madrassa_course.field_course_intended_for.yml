@@ -1,0 +1,23 @@
+uuid: 77b18cf5-a768-4742-9f5f-8bac4e2c5b0c
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_course.field_course_intended_for
+  module:
+    - madrassa_courses
+    - options
+_core:
+  default_config_hash: BWmi_SvfIwM9jWkJ6FeeT2LlSNEpXkX7F1TaiHYH1t8
+id: madrassa_course.madrassa_course.field_course_intended_for
+field_name: field_course_intended_for
+entity_type: madrassa_course
+bundle: madrassa_course
+label: 'Cours destiné à'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

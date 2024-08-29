@@ -19,7 +19,7 @@ third_party_settings:
     enabled: false
     allow_custom: false
 _core:
-  default_config_hash: tqrlcVfpWIvidlJcEkyPpp5SahQh2v6s_UYivBb9QWU
+  default_config_hash: ckiOJeMmUVTcYeArraU7JPbJQso1ecMehHrPMcJ32DI
 id: children.children.teaser
 targetEntityType: children
 bundle: children

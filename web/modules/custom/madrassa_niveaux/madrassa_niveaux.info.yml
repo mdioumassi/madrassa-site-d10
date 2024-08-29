@@ -1,0 +1,5 @@
+name: 'Madrassa Niveaux'
+type: module
+description: 'Gestion des niveaux'
+package: Madrassa
+core_version_requirement: ^10 || ^11

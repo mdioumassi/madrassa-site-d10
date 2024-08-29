@@ -18,7 +18,7 @@ use Drupal\user\EntityOwnerTrait;
  * @ContentEntityType(
  *   id = "madrassa_course",
  *   label = @Translation("Cours"),
- *   label_collection = @Translation("Cou+"),
+ *   label_collection = @Translation("Cours"),
  *   label_singular = @Translation("cours"),
  *   label_plural = @Translation("Cours"),
  *   label_count = @PluralTranslation(

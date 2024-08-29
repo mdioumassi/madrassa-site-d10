@@ -1,0 +1,26 @@
+uuid: b5060270-219e-437a-b799-475f195bbb95
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_course.field_description
+    - filter.format.full_html
+  module:
+    - madrassa_courses
+    - text
+_core:
+  default_config_hash: yyOZMBV5AIbWH_8xerunheCfmi0iCoLMvuEAqqj0DWA
+id: madrassa_course.madrassa_course.field_description
+field_name: field_description
+entity_type: madrassa_course
+bundle: madrassa_course
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+field_type: text_long

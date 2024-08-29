@@ -1,0 +1,13 @@
+uuid: 22cd5563-81d9-402f-b7ef-5968c8727bb3
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_courses
+_core:
+  default_config_hash: '-iv2bFWJacJkUk2-dx9RW-DBziRK3OUZUh9I70WeplA'
+id: madrassa_course.teaser
+label: teaser
+description: ''
+targetEntityType: madrassa_course
+cache: true
