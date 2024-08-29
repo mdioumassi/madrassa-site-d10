@@ -1,0 +1,30 @@
+uuid: 436ebfdf-935f-4bc2-9a9f-063a74eb538a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_course.field_type_course
+    - taxonomy.vocabulary.type_course
+  module:
+    - madrassa_courses
+id: madrassa_course.madrassa_course.field_type_course
+field_name: field_type_course
+entity_type: madrassa_course
+bundle: madrassa_course
+label: 'Type de cours'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      type_course: type_course
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

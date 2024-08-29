@@ -1,0 +1,11 @@
+uuid: 4a62b448-2108-4c57-94b2-68f5d96cbd86
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_courses
+id: madrassa_course.full
+label: full
+description: ''
+targetEntityType: madrassa_course
+cache: true
