@@ -61,7 +61,7 @@ use Drupal\user\EntityOwnerTrait;
  *   field_ui_base_route = "entity.madrassa_level.settings",
  * )
  */
-final class Level extends ContentEntityBase implements LevelInterface {
+class Level extends ContentEntityBase implements LevelInterface {
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
@@ -184,4 +184,36 @@ final class Level extends ContentEntityBase implements LevelInterface {
     return $fields;
   }
 
+  public function getTariff(): string {
+    return $this->get('field_tariff')->value. ' €/an';
+  }
+  
+  public function getFraisInscription(): string {
+    return $this->get('field_registration_fees')->value. ' €';
+  }
+
+  public function getHoraire(): string {
+    return $this->get('field_hours')->value. ' h/semaine';
+  }
+
+  public function getCoursesLinks() {
+    $url = \Drupal\Core\Url::fromRoute('entity.madrassa_course.collection');
+  }
+
+  public function getCourses(): string {
+    $courses = $this->get('field_course_id')->referencedEntities();
+    $courses_labels = [];
+    foreach ($courses as $course) {
+      $courses_labels[] = $course->label();
+    }
+  
+    return implode(', ', $courses_labels);
+  }
+
+  public function getTypeApprenant(): string {
+    $course_id = $this->get('field_course_id')->referencedEntities()[0]->id();
+    $course = \Drupal::entityTypeManager()->getStorage('madrassa_course')->load($course_id);
+
+    return $course->getCourseIntendedFor();
+  }
 }

@@ -61,7 +61,7 @@ use Drupal\user\EntityOwnerTrait;
  *   field_ui_base_route = "entity.madrassa_course.settings",
  * )
  */
-final class Course extends ContentEntityBase implements CourseInterface {
+class Course extends ContentEntityBase implements CourseInterface {
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
@@ -169,4 +169,19 @@ final class Course extends ContentEntityBase implements CourseInterface {
     return $fields;
   }
 
+  public function getCourseIntendedFor(): string {
+    return $this->get('field_course_intended')->value === 'adult' ? 'Adulte' : 'Enfant';
+  }
+
+  public function getTypeDeCours(): string {
+    return $this->get('field_type_of_course')->value === 'course_arabic' ? 'Cours d\'arabe' : 'Cours de coran';
+  }
+
+  public function getCountLevels(): int {
+    $id = $this->id();
+    $query = \Drupal::entityQuery('madrassa_level')
+      ->accessCheck(FALSE)
+      ->condition('field_course_id', $id);
+    return count($query->execute());
+  }
 }

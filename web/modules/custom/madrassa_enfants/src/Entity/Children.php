@@ -146,12 +146,6 @@ class Children extends ContentEntityBase implements ChildrenInterface {
       ])
       ->setDisplayConfigurable('view', TRUE);
 
-      // $fields['parent_id'] = BaseFieldDefinition::create('entity_reference')
-      //   ->setLabel(t('Parent'))
-      //   ->setDescription(t('The parent of the child.'))
-      //   ->setSetting('target_type', 'user')
-      //   ->setSetting('handler', 'default');
-
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Status'))
       ->setDefaultValue(TRUE)
