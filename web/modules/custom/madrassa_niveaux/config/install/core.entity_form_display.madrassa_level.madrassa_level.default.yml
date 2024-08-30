@@ -3,6 +3,7 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - field.field.madrassa_level.madrassa_level.field_course_id
     - field.field.madrassa_level.madrassa_level.field_hours
     - field.field.madrassa_level.madrassa_level.field_registration_fees
     - field.field.madrassa_level.madrassa_level.field_tariff
