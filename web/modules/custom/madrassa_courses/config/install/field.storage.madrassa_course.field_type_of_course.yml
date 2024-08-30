@@ -1,24 +1,25 @@
-uuid: 57e5f13d-e49c-4749-91c5-c31a2a475d30
+uuid: a07065b9-c96a-4c7f-90d0-c9bdce9d7ef0
 langcode: fr
 status: true
 dependencies:
   module:
     - madrassa_courses
     - options
-_core:
-  default_config_hash: Gygz5Yy9Z47Cby_gyZBRwIBxzg-ZcXn4X7WY_jLlnJs
-id: madrassa_course.field_course_intended_for
-field_name: field_course_intended_for
+id: madrassa_course.field_type_of_course
+field_name: field_type_of_course
 entity_type: madrassa_course
 type: list_string
 settings:
   allowed_values:
     -
-      value: adult
-      label: Adulte
+      value: course_arabic
+      label: "Cours d'arabe"
     -
-      value: child
-      label: Enfant
+      value: course_quran
+      label: 'Cours de coran'
+    -
+      value: sciences_religieuse
+      label: 'Sciences réligieuse'
   allowed_values_function: ''
 module: options
 locked: false

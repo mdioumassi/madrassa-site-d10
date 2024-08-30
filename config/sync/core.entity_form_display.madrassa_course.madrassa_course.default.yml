@@ -3,20 +3,20 @@ langcode: fr
 status: true
 dependencies:
   config:
-    - field.field.madrassa_course.madrassa_course.field_course_intended_for
+    - field.field.madrassa_course.madrassa_course.field_course_intended
     - field.field.madrassa_course.madrassa_course.field_description
-    - field.field.madrassa_course.madrassa_course.field_type_course
+    - field.field.madrassa_course.madrassa_course.field_type_of_course
   module:
     - madrassa_courses
     - text
 _core:
-  default_config_hash: l15YflLscnJBBUoD1p6_uxEQYG7CA4zqAwkkzQd1uuA
+  default_config_hash: jM-oIwiiTycxgHG7ZniSQJGHgw5l2trLNe0AaXGxjTc
 id: madrassa_course.madrassa_course.default
 targetEntityType: madrassa_course
 bundle: madrassa_course
 mode: default
 content:
-  field_course_intended_for:
+  field_course_intended:
     type: options_buttons
     weight: 1
     region: content
@@ -36,9 +36,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_type_of_course:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   label:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -52,14 +58,8 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  status:
-    type: boolean_checkbox
-    weight: 4
-    region: content
-    settings:
-      display_label: false
-    third_party_settings: {  }
 hidden:
   created: true
   langcode: true
+  status: true
   uid: true

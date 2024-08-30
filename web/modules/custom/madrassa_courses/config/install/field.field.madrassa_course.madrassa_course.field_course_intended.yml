@@ -1,16 +1,14 @@
-uuid: 77b18cf5-a768-4742-9f5f-8bac4e2c5b0c
+uuid: 2003248f-650d-48f3-9404-bd2b85612646
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.storage.madrassa_course.field_course_intended_for
+    - field.storage.madrassa_course.field_course_intended
   module:
     - madrassa_courses
     - options
-_core:
-  default_config_hash: BWmi_SvfIwM9jWkJ6FeeT2LlSNEpXkX7F1TaiHYH1t8
-id: madrassa_course.madrassa_course.field_course_intended_for
-field_name: field_course_intended_for
+id: madrassa_course.madrassa_course.field_course_intended
+field_name: field_course_intended
 entity_type: madrassa_course
 bundle: madrassa_course
 label: 'Cours destiné à'

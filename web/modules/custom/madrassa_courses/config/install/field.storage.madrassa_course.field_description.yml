@@ -1,12 +1,10 @@
-uuid: 65b5e49d-06f4-4c8d-bc99-f03adaccaf32
+uuid: 0d15a2ad-3ec1-44ae-99eb-f7ae780d6f6d
 langcode: fr
 status: true
 dependencies:
   module:
     - madrassa_courses
     - text
-_core:
-  default_config_hash: xbqCnDABV6iNe5LfSV9t1mUQpSVb0xoIqfysQcEcU98
 id: madrassa_course.field_description
 field_name: field_description
 entity_type: madrassa_course

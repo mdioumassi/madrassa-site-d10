@@ -1,14 +1,12 @@
-uuid: 57e5f13d-e49c-4749-91c5-c31a2a475d30
+uuid: e519ed8e-8804-488f-839d-405b7cd0e157
 langcode: fr
 status: true
 dependencies:
   module:
     - madrassa_courses
     - options
-_core:
-  default_config_hash: w9-9p-wVukKarcJGlQPs8TV09K0fS5h3oxt7A5bXsFs
-id: madrassa_course.field_course_intended_for
-field_name: field_course_intended_for
+id: madrassa_course.field_course_intended
+field_name: field_course_intended
 entity_type: madrassa_course
 type: list_string
 settings:
