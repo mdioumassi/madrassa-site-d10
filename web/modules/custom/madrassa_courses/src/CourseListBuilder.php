@@ -21,6 +21,7 @@ final class CourseListBuilder extends EntityListBuilder {
     $header['course_intended_for'] = $this->t('Cours destiné aux');
     $header['type_de_cours'] = $this->t('Type de cours');
     $header['count_levels'] = $this->t('Nombre de niveaux');
+    $header['levels'] = $this->t('Niveaux');
     $header['status'] = $this->t('Status');
     $header['uid'] = $this->t('Author');
     // $header['created'] = $this->t('Created');
@@ -37,7 +38,8 @@ final class CourseListBuilder extends EntityListBuilder {
     $row['label'] = $entity->toLink();
     $row['course_intended_for'] = $entity->getCourseIntendedFor();
     $row['type_de_cours'] = $entity->getTypeDeCours();
-    $row['count_levels'] = $entity->getCountLevels();
+    $row['count_levels'] = $entity->getCountLevels().' niveaux';
+    $row['levels'] = $entity->getGeneratedLevels();
     $row['status'] = $entity->get('status')->value ? $this->t('Enabled') : $this->t('Disabled');
     $username_options = [
       'label' => 'hidden',

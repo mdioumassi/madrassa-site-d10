@@ -5,13 +5,8 @@ declare(strict_types=1);
 namespace Drupal\madrassa_parent\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Url;
 use Drupal\madrassa_enfants\Entity\Children;
-use Drupal\madrassa_parent\Entity\MadrassaParent;
-use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
-use Drupal\user\UserAuthenticationInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -109,6 +104,7 @@ final class UserController extends ControllerBase {
         'field_birthday' => $data['birthdate'],
         'gender' => $data['gender'],
         'frenchclass' => $data['frenchclass'],
+        'field_old' => $data['old'],
         'field_parent_id' => $data['parent_id'],
         'status' => 1,
       ]);

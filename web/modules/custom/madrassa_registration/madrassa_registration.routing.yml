@@ -1,15 +1,15 @@
-madrassa_registration.children.course:
+children.register.step2.course:
   path: '/register/child/{enfantId}/course'
   defaults:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::childrenCourse'
     _title: 'Example'
   requirements:
-    _permission: 'some permission'
+    _role: 'parent_role'
 
-madrasa_registration.children.course.lavel:
+children.register.step2.course.store:
   path: '/register/child/course/level'
   defaults:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::childrenCourseLevel'
-    _title: 'Example'
+  methods:  [POST]
   requirements:
-    _permission: 'some permission'
+    _role: 'parent_role'

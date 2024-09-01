@@ -264,4 +264,8 @@ class Children extends ContentEntityBase implements ChildrenInterface {
   public function getPath() {
     return \Drupal::service('module_handler')->getModule('madrassa_enfants')->getPath();
   }
+
+  public function getParentId() {
+    return $this->get('field_parent_id')->target_id;
+  }
 }

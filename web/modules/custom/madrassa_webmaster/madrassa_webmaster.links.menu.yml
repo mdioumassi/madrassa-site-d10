@@ -39,6 +39,13 @@ madrassa_webmaster.admin.children:
   parent: madrassa_webmaster.admin
   weight: 2
 
+madrassa_webmaster.admin.classes:
+  title: 'Gestion des classes ou niveaux'
+  description: ''
+  url: internal:/nos-cours
+  parent: madrassa_webmaster.admin
+  weight: 3
+
 
 
 # TAXOS

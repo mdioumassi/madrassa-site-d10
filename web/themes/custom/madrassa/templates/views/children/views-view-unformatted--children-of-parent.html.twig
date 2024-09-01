@@ -20,10 +20,11 @@
 {% endif %}
 <div class="row">
 	{% for row in rows %}
-		{% if row.content['#row']._entity.gender.value == 'boy' %}
+		{% set child = row.content['#row']._entity %}
+		{% if child.gender.value == 'boy' %}
 			{% set photo =  base_path ~ directory ~ '/images/children/garcon.jpeg' %}
 			{% set gender = 'Garçon' %}
-		{% elseif row.content['#row']._entity.gender.value == 'girl' %}
+		{% elseif child.gender.value == 'girl' %}
 			{% set photo = base_path ~ directory ~ '/images/children/fille.png' %}
 			{% set gender = 'Fille' %}
 		{% endif %}
@@ -32,15 +33,14 @@
 			<div class="w3-card-4">
 				<header class="w3-container w3-blue">
 					<h2>
-						{{ row.content['#row']._entity.firstname.value }}
-						{{ row.content['#row']._entity.lastname.value }}
+						{{ child.firstname.value }} {{ child.lastname.value }}
 					</h2>
 				</header>
 				<div class="w3-container">
 					<div class="row mt-4">
 						<div class="col-4">
-							{% if row.content['#row']._entity.field_photo.value.0['target_id'] is not empty %}
-								{{ drupal_field('field_photo', 'children', row.content['#row']._entity.field_photo.value.0['target_id']) }}
+							{% if child.field_photo.value.0['target_id'] is not empty %}
+								{{ drupal_field('field_photo', 'children', child.field_photo.value.0['target_id']) }}
 							{% else %}
 								<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ node.title.value }}">
 							{% endif %}
@@ -53,24 +53,24 @@
 								</tr>
 								<tr>
 									<td>Date de naissance:</td>
-									<td>{{ row.content['#row']._entity.field_birthday.value }}</td>
+									<td>{{ child.field_birthday.value }}</td>
 								</tr>
 								<tr>
 									<td>Age:</td>
-									<td>{{ row.content['#row']._entity.age }}</td>
+									<td>{{ child.field_old.value~' ans' }}</td>
 								</tr>
 								<tr>
 									<td>Classe Française:</td>
-									<td>{{ row.content['#row']._entity.frenchclass.value }}</td>
+									<td>{{ child.frenchclass.value }}</td>
 								</tr>
-
 							</table>
 						</div>
 					</div>
 				</div>
 
-				<footer class="w3-container w3-border">
-					<h5>id={{row.content['#row']._entity.id.value}}</h5>
+				<footer class="w3-container w3-border w3-padding">
+					{# <h5>id={{child.id.value}}</h5> #}
+					<a class="btn btn-success" href="{{ path('children.register.step2.course', {'enfantId': child.id.value} )}}">Inscrire</a>
 				</footer>
 			</div>
 		</div>

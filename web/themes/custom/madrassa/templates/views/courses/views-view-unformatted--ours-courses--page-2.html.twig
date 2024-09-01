@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% if title %}
+	<h3>{{ title }}</h3>
+{% endif %}
+<form action="{{path('children.register.step2.course.store')}}" method="post">
+	<div class="row">
+		{% for row in rows %}
+			{% set course = row.content['#row']._entity %}
+			{% set level = row.content['#row']._relationship_entities['reverse__madrassa_level__field_course_id'] %}
+			{% if level is not empty %}
+				<div class="col-4">
+					<div class="w3-card-4 mb-4">
+						<header class="w3-container w3-indigo">
+							<input class="w3-radio float-end mt-2" type="radio" name="levelId" value="{{level.id.value}}">
+							<h2>{{ level.label.value }}</h2>
+						</header>
+
+						<div class="w3-container">
+							<table class="w3-table w3-bordered">
+								<tr>
+									<td>Tarif:</td>
+									<td>
+										<span class="display-4">{{ level.field_tariff.value }}€</span>/an</td>
+								</tr>
+								<tr>
+									<td>Frais d'inscription:</td>
+									<td>{{ level.field_registration_fees.value ~ ' €'  }}</td>
+								</tr>
+								<tr>
+									<td>Horaires:</td>
+									<td>{{ level.field_hours.value ~ ' h/semaine'  }}</td>
+								</tr>
+							</table>
+							{% if level.field_description.value %}
+								<strong>Description:</strong>
+								{{ level.field_description.value|raw }}
+							{% endif %}
+						</div>
+						<footer class="w3-container w3-green">
+							<h5>{{course.label.value}}</h5>
+						</footer>
+					</div>
+				</div>
+			{% endif %}
+
+		{% endfor %}
+	</div>
+	<button class="btn btn-primary" type="submit">Suivant ></button>
+</form>

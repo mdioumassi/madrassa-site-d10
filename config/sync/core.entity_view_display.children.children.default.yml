@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.children.children.field_birthday
+    - field.field.children.children.field_old
     - field.field.children.children.field_parent_id
     - field.field.children.children.field_photo
     - image.style.medium
@@ -26,6 +27,13 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_old:
+    type: number_unformatted
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_parent_id:
     type: entity_reference_label

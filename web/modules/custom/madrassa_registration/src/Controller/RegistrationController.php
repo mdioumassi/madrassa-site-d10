@@ -36,7 +36,7 @@ public function __construct(SessionInterface $session, EntityTypeManagerInterfac
 }
   public function childrenCourse(int $enfantId)
   {
-    $enfant = $this->em->getStorage('node')->load($enfantId);
+    $enfant = $this->em->getStorage('children')->load($enfantId);
     $parent_id = $enfant->get('field_parent_id')->getValue()[0]['target_id'];
     $registration_data = [
       'child_id' => $enfantId,
@@ -52,13 +52,18 @@ public function __construct(SessionInterface $session, EntityTypeManagerInterfac
 
   public function childrenCourseLevel(Request $request)
   {
+    $registration_data = $this->session->get('registration_data');
     if ($request->isMethod('POST')) {
       $data = $request->request->all();
-      dd($data);
+      $levelId = $data['levelId'];
+      $level = $this->em->getStorage('madrassa_level')->load($levelId);
+      $registration_data['course_id'] = $level->getCourseId();;
+      $registration_data['level_id'] = $levelId;
+      $this->session->set('registration_data', $registration_data);
     }
-    $registration_data = $this->session->get('registration_data');
-    $registration_data['course_id'] = $courseId;
-    $this->session->set('registration_data', $registration_data);
+  
+   //dd($registration_data);
+
     $response = new RedirectResponse('/nos-cours/niveau/child');
     $response->send();
   }

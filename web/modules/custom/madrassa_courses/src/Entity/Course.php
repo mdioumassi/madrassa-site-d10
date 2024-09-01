@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Url;
 use Drupal\madrassa_courses\CourseInterface;
 use Drupal\user\EntityOwnerTrait;
 
@@ -61,7 +62,8 @@ use Drupal\user\EntityOwnerTrait;
  *   field_ui_base_route = "entity.madrassa_course.settings",
  * )
  */
-class Course extends ContentEntityBase implements CourseInterface {
+class Course extends ContentEntityBase implements CourseInterface
+{
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
@@ -69,7 +71,8 @@ class Course extends ContentEntityBase implements CourseInterface {
   /**
    * {@inheritdoc}
    */
-  public function preSave(EntityStorageInterface $storage): void {
+  public function preSave(EntityStorageInterface $storage): void
+  {
     parent::preSave($storage);
     if (!$this->getOwnerId()) {
       // If no owner has been set explicitly, make the anonymous user the owner.
@@ -80,7 +83,8 @@ class Course extends ContentEntityBase implements CourseInterface {
   /**
    * {@inheritdoc}
    */
-  public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array {
+  public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array
+  {
 
     $fields = parent::baseFieldDefinitions($entity_type);
 
@@ -169,19 +173,55 @@ class Course extends ContentEntityBase implements CourseInterface {
     return $fields;
   }
 
-  public function getCourseIntendedFor(): string {
-    return $this->get('field_course_intended')->value === 'adult' ? 'Adulte' : 'Enfant';
+  public function getCourseIntendedFor(): string
+  {
+    return $this->get('field_course_intended')
+                ->value === 'adult' ? 'Adulte' : 'Enfant';
   }
 
-  public function getTypeDeCours(): string {
-    return $this->get('field_type_of_course')->value === 'course_arabic' ? 'Cours d\'arabe' : 'Cours de coran';
+  public function getTypeDeCours(): string
+  {
+    return $this->get('field_type_of_course')
+                ->value === 'course_arabic' ? 'Cours d\'arabe' : 'Cours de coran';
   }
 
-  public function getCountLevels(): int {
+  public function getCountLevels(): int
+  {
     $id = $this->id();
     $query = \Drupal::entityQuery('madrassa_level')
       ->accessCheck(FALSE)
       ->condition('field_course_id', $id);
     return count($query->execute());
+  }
+
+  public function getUrlListLevels(): string
+  {
+    return '/admin/content/madrassa-level?course_id=' . $this->id();
+  }
+
+
+  public function getGeneratedLevels(): array
+  {
+    $id = $this->id();
+    $query = \Drupal::entityQuery('madrassa_level')
+      ->accessCheck(FALSE)
+      ->condition('field_course_id', $id);
+    $ids = $query->execute();
+    $levels = [];
+    foreach ($ids as $id) {
+      /** @var \Drupal\madrassa_niveaux\Entity\Level $level */
+      $level = \Drupal::entityTypeManager()->getStorage('madrassa_level')->load($id);
+      $levels[] = [
+        'id' => $level->id(),
+        'label' => $level->label(),
+        'tariff' => $level->getTariff(),
+        'registration_fee' => $level->getFraisInscription(),
+        'hours' => $level->getHoraire(),
+        // 'description' => $level->getDescription(),
+        'url' => Url::fromRoute('entity.madrassa_level.edit_form', ['madrassa_level' => $level->id()])->toString(),
+      ];
+
+    }
+    return $levels;
   }
 }

@@ -9,6 +9,8 @@ use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Url;
+use Drupal\madrassa_courses\Entity\Course;
 use Drupal\madrassa_niveaux\LevelInterface;
 use Drupal\user\EntityOwnerTrait;
 
@@ -183,7 +185,11 @@ class Level extends ContentEntityBase implements LevelInterface {
 
     return $fields;
   }
-
+ public function getCourseId(): string {
+    $course_id = $this->get('field_course_id')->referencedEntities()[0]->id();
+   
+    return $course_id;
+  }
   public function getTariff(): string {
     return $this->get('field_tariff')->value. ' €/an';
   }
@@ -215,5 +221,22 @@ class Level extends ContentEntityBase implements LevelInterface {
     $course = \Drupal::entityTypeManager()->getStorage('madrassa_course')->load($course_id);
 
     return $course->getCourseIntendedFor();
+  }
+
+  public function getDescription(): string {
+    return $this->get('description')->value;
+  }
+
+
+  public function getGeneratedLink($id, $label)
+  {
+    $url_object = Url::fromRoute('entity.madrassa_course.canonical', ['madrassa_course' => $id]);
+    $link = [
+      '#type' => 'link',
+      '#url' => $url_object,
+      '#title' => $this->t('Read More'),
+    ];
+    
+    return $link;
   }
 }

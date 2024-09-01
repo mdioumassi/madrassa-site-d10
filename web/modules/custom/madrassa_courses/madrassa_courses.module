@@ -11,7 +11,8 @@ use Drupal\user\UserInterface;
 /**
  * Implements hook_theme().
  */
-function madrassa_courses_theme(): array {
+function madrassa_courses_theme(): array
+{
   return [
     'madrassa_course' => ['render element' => 'elements'],
   ];
@@ -28,17 +29,21 @@ function madrassa_courses_theme(): array {
  *     fields attached to the entity.
  *   - attributes: HTML attributes for the containing element.
  */
-function template_preprocess_madrassa_course(array &$variables): void {
+function template_preprocess_madrassa_course(array &$variables): void
+{
   $variables['view_mode'] = $variables['elements']['#view_mode'];
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
+  $madrassa_course = $variables['elements']['#madrassa_course'];
+  $variables['course'] = $madrassa_course;
 }
 
 /**
  * Implements hook_user_cancel().
  */
-function madrassa_courses_user_cancel($edit, UserInterface $account, $method): void {
+function madrassa_courses_user_cancel($edit, UserInterface $account, $method): void
+{
   switch ($method) {
     case 'user_cancel_block_unpublish':
       // Unpublish courss.
@@ -70,7 +75,8 @@ function madrassa_courses_user_cancel($edit, UserInterface $account, $method): v
 /**
  * Implements hook_ENTITY_TYPE_predelete() for user entities.
  */
-function madrassa_courses_user_predelete(UserInterface $account): void {
+function madrassa_courses_user_predelete(UserInterface $account): void
+{
   // Delete courss that belong to this account.
   $storage = \Drupal::entityTypeManager()->getStorage('madrassa_course');
   $madrassa_course_ids = $storage->getQuery()
@@ -81,3 +87,19 @@ function madrassa_courses_user_predelete(UserInterface $account): void {
     $storage->loadMultiple($madrassa_course_ids)
   );
 }
+
+
+  /**
+   * Adds template possibility for view modes
+   * Implements hook_provider_theme_suggestions_hook_alter
+   */
+  function madrassa_courses_theme_suggestions_madrassa_course_alter(array &$suggestions, array $variables): void
+  {
+    if ($madrassa_course = $variables['elements']['#madrassa_course']) {
+      if (isset($variables['elements']['#view_mode'])) {
+        $view_mode = $variables['elements']['#view_mode'];
+        $suggestions[] = 'course__' . $view_mode;
+      }
+    }
+
+  }

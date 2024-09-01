@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.children.full
     - field.field.children.children.field_birthday
+    - field.field.children.children.field_old
     - field.field.children.children.field_parent_id
     - field.field.children.children.field_photo
     - image.style.medium
@@ -85,5 +86,6 @@ content:
     region: content
 hidden:
   created: true
+  field_old: true
   status: true
   uid: true

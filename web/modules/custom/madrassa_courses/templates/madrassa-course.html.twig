@@ -13,12 +13,55 @@
  * @see template_preprocess_madrassa_course()
  */
 #}
-<article{{ attributes }}>
-  {% if view_mode != 'full' %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endif %}
-  {% if content %}
-    {{- content -}}
-  {% endif %}
+{{ attach_library('madrassa_courses/madrassa_courses') }}
+
+{# {{ dump(course.getGeneratedLevels()) }} #}
+<article>
+	<div class="row">
+		{% for level in course.getGeneratedLevels() %}
+			<div class="col-3">
+				<div class="w3-card-4 mb-4">
+					<header class="w3-container w3-indigo">
+						<h2><a href="{{level.url}}">{{ level.label }}</a></h2> 
+            <span class="badge bg-success float-end align-middle">{{ content.field_course_intended }}</span>
+					</header>
+
+					<div class="w3-container">
+						<table class="w3-table w3-bordered">
+							<tr>
+								<td>Tarif:</td>
+								<td>
+									<span class="display-7">{{ level.tariff }}</td>
+							</tr>
+							<tr>
+								<td>Frais d'inscription:</td>
+								<td>{{ level.registration_fee }}</td>
+							</tr>
+							<tr>
+								<td>Horaires:</td>
+								<td>{{ level.hours }}</td>
+							</tr>
+						</table>
+						{# {% for subject in item.entity.field_subjects_level %}
+							{% if subject.entity.field_subject_name.value is not empty %}
+								<strong>Matières:</strong>
+								{{subject.entity.field_subject_name.value|raw }}
+							{% endif %}
+						{% endfor %} #}
+						{% if level.description %}
+							<strong>Description:</strong>
+							{{ level.description|raw }}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	{# {% if view_mode != 'full' %}
+		    {{ title_prefix }}
+		    {{ title_suffix }}
+		  {% endif %}
+		  {% if content %}
+		    {{- content -}}
+		  {% endif %} #}
 </article>

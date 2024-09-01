@@ -3,6 +3,7 @@ langcode: fr
 status: true
 dependencies:
   config:
+    - field.field.children.children.field_old
     - field.field.children.children.field_birthday
     - field.field.children.children.field_parent_id
     - field.field.children.children.field_photo
