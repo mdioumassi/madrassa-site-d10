@@ -239,4 +239,14 @@ class Level extends ContentEntityBase implements LevelInterface {
     
     return $link;
   }
+
+  public function getTotalTariffAndFees(): int
+  {
+
+    $tariff = $this->get('field_tariff')->value;
+    $fees = $this->get('field_registration_fees')->value;
+    $total = $tariff + $fees;
+
+    return $total;
+  }
 }

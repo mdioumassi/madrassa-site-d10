@@ -4,3 +4,45 @@
  * @file
  * Primary module hooks for Madrassa Inscription module.
  */
+function madrassa_registration_theme() {
+    return [
+        'schooling' => [
+            'path' => 'modules/custom/madrassa_registration/templates',
+            'template' => 'schooling',
+            'variables' => [
+                'child' => NULL,
+                'parent' => NULL,
+                'course' => NULL,
+                'level' => NULL
+            ],
+        ],
+        'payment' => [
+            'path' => 'modules/custom/madrassa_registration/templates',
+            'template' => 'payment',
+            'variables' => [
+                'child' => NULL,
+                'parent' => NULL,
+                'course' => NULL,
+                'level' => NULL,
+                'payment_amount' => NULL,
+                'date_now' => NULL
+            ],
+        ],
+        'recapitulatif' => [
+            'path' => 'modules/custom/madrassa_registration/templates',
+            'template' => 'recapitulatif',
+            'variables' => [
+                'child' => NULL,
+                'parent' => NULL,
+                'course' => NULL,
+                'level' => NULL,
+                'payment_amount' => NULL,
+                'payment_method' => NULL,
+                'payment_date' => NULL,
+                'payment_note' => NULL,
+                'registration_date' => NULL,
+                'registration_status' => NULL
+            ],
+        ],
+    ];
+}
