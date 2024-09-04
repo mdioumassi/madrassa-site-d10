@@ -1,0 +1,21 @@
+uuid: 9715dc57-659e-41cc-9cdb-5d6cb0d39fed
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_registration
+id: madrassa_registration.field_payment_method
+field_name: field_payment_method
+entity_type: madrassa_registration
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

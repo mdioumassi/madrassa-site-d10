@@ -1,0 +1,21 @@
+uuid: 0e60e92d-24d5-4b07-941a-2c71a5d82366
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_registration.field_registration_date
+  module:
+    - datetime
+    - madrassa_registration
+id: madrassa_registration.madrassa_registration.field_registration_date
+field_name: field_registration_date
+entity_type: madrassa_registration
+bundle: madrassa_registration
+label: 'Date inscription'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

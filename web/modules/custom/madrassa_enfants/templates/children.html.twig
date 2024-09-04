@@ -15,11 +15,8 @@
 #}
 
 {{ attach_library('madrassa_enfants/children') }}
-{% 
-    set fullname = content.field_parent_id.entity.field_firstname.value ~ ' ' ~ content.field_parent_id.entity.field_lastname.value
-%}
 
-{% if children.getGender() == 'boy' %}
+{% if children.getGender() == 'Garçon' %}
 	{% set photo =  children.getPath() ~ '/images/children/garcon.jpeg' %}
     {% set gender = 'Garçon' %}
 {% elseif children.getGender() == 'girl' %}

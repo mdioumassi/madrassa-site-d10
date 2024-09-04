@@ -32,6 +32,7 @@
         "drupal/paragraphs": "^1.18",
         "drupal/pathauto": "^1.13",
         "drupal/profile": "^1.11",
+        "drupal/redirect_after_login": "^3.0",
         "drupal/token": "^1.15",
         "drupal/twig_debugger": "^1.1",
         "drupal/twig_tweak": "^3.4",

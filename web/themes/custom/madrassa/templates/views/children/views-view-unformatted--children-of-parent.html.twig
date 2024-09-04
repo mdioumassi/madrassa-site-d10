@@ -18,7 +18,9 @@
 {% if title %}
 	<h3>{{ title }}</h3>
 {% endif %}
+
 <div class="row">
+
 	{% for row in rows %}
 		{% set child = row.content['#row']._entity %}
 		{% if child.gender.value == 'boy' %}
@@ -69,7 +71,6 @@
 				</div>
 
 				<footer class="w3-container w3-border w3-padding">
-					{# <h5>id={{child.id.value}}</h5> #}
 					<a class="btn btn-success" href="{{ path('children.register.step2.course', {'enfantId': child.id.value} )}}">Inscrire</a>
 				</footer>
 			</div>

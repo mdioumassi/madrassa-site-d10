@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Theme override for a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @see template_preprocess_views_exposed_form()
+ */
+#}
+{% if q is not empty %}
+	{#
+			    This ensures that, if clean URLs are off, the 'q' is added first,
+			    as a hidden form element, so that it shows up first in the POST URL.
+			  #}
+	{{ q }}
+{% endif %}
+{# <div class="form--inline clearfix">
+  {{ form.field_course_intended_value }}
+</div> #}
+<div class="row w3-light-grey">
+	<div class="col ">
+		<span>{{ form.field_course_intended_value }}</span>
+	</div>
+	<div class="col">
+		<span>{{ form.field_type_of_course_value }}</span>
+	</div>
+</div>
+<div class="form-actions ">
+	{{ form.actions }}
+</div>

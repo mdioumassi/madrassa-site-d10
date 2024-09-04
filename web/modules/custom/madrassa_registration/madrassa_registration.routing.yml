@@ -4,7 +4,7 @@ children.register.step2.course:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::childrenCourse'
     _title: 'Example'
   requirements:
-    _role: 'parent_role'
+    _role: parent_role+administrator
 
 children.register.step2.course.store:
   path: '/register/child/course/level/store'
@@ -12,14 +12,14 @@ children.register.step2.course.store:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::childrenCourseLevelStore'
   methods:  [POST]
   requirements:
-    _role: 'parent_role'
+    _role: parent_role+administrator
 
 children.register.step3.schooling:
   path: '/register/child/schooling'
   defaults:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::Schooling'
   requirements:
-    _role: 'parent_role'
+    _role: parent_role+administrator
 
 children.register.step3.schooling.store:
   path: '/register/child/schooling/store'
@@ -27,14 +27,14 @@ children.register.step3.schooling.store:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::SchoolingStore'
   methods:  [POST]
   requirements:
-    _role: 'parent_role'
+    _role: parent_role+administrator
 
 children.register.step4.payment:
   path: '/register/child/payment'
   defaults:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::Payment'
   requirements:
-    _role: 'parent_role'
+    _role: parent_role+administrator
 
 children.register.step4.payment.store:
   path: '/register/child/payment/store'
@@ -42,11 +42,27 @@ children.register.step4.payment.store:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::PaymentStore'
   methods:  [POST]
   requirements:
-    _role: 'parent_role'
+    _role: parent_role+administrator
 
 children.register.step5.recapitulatif:
   path: '/register/child/recapitulatif'
   defaults:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::Recapitulatif'
   requirements:
-    _role: 'parent_role'
+    _role: parent_role+administrator
+
+children.register.step5.recapitulatif.store:
+  path: '/register/child/recapitulatif/store'
+  defaults:
+    _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::RecapitulatifStore'
+  methods:  [POST]
+  requirements:
+    _role: parent_role+administrator
+
+entity.madrassa_registration.settings:
+  path: 'admin/structure/madrassa-registration'
+  defaults:
+    _form: '\Drupal\madrassa_registration\Form\RegistrationSettingsForm'
+    _title: 'Inscription'
+  requirements:
+    _permission: 'administer madrassa_registration'

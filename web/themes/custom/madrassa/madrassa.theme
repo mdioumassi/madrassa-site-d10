@@ -35,3 +35,18 @@ function madrassa_preprocess_field(&$variables) {
     $variables['label-course'] = Term::load($element['#items']->first()->target_id)->getName();
   }
 }
+
+function madrassa_preprocess_views_view_unformatted__children_of_parent(&$variables) {
+  $view = $variables['view'];
+  $rows = $variables['rows'];
+  $variables['user'] = $view->getUser();
+  // if ($view->id() == 'children_of_parent') {
+
+  //   foreach ($rows as $key => $row) {
+  //     $variables['rows'][$key]['#row'] = $row['content']['#row'];
+  //   }
+  //   // $variables['rows'] = array_values($variables['rows']);
+  //   // kint($variables);
+  //  // $variables['user'] = $view->getUser();
+  // }
+}

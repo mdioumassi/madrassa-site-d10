@@ -31,7 +31,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: "Enfants d'un parent"
+      title: ''
       fields:
         frenchclass:
           id: frenchclass
@@ -520,7 +520,16 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        field_parent_id:
+          id: field_parent_id
+          table: children__field_parent_id
+          field: field_parent_id
+          relationship: none
+          group_type: group
+          admin_label: 'field_parent_id : Utilisateur'
+          plugin_id: standard
+          required: false
       header: {  }
       footer: {  }
       display_extenders: {  }

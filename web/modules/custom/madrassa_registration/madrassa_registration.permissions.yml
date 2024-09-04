@@ -1,0 +1,11 @@
+administer madrassa_registration:
+  title: 'Administer inscriptions'
+  restrict access: true
+view madrassa_registration:
+  title: 'View inscription'
+edit madrassa_registration:
+  title: 'Edit inscription'
+delete madrassa_registration:
+  title: 'Delete inscription'
+create madrassa_registration:
+  title: 'Create inscription'

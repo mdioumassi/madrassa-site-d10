@@ -258,7 +258,7 @@ class Children extends ContentEntityBase implements ChildrenInterface {
   }
 
   public function getGender(): string {
-    return $this->get('gender')->value;
+    return $this->get('gender')->value == 'boy' ? 'Garçon' : 'Fille';
   }
 
   public function getPath() {

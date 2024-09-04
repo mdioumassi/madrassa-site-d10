@@ -20,3 +20,11 @@ function madrassa_content_page_attachments(array &$attachments) {
     $attachments['#attached']['library'][] = 'madrassa_content/extra.admin';
   }
 }
+
+/**
+ * Implements hook_user_login().
+ */
+function madrassa_content_user_login($account) {
+  // dd($account);
+  
+}

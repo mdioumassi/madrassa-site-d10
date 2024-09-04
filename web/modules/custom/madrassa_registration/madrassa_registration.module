@@ -39,6 +39,7 @@ function madrassa_registration_theme() {
                 'payment_amount' => NULL,
                 'payment_method' => NULL,
                 'payment_date' => NULL,
+                'payment_status' => NULL,
                 'payment_note' => NULL,
                 'registration_date' => NULL,
                 'registration_status' => NULL
@@ -46,3 +47,23 @@ function madrassa_registration_theme() {
         ],
     ];
 }
+
+
+/**
+ * Prepares variables for inscription templates.
+ *
+ * Default template: madrassa-registration.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the inscription information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_madrassa_registration(array &$variables): void {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+

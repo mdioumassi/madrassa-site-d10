@@ -409,7 +409,7 @@ display:
                   hide_label: false
                 select_all_none: false
                 select_all_none_nested: false
-                display_inline: false
+                display_inline: true
               field_type_of_course_value:
                 plugin_id: bef
                 advanced:
@@ -423,7 +423,7 @@ display:
                   hide_label: false
                 select_all_none: false
                 select_all_none_nested: false
-                display_inline: false
+                display_inline: true
       access:
         type: role
         options:
@@ -454,7 +454,7 @@ display:
           exposed: true
           expose:
             operator_id: field_course_intended_value_op
-            label: 'Cours destiné à:'
+            label: 'Cours destiné à'
             description: ''
             use_operator: false
             operator: field_course_intended_value_op

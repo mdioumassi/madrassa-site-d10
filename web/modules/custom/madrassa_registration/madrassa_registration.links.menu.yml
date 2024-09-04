@@ -1,0 +1,11 @@
+entity.madrassa_registration.settings:
+  title: 'Inscription'
+  description: 'Configure an Inscription entity type.'
+  route_name:  entity.madrassa_registration.settings
+  parent: system.admin_structure
+
+entity.madrassa_registration.collection:
+  title: 'Inscriptions'
+  description: 'List of inscriptions.'
+  route_name: entity.madrassa_registration.collection
+  parent: system.admin_content

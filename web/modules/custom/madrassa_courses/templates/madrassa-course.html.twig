@@ -15,15 +15,16 @@
 #}
 {{ attach_library('madrassa_courses/madrassa_courses') }}
 
-{# {{ dump(course.getGeneratedLevels()) }} #}
 <article>
 	<div class="row">
 		{% for level in course.getGeneratedLevels() %}
 			<div class="col-3">
 				<div class="w3-card-4 mb-4">
 					<header class="w3-container w3-indigo">
-						<h2><a href="{{level.url}}">{{ level.label }}</a></h2> 
-            <span class="badge bg-success float-end align-middle">{{ content.field_course_intended }}</span>
+						<h2>
+							<a href="{{ level.url }}">{{ level.label }}</a>
+						</h2>
+						<span class="badge bg-success float-end align-middle">{{ content.field_course_intended }}</span>
 					</header>
 
 					<div class="w3-container">
@@ -32,6 +33,7 @@
 								<td>Tarif:</td>
 								<td>
 									<span class="display-7">{{ level.tariff }}</td>
+								</td>
 							</tr>
 							<tr>
 								<td>Frais d'inscription:</td>
@@ -43,11 +45,11 @@
 							</tr>
 						</table>
 						{# {% for subject in item.entity.field_subjects_level %}
-							{% if subject.entity.field_subject_name.value is not empty %}
-								<strong>Matières:</strong>
-								{{subject.entity.field_subject_name.value|raw }}
-							{% endif %}
-						{% endfor %} #}
+													{% if subject.entity.field_subject_name.value is not empty %}
+														<strong>Matières:</strong>
+														{{subject.entity.field_subject_name.value|raw }}
+													{% endif %}
+												{% endfor %} #}
 						{% if level.description %}
 							<strong>Description:</strong>
 							{{ level.description|raw }}
@@ -58,10 +60,10 @@
 		{% endfor %}
 	</div>
 	{# {% if view_mode != 'full' %}
-		    {{ title_prefix }}
-		    {{ title_suffix }}
-		  {% endif %}
-		  {% if content %}
-		    {{- content -}}
-		  {% endif %} #}
+			    {{ title_prefix }}
+			    {{ title_suffix }}
+			  {% endif %}
+			  {% if content %}
+			    {{- content -}}
+			  {% endif %} #}
 </article>

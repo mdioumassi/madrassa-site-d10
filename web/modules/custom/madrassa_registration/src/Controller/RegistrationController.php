@@ -218,11 +218,21 @@ public function childrenCourse(int $enfantId)
       '#payment_amount' => $registration_data['payment_amount'],
       '#payment_method' => $registration_data['payment_method'],
       '#payment_date' => $registration_data['payment_date'],
+      '#payment_status' => $registration_data['payment_status'],
       '#payment_note' => $registration_data['payment_note'],
       '#registration_date' => $registration_data['registration_date'],
       '#registration_status' => $registration_data['registration_status'],
     ];
 
     return $build;
+  }
+
+  public function RecapitulatifStore()
+  {
+    $registration_data = $this->session->get('registration_data');
+  
+
+    $response = new RedirectResponse('/register/child/recapitulatif');
+    $response->send();
   }
 }

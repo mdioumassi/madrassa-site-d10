@@ -1,0 +1,20 @@
+uuid: ea05d594-3e8a-4329-b583-85de76d1610a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_niveaux
+    - madrassa_registration
+id: madrassa_registration.field_level_id
+field_name: field_level_id
+entity_type: madrassa_registration
+type: entity_reference
+settings:
+  target_type: madrassa_level
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
