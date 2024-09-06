@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - madrassa_registration
+id: madrassa_registration_delete_action
+label: 'Delete inscriptions'
+type: madrassa_registration
+plugin: entity:delete_action:madrassa_registration
+configuration: {  }

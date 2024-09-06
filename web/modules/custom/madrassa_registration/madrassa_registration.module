@@ -45,6 +45,23 @@ function madrassa_registration_theme() {
                 'registration_status' => NULL
             ],
         ],
+        'fiche' => [
+            'path' => 'modules/custom/madrassa_registration/templates',
+            'template' => 'fiche',
+            'variables' => [
+                'child' => NULL,
+                'parent' => NULL,
+                'course' => NULL,
+                'level' => NULL,
+                'payment_amount' => NULL,
+                'payment_method' => NULL,
+                'payment_date' => NULL,
+                'payment_status' => NULL,
+                'payment_note' => NULL,
+                'registration_date' => NULL,
+                'registration_status' => NULL
+            ],
+        ],
     ];
 }
 

@@ -6,6 +6,7 @@ dependencies:
     - field.field.madrassa_registration.madrassa_registration.field_child_id
     - field.field.madrassa_registration.madrassa_registration.field_course_id
     - field.field.madrassa_registration.madrassa_registration.field_level_id
+    - field.field.madrassa_registration.madrassa_registration.field_parent_id
     - field.field.madrassa_registration.madrassa_registration.field_payment_amount
     - field.field.madrassa_registration.madrassa_registration.field_payment_date
     - field.field.madrassa_registration.madrassa_registration.field_payment_method
@@ -33,7 +34,7 @@ content:
     third_party_settings: {  }
   field_course_id:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -43,7 +44,17 @@ content:
     third_party_settings: {  }
   field_level_id:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_parent_id:
+    type: entity_reference_autocomplete
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -53,26 +64,18 @@ content:
     third_party_settings: {  }
   field_payment_amount:
     type: number
-    weight: 4
+    weight: 5
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_payment_date:
     type: datetime_default
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_payment_method:
-    type: string_textfield
-    weight: 6
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_payment_note:
     type: string_textfield
     weight: 7
     region: content
@@ -80,7 +83,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_payment_status:
+  field_payment_note:
     type: string_textfield
     weight: 8
     region: content
@@ -88,15 +91,23 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_payment_status:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_registration_date:
     type: datetime_default
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_registration_status:
     type: string_textfield
-    weight: 10
+    weight: 11
     region: content
     settings:
       size: 60

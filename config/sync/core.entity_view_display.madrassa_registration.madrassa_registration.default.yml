@@ -6,6 +6,7 @@ dependencies:
     - field.field.madrassa_registration.madrassa_registration.field_child_id
     - field.field.madrassa_registration.madrassa_registration.field_course_id
     - field.field.madrassa_registration.madrassa_registration.field_level_id
+    - field.field.madrassa_registration.madrassa_registration.field_parent_id
     - field.field.madrassa_registration.madrassa_registration.field_payment_amount
     - field.field.madrassa_registration.madrassa_registration.field_payment_date
     - field.field.madrassa_registration.madrassa_registration.field_payment_method
@@ -63,6 +64,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 23
+    region: content
+  field_parent_id:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 31
     region: content
   field_payment_amount:
     type: number_integer

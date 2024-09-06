@@ -1,4 +1,4 @@
-uuid: d7dd4197-19e5-4540-a382-e80091bfae50
+uuid: eba099fd-a1e7-488e-9e58-52fcf682b64f
 langcode: fr
 status: true
 dependencies:
@@ -6,7 +6,6 @@ dependencies:
     - field.field.madrassa_registration.madrassa_registration.field_child_id
     - field.field.madrassa_registration.madrassa_registration.field_course_id
     - field.field.madrassa_registration.madrassa_registration.field_level_id
-    - field.field.madrassa_registration.madrassa_registration.field_parent_id
     - field.field.madrassa_registration.madrassa_registration.field_payment_amount
     - field.field.madrassa_registration.madrassa_registration.field_payment_date
     - field.field.madrassa_registration.madrassa_registration.field_payment_method
@@ -22,94 +21,117 @@ targetEntityType: madrassa_registration
 bundle: madrassa_registration
 mode: default
 content:
+  created:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 20
+    region: content
   field_child_id:
-    type: entity_reference_autocomplete
-    weight: 1
-    region: content
+    type: entity_reference_label
+    label: above
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      link: true
     third_party_settings: {  }
+    weight: 21
+    region: content
   field_course_id:
-    type: entity_reference_autocomplete
-    weight: 2
-    region: content
+    type: entity_reference_label
+    label: above
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      link: true
     third_party_settings: {  }
+    weight: 22
+    region: content
   field_level_id:
-    type: entity_reference_autocomplete
-    weight: 3
-    region: content
+    type: entity_reference_label
+    label: above
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      link: true
     third_party_settings: {  }
+    weight: 23
+    region: content
   field_payment_amount:
-    type: number
-    weight: 4
-    region: content
+    type: number_integer
+    label: above
     settings:
-      placeholder: ''
+      thousand_separator: ''
+      prefix_suffix: true
     third_party_settings: {  }
+    weight: 24
+    region: content
   field_payment_date:
     type: datetime_default
-    weight: 5
-    region: content
-    settings: {  }
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
+    weight: 25
+    region: content
   field_payment_method:
-    type: string_textfield
-    weight: 6
-    region: content
+    type: string
+    label: above
     settings:
-      size: 60
-      placeholder: ''
+      link_to_entity: false
     third_party_settings: {  }
+    weight: 26
+    region: content
   field_payment_note:
-    type: string_textfield
-    weight: 7
-    region: content
+    type: string
+    label: above
     settings:
-      size: 60
-      placeholder: ''
+      link_to_entity: false
     third_party_settings: {  }
+    weight: 27
+    region: content
   field_payment_status:
-    type: string_textfield
-    weight: 8
-    region: content
+    type: string
+    label: above
     settings:
-      size: 60
-      placeholder: ''
+      link_to_entity: false
     third_party_settings: {  }
+    weight: 28
+    region: content
   field_registration_date:
     type: datetime_default
-    weight: 9
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  field_registration_status:
-    type: string_textfield
-    weight: 10
-    region: content
+    label: above
     settings:
-      size: 60
-      placeholder: ''
+      timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
+    weight: 29
+    region: content
+  field_registration_status:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 30
+    region: content
   status:
-    type: boolean_checkbox
+    type: boolean
+    label: above
+    settings:
+      format: enabled-disabled
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
     weight: 0
     region: content
-    settings:
-      display_label: false
-    third_party_settings: {  }
 hidden:
-  created: true
   langcode: true

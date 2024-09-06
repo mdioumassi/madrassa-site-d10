@@ -6,6 +6,7 @@ dependencies:
     - field.field.madrassa_registration.madrassa_registration.field_child_id
     - field.field.madrassa_registration.madrassa_registration.field_course_id
     - field.field.madrassa_registration.madrassa_registration.field_level_id
+    - field.field.madrassa_registration.madrassa_registration.field_parent_id
     - field.field.madrassa_registration.madrassa_registration.field_payment_amount
     - field.field.madrassa_registration.madrassa_registration.field_payment_date
     - field.field.madrassa_registration.madrassa_registration.field_payment_method

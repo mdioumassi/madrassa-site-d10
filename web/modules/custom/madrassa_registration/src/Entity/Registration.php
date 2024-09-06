@@ -58,14 +58,16 @@ use Drupal\madrassa_registration\RegistrationInterface;
  *   field_ui_base_route = "entity.madrassa_registration.settings",
  * )
  */
-final class Registration extends ContentEntityBase implements RegistrationInterface {
+final class Registration extends ContentEntityBase implements RegistrationInterface
+{
 
   use EntityChangedTrait;
 
   /**
    * {@inheritdoc}
    */
-  public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array {
+  public static function baseFieldDefinitions(EntityTypeInterface $entity_type): array
+  {
 
     $fields = parent::baseFieldDefinitions($entity_type);
 
@@ -114,5 +116,66 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
 
     return $fields;
   }
+  public function getLevelLabel()
+  {
+    $level_id = $this->get('field_level_id')->referencedEntities()[0]->id();
+    $level = \Drupal::entityTypeManager()
+      ->getStorage('madrassa_level')
+      ->load($level_id);
 
+    return $level->toLink();
+  }
+
+  public function getCourseName()
+  {
+   return $this->getCourse()->toLink();
+  }
+
+  public function getChildGender()
+  {
+    return $this->getChild()->getGender();
+  }
+
+  public function getChildFullName()
+  {
+    return $this->getChild()->getLinkFullName();
+  }
+
+  public function getParentFullName()
+  {
+    return $this->getParent()->getLinkFullName();
+  }
+
+  public function getChild()
+  {
+    $child_id = $this->get('field_child_id')->referencedEntities()[0]->id();
+
+    $child = \Drupal::entityTypeManager()
+      ->getStorage('children')
+      ->load($child_id);
+
+    return $child;
+  }
+
+  public function getParent()
+  {
+    $parent_id = $this->get('field_parent_id')->referencedEntities()[0]->id();
+
+    $parent = \Drupal::entityTypeManager()
+      ->getStorage('user')
+      ->load($parent_id);
+
+    return $parent;
+  }
+
+
+  public function getCourse()
+  {
+    $course_id = $this->get('field_course_id')->referencedEntities()[0]->id();
+    $course = \Drupal::entityTypeManager()
+      ->getStorage('madrassa_course')
+      ->load($course_id);
+
+    return $course;
+  }
 }
