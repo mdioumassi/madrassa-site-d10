@@ -44,7 +44,7 @@ use Drupal\madrassa_registration\RegistrationInterface;
  *   entity_keys = {
  *     "id" = "id",
  *     "langcode" = "langcode",
- *     "label" = "id",
+ *     "label" = "label",
  *     "uuid" = "uuid",
  *   },
  *   links = {
@@ -70,6 +70,25 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
   {
 
     $fields = parent::baseFieldDefinitions($entity_type);
+
+    $fields['label'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Enfant'))
+      ->setDescription(t('The name of the inscription entity.'))
+      ->setRequired(TRUE)
+      ->setTranslatable(TRUE)
+      ->setSetting('max_length', 255)
+      ->setDefaultValue('Inscription enfant')
+      ->setDisplayOptions('view', [
+        'label' => 'hidden',
+        'type' => 'string',
+        'weight' => -5,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'string_textfield',
+        'weight' => -5,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Status'))
@@ -116,6 +135,83 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
 
     return $fields;
   }
+
+  public function getRegistrationDate()
+  {
+    return $this->get('field_registration_date')->value;
+  }
+
+  public function getRegistrationStatus()
+  {
+    return $this->get('field_registration_status')->value;
+  }
+
+  public function getPaymentStatus()
+  {
+    return $this->get('field_payment_status')->value;
+  }
+
+  // public function getPaymentDate()
+  // {
+  //   return date('d/m/Y', $this->get('created')->value);
+  // }
+
+  public function getPaymentMethod()
+  {
+    return $this->get('field_payment_method')->value;
+  }
+
+  public function getPaymentAmount()
+  {
+    return $this->get('field_payment_amount')->value;
+  }
+
+  public function getLevelId()
+  {
+    return $this->get('field_level_id')->referencedEntities()[0]->id();
+  }
+
+  public function getCourseId()
+  {
+    return $this->get('field_course_id')->referencedEntities()[0]->id();
+  }
+
+  public function getChildId()
+  {
+    return $this->get('field_child_id')->referencedEntities()[0]->id();
+  }
+
+  public function getParentId()
+  {
+    return $this->get('field_parent_id')->referencedEntities()[0]->id();
+  }
+
+
+  // public function getRegistration(int $child_id)
+  // {
+  //   // $query = \Drupal::entityQuery('madrassa_registration')
+  //   //   ->condition('field_child_id', $child_id)
+  //   //   ->sort('created', 'DESC')
+  //   //   ->range(0, 1);
+
+  //   // $result = $query->execute();
+  //   // $registration_id = array_shift($result);
+  //   $registration = \Drupal::entityTypeManager()
+  //     ->getStorage('madrassa_registration')
+  //     ->loadByProperties(['field_child_id' => $child_id]);
+  //     dd($registration);
+  //   $data = [
+  //     'registration_id' => $registration->id(),
+  //     'level' => $registration->getLevelLabel(),
+  //     'course' => $registration->getCourseName(),
+  //     'payment_status' => $registration->get('field_payment_status')->value,
+  //     'payment_date' => date('d/m/Y', $registration->get('created')->value),
+  //     'registration_date' => $registration->get('field_registration_date')->value,
+  //   ];
+
+  //   return $registration_id;
+  // }
+
   public function getLevelLabel()
   {
     $level_id = $this->get('field_level_id')->referencedEntities()[0]->id();
@@ -177,5 +273,15 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
       ->load($course_id);
 
     return $course;
+  }
+
+  public function getLevel()
+  {
+    $level_id = $this->get('field_level_id')->referencedEntities()[0]->id();
+    $level = \Drupal::entityTypeManager()
+      ->getStorage('madrassa_level')
+      ->load($level_id);
+
+    return $level;
   }
 }

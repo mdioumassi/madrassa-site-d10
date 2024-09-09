@@ -113,18 +113,35 @@ final class UserController extends ControllerBase {
     dd($child_id);
   }
 
-  public function listChildren($parentId)
+  public function listChildren(int $parentId)
   {
-    $build['content'] = [
-      '#theme' => 'madrassa_parent_list_children',
-      '#attached' => [
-        'library' => [
-          'madrassa_parent/madrassa_parent',
-        ],
-      ],
-      '#title' => $this->t('List of children'),
+    /**@var \Drupal\madrassa_parent\Entity\MadrassaParent $parent */
+    $parent = User::load($parentId);
+    /**@var \Drupal\madrassa_enfants\Entity\Children $children */
+    $children = \Drupal::entityTypeManager()
+                  ->getStorage('children')
+                  ->loadByProperties(['field_parent_id' => $parentId]);
+
+    foreach ($children as $child) {
+      $data_children[] = [
+        'id' => $child->id(),
+        'fullname' => $child->getFullName(),
+        'birthdate' => $child->getBirthday(),
+        'frenchclass' => $child->getFrenchClass(),
+        'old' => $child->getOldOfBirthday(),
+        'gender' => $child->getGender(),
+        'photo' => $child->getPhoto(),
+        'path' => $child->getPath(),
+        'registration' => $child->getRegistrationData(),
+      ];
+    }
+
+    return [
+      '#theme' => 'list_children',
+      '#title' => $this->t('Les enfants de: @parent', ['@parent' => $parent->getFullName()]),
+      '#datas' => $data_children,
+      '#parentId' => $parentId,
     ];
 
-    return $build;
   } 
 }

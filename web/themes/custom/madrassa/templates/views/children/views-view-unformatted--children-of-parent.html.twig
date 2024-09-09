@@ -15,6 +15,7 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
+
 {% if title %}
 	<h3>{{ title }}</h3>
 {% endif %}
@@ -72,8 +73,19 @@
 
 				<footer class="w3-container w3-border w3-padding">
 					<a class="btn btn-success" href="{{ path('children.register.step2.course', {'enfantId': child.id.value} )}}">Inscrire</a>
+					<a href="" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">Fiche inscription</a>
 				</footer>
 			</div>
 		</div>
 	{% endfor %}
 </div>
+
+  {% include '@madrassa/shared/modal.html.twig' with {
+    'modal_content': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit,quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
+
+	quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
+	quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.',
+    'modal_id': 'myModal',
+    'header_title_modal': 'Modal Header',
+    'footer_modal': '<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>'
+  } %}

@@ -21,7 +21,7 @@ settings:
   handler_settings:
     target_bundles: null
     sort:
-      field: _none
+      field: field_old
       direction: ASC
     auto_create: false
 field_type: entity_reference

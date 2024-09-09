@@ -1,0 +1,81 @@
+<h1>{{title}}</h1>
+<a href="{{ path('madrassa_parent.child.create', {'parentId': parentId}) }}" class="btn btn-success mb-3 mt-3">Inscrire un nouveau enfant</a>
+<div class="row">
+	{% for child in  datas %}
+		{% if child.gender == 'Garçon' %}
+			{% set photo =  child.path ~ '/images/children/garcon.jpeg' %}
+		{% else %}
+			{% set photo = child.path ~ '/images/children/fille.png' %}
+		{% endif %}
+
+		<div class="col-6 mb-3">
+			<div class="w3-card-4">
+				<header class="w3-container w3-indigo">
+					<h1>{{ child.fullname }}</h1>
+				</header>
+				<div class="w3-container">
+					<div class="row mt-4">
+						<div class="col-4">
+							{% if child.photo is not empty %}
+								{{ drupal_field('field_photo', 'children', child.field_photo.value.0['target_id']) }}
+							{% else %}
+								<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ node.title.value }}">
+							{% endif %}
+						</div>
+						<div class="col">
+							<table class="w3-table w3-bordered">
+								<tr>
+									<td>Genre:</td>
+									<td>{{ child.gender }}</td>
+								</tr>
+								<tr>
+									<td>Date de naissance:</td>
+									<td>{{ child.birthdate}}</td>
+								</tr>
+								<tr>
+									<td>Age:</td>
+									<td>{{ child.old }}</td>
+								</tr>
+								<tr>
+									<td>Classe Française:</td>
+									<td>{{ child.frenchclass }}</td>
+								</tr>
+								<tr>
+									<td>Status d'inscription:</td>
+									{% if child.registration is not empty %}
+										<td>
+											<span class="badge rounded-pill bg-success">Inscrit</span>
+										</td>
+									{% else %}
+										<td>
+											<span classe="badge rounded-pill bg-danger">Non inscrit</span>
+										</td>
+									{% endif %}
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				{# {{dd(child.registration)}} #}
+				<footer class="w3-container w3-border w3-padding">
+					{% if child.registration is not empty  %}
+						<a class="w3-btn w3-disabled" href="{{ path('children.register.step2.course', {'enfantId': child.id} )}}">Inscrire</a>
+						<a href="" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">Fiche inscription</a>
+					{% else %}
+						<a class="btn btn-success" href="{{ path('children.register.step2.course', {'enfantId': child.id} )}}">Inscrire</a>
+						<a href="" class="w3-btn w3-disabled" data-bs-toggle="modal" data-bs-target="#myModal{{child.registration.ID}}">Fiche inscription</a>
+					{% endif %}
+				</footer>
+			</div>
+		</div>
+
+		{% include '@madrassa/modals/modal_registration.html.twig' with {
+			'title': 'Fiche inscription',
+			'size': 'modal-xl',
+			'child': child,
+			'modal_id': 'myModal' ~ child.registration.id,
+			'header_title_modal': 'Modal Header',
+		}
+  		%}
+	{% endfor %}
+</div>

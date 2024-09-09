@@ -18,7 +18,7 @@ final class ChildrenListBuilder extends EntityListBuilder {
   public function buildHeader(): array {
     $header['id'] = $this->t('ID');
     $header['gender'] = $this->t('Genre');
-    $header['fullname'] = $this->t('Nom & Prénom');
+    $header['label'] = $this->t('Nom & Prénom');
     $header['birthdate'] = $this->t('Date de naissance');
     $header['old'] = $this->t('Age');
     $header['frenchclass'] = $this->t('Classe de français');
@@ -36,7 +36,7 @@ final class ChildrenListBuilder extends EntityListBuilder {
     /** @var \Drupal\madrassa_enfants\Entity\Children $entity */
     $row['id'] = $entity->id();
     $row['gender'] = $entity->get('gender')->value ? $this->t('Garçon') : $this->t('Fille');
-    $row['fullname'] = $entity->getLinkFullName();
+    $row['label'] = $entity->getLinkFullName();
     $row['birthdate'] = $entity->getBirthday();
     $row['old'] = $entity->getOldOfBirthday();
     $row['frenchclass'] = $entity->get('frenchclass')->value;

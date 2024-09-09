@@ -211,6 +211,53 @@ class Children extends ContentEntityBase implements ChildrenInterface {
     return $fields;
   }
 
+  public function getRegistrationData() {
+    $id = $this->id();
+    $data = [];
+    $registration = 
+            \Drupal::entityTypeManager()
+            ->getStorage('madrassa_registration')
+            ->loadByProperties(['field_child_id' => $id]);
+    foreach ($registration as $reg) {
+      /**@var \Drupal\madrassa_registration\Entity\Registration $reg*/
+      $data = [
+        'register' => [
+          'id' => $reg->id(),
+          'payment_date' => $reg->getRegistrationDate(),
+          'registration_status' => $reg->getRegistrationStatus(),
+          'payment_status' => $reg->getPaymentStatus(),
+          'payment_amount' => $reg->getPaymentAmount(),
+          'payment_method' => $reg->getPaymentMethod(),
+        ],
+        'parent' => [
+          'civilite' => $reg->getParent()->getCivility(),
+          'fullname' => $reg->getParent()->getFullName(),
+          'email' => $reg->getParent()->getEmail(),
+          'phone' => $reg->getParent()->getPhone(),
+          'address' => $reg->getParent()->getAddress(),
+          'fonction' => $reg->getParent()->getFonction(),
+          'typeser' => $reg->getParent()->getTypeser(),
+          'picture' => $reg->getParent()->getPicture()
+        ],
+        'course' => [
+          'label' => $reg->getCourse()->label(),
+          'level' => [
+            'label' => $reg->getLevel()->label(),
+            'tarif' => $reg->getLevel()->getTariff(),
+            'frais' => $reg->getLevel()->getFraisInscription(),
+            'horaire' => $reg->getLevel()->getHoraire(),
+            'total' => $reg->getLevel()->getTotalTariffAndFees(),
+          ]
+        ]
+
+
+      ];
+    }
+
+    return $data;
+  }
+
+
   public function getBirthday(): string {
     if (!$this->get('field_birthday')->value) {
       return '';

@@ -26,3 +26,8 @@
     margin-bottom: -99999px;
     padding-bottom: 99999px;
 }
+
+.centered-element{
+    margin-left: auto;
+    margin-right: auto;
+}

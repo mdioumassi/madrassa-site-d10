@@ -1,0 +1,211 @@
+<!-- Modal -->
+<div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog {{ size }} modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">{{ title }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div
+					class="container">
+					{# Bloc Parent #}
+					<div class="w3-card centered-element mb-5">
+						<header class="w3-container w3-light-grey">
+							<h3>
+								<span class="badge w3-green">Parent</span>
+								{{ child.registration.parent.fullname }}
+							</h3>
+						</header>
+						<div class="w3-container w3-padding">
+							<div class="row">
+								<div
+									class="col-3">{# <img src="{{ $registration->child->parent->getAvatarUrlAttribute() }}" class="v-center img-thumbnail img-fluid w3-circle" style="width: 200px;"> #}
+								</div>
+								<div class="col">
+									<table class="w3-table w3-bordered">
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Civilité:</strong>
+											</td>
+											<td>{{ child.registration.parent.civilite }}</td>
+										</tr>
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Type:</strong>
+											</td>
+											<td>{{ child.registration.parent.typeser }}</td>
+										</tr>
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Profession:</strong>
+											</td>
+											<td>{{ child.registration.parent.fonction }}</td>
+										</tr>
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Email:</strong>
+											</td>
+											<td>{{ child.registration.parent.email }}</td>
+										</tr>
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Téléphone:</strong>
+											</td>
+											<td>{{ child.registration.parent.phone }}</td>
+										</tr>
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Adresse:</strong>
+											</td>
+											<td>{{ child.registration.parent.address }}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					{# Bloc Enfant #}
+					<div class="w3-card centered-element mb-5">
+						<header class="w3-container w3-light-grey">
+							<h3>
+								<span class="badge w3-green">Enfant</span>
+								{{ child.fullname }}</h3>
+						</header>
+						<div class="w3-container w3-padding">
+							<div class="row">
+								<div
+									class="col-3">{# <img src="{{ $registration->child->getPhotoUrlAttribute() }}" class="img-thumbnail img-fluid w3-circle" style="width: 200px;"> #}
+								</div>
+								<div class="col">
+									<table class="w3-table w3-bordered">
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Sexe:</strong>
+											</td>
+											<td>{{ child.gender }}</td>
+										</tr>
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Date de naissance:</strong>
+											</td>
+											<td>{{ child.birthdate }}</td>
+										</tr>
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Age:</strong>
+											</td>
+											<td>{{ child.old }}</td>
+										</tr>
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Classe Française:</strong>
+											</td>
+											<td>{{ child.frenchclass }}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					{# Bloc Classe #}
+					<div class="w3-card centered-element mb-5">
+						<header class="w3-container w3-light-grey">
+							<h3>{{ child.registration.course.level.label }}
+								-
+								{{ child.registration.course.label }}</h3>
+						</header>
+						<div class="w3-container w3-padding">
+							<div class="row">
+								<div class="col">
+									<table class="w3-table w3-bordered">
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Libellé</strong>
+											</td>
+											<td class="w3-blue-grey">
+												<strong>Montant</strong>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>Frais d'inscription:</strong>
+											</td>
+											<td>{{ child.registration.course.level.frais }}</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>Frais de scolarité:</strong>
+											</td>
+											<td>{{ child.registration.course.level.tarif }}</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>Montant total:</strong>
+											</td>
+											<td>
+												<span>{{ child.registration.course.level.total }}€</span>/an
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					{# Bloc Paiement #}
+					<div class="w3-card centered-element mb-5">
+						<header class="w3-container w3-light-grey">
+							<h3>Moyen de paiement</h3>
+						</header>
+						<div class="w3-container w3-padding">
+							<div class="row">
+								<div class="col">
+									<table class="w3-table w3-bordered">
+										<tr>
+											<td class="w3-blue-grey">
+												<strong>Libellé</strong>
+											</td>
+											<td class="w3-blue-grey">
+												<strong>Montant</strong>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>Montant total:</strong>
+											</td>
+											<td>{{ child.registration.register.payment_amount }}€</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>Moyen de paiement:</strong>
+											</td>
+											<td>{{ child.registration.register.payment_method }}</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>Date de paiement:</strong>
+											</td>
+											<td>{{ child.registration.register.payment_date|date('d/m/Y') }}</td>
+										</tr>
+										<tr>
+											<td>
+												<strong>Paiement status:</strong>
+											</td>
+											<td>{{ child.registration.register.payment_status }}
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="modal-footer">
+			{# {{ footer_modal|raw }} #}
+			<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+		</div>
+	</div>
+</div>

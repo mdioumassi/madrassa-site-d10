@@ -6,7 +6,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
  * Primary module hooks for Madrassa parent module.
  */
 
- function madrassa_parent_theme() {
+ function madrassa_parent_theme($existing, $type, $theme, $path) {
     return [
         'madrassa_user_create' => [
             'path' => 'modules/custom/madrassa_parent/templates/users',
@@ -24,18 +24,16 @@ use Drupal\Core\Entity\EntityTypeInterface;
                 'title' => NULL,
             ],
         ],
+        'list_children' => [
+            'path' => 'modules/custom/madrassa_parent/templates/children',
+            'template' => 'list_children',
+            'variables' => [
+                'datas' => [],
+                'parentId' => NULL,
+            ],
+        ],
     ];
 }
-use Drupal\Core\Render\Element;
-
-/**
- * Implements hook_theme().
- */
-// function madrassa_parent_theme(): array {
-//   return [
-//     'parent' => ['render element' => 'elements'],
-//   ];
-// }
 
 /**
  * Prepares variables for parent templates.
@@ -53,9 +51,19 @@ function template_preprocess_parent(array &$variables): void {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
+  $parent = $variables['elements']['#madressa_parent'];
+  $variables['parent'] = $parent;
 }
 
-
+// function template_preprocess_children(array &$variables): void
+// {
+//   $variables['view_mode'] = $variables['elements']['#view_mode'];
+//   foreach (Element::children($variables['elements']) as $key) {
+//     $variables['content'][$key] = $variables['elements'][$key];
+//   }
+//   $children = $variables['elements']['#children'];
+//   $variables['children'] = $children;
+// }
 /**
  * hook_entity_type_build()
  * @param EntityTypeInterface[] $entity_types

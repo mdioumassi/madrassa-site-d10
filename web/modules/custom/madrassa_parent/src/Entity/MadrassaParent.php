@@ -30,6 +30,11 @@ class MadrassaParent extends User
     return $this->get('field_phone')->value;
   }
 
+  public function getEmail(): string
+  {
+    return $this->get('mail')->value;
+  }
+
   public function getAddress(): string
   {
     return $this->get('field_address')->value;

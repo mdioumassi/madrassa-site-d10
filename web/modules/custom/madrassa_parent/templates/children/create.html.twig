@@ -1,45 +1,87 @@
-
 {{ attach_library('madrassa_parent/parent') }}
 
-<form method="POST" action="{{ path('madrassa_parent.child.store', {'parentId': parent_id}) }}">
-	<div class="row mb-3">
-		<div class="col-md-6">
-			<label for="genre">Genre</label>
-			<select id="gender" class="form-control" name="gender">
-				<option value="" selected="selected">Choisir le genre</option>
-				<option value="boy">Garçon</option>
-				<option value="girl">Fille</option>
-			</select>
+<div class="container">
+	<div class="w3-row w3-border mb-5">
+		<div class="w3-col m2 tablink w3-bottombar w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">1</span><br/>
+			Ajouter un parent
 		</div>
-
-		<div class="col-md-6">
-			<label for="firstname">Prénom</label>
-			<input id="firstname" type="text" class="form-control" name="firstname" required>
+		<div class="w3-col m2 tablink w3-bottombar w3-border-indigo  w3-green  w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">2</span><br/>
+			Ajouter un enfant
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">3</span><br/>
+			Choix d'une classe</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">4</span><br/>
+			Frais & Scolarité
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">5</span><br/>
+			Paiement
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">6</span><br/>
+			Recapitulatif
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">6</span><br/>
+			Fiche
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-12 mb-5">
+			<form method="POST" action="{{ path('madrassa_parent.child.store', {'parentId': parent_id}) }}">
+				<div class="w3-card-2 centered-element" style="width:80%;">
+					<header class="w3-container w3-indigo">
+						<h1>Ajouter un enfant</h1>
+					</header>
+					<div class="w3-container mt-3">
+						<div class="row mb-3">
+							<div class="col-md-6">
+								<label for="genre">Genre</label>
+								<select id="gender" class="form-control" name="gender">
+									<option value="" selected="selected">Choisir le genre</option>
+									<option value="boy">Garçon</option>
+									<option value="girl">Fille</option>
+								</select>
+							</div>
 
-	<div class="row mb-3">
-		<div class="col-md-6">
-			<label for="lastname">Nom</label>
-			<input id="lastname" type="text" class="form-control" name="lastname" required>
-		</div>
-		<div class="col-md-6">
-			<label for="birthdate">Date de naissance</label>
-			<input id="birthdate" type="date" class="form-control" name="birthdate" required>
+							<div class="col-md-6">
+								<label for="firstname">Prénom</label>
+								<input id="firstname" type="text" class="form-control" name="firstname" required>
+							</div>
+						</div>
+
+						<div class="row mb-3">
+							<div class="col-md-6">
+								<label for="lastname">Nom</label>
+								<input id="lastname" type="text" class="form-control" name="lastname" required>
+							</div>
+							<div class="col-md-6">
+								<label for="birthdate">Date de naissance</label>
+								<input id="birthdate" type="date" class="form-control" name="birthdate" required>
+							</div>
+						</div>
+
+						<div class="row mb-3">
+							<div class="col-md-6">
+								<label for="frenchclass" class="">Classe Française</label>
+								<input id="frenchclass" type="text" class="form-control" name="frenchclass">
+							</div>
+							<div class="col-md-6">
+								<label for="old" class="">Age</label>
+								<input id="old" type="text" class="form-control" name="old">
+							</div>
+							<input type="hidden" name="parent_id" value="{{ parent_id }}">
+						</div>
+					</div>
+				</div>
+				<div class="mt-4 w3-center mb-5">
+					<button class="btn btn-primary" type="submit">Suivant &raquo;</button>
+				</div>
+			</form>
 		</div>
 	</div>
-
-	<div class="row mb-3">
-		<div class="col-md-6">
-			<label for="frenchclass" class="">Classe Française</label>
-			<input id="frenchclass" type="text" class="form-control" name="frenchclass">
-		</div>
-		<div class="col-md-6">
-			<label for="old" class="">Age</label>
-			<input id="old" type="text" class="form-control" name="old">
-		</div>
-		<input type="hidden" name="parent_id" value="{{ parent_id }}">
-	</div>
-
-    <button type="submit" class="btn btn-primary">Valider</button>
-</form>
+</div>

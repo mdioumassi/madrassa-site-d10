@@ -17,7 +17,15 @@ function madrassa_theme_suggestions_user_alter(array &$suggestions, array $varia
 }
 
 function madrassa_preprocess_user(&$variables) {
-  $user = $variables['elements']['#user'];
+  $user = $variables['user'];
+
+  if (in_array('parent_role', $user->getRoles())) {
+    $user_id = $user->id();
+    $children = \Drupal::entityTypeManager()
+      ->getStorage('children')
+      ->loadByProperties(['field_parent_id' => $user_id]);
+    $variables['children'] = $children;
+  }
 
   if (!$user->user_picture->isEmpty()) {
     $variables['uri_user_picture'] = $user->user_picture->entity->getFileUri();
@@ -50,3 +58,9 @@ function madrassa_preprocess_views_view_unformatted__children_of_parent(&$variab
   //  // $variables['user'] = $view->getUser();
   // }
 }
+
+// function madrassa_preprocess_user(&$variables) {
+//   $role = $variables['elements']['#role'];
+//   $variables['role_name'] = $role->label();
+//   dd($role);
+// }

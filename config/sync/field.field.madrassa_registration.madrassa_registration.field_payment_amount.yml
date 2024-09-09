@@ -10,7 +10,7 @@ id: madrassa_registration.madrassa_registration.field_payment_amount
 field_name: field_payment_amount
 entity_type: madrassa_registration
 bundle: madrassa_registration
-label: Montant
+label: 'Montant à payer'
 description: ''
 required: false
 translatable: false
@@ -20,5 +20,5 @@ settings:
   min: null
   max: null
   prefix: ''
-  suffix: ''
+  suffix: €/an
 field_type: integer
