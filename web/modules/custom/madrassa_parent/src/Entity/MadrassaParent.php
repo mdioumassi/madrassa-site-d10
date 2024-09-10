@@ -9,7 +9,11 @@ use Drupal\user\Entity\User;
 class MadrassaParent extends User
 {
 
-
+  public function getUid(): int
+  {
+    return $this->id();
+  }
+  
   public function getCivility(): string
   {
     return $this->get('field_civility')->value == 'mr' ? 'Monsieur' : 'Madame';

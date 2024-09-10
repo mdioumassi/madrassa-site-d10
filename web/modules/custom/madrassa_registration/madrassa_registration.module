@@ -49,6 +49,7 @@ function madrassa_registration_theme() {
             'path' => 'modules/custom/madrassa_registration/templates',
             'template' => 'fiche',
             'variables' => [
+                'parent_id' => NULL,
                 'child' => NULL,
                 'parent' => NULL,
                 'course' => NULL,

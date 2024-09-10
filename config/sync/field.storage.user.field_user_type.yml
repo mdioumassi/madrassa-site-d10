@@ -1,4 +1,4 @@
-uuid: bc201491-02d7-4aee-8332-4b4e478229eb
+uuid: b3fd5806-aea0-4459-a079-0d55bd3dd7b4
 langcode: fr
 status: true
 dependencies:
@@ -12,14 +12,20 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: parent
-      label: Parent
+      value: pere
+      label: Père
     -
-      value: teacher
-      label: Professeur
+      value: mere
+      label: Mère
     -
-      value: adult
-      label: Adulte
+      value: oncle
+      label: Oncle
+    -
+      value: tante
+      label: Tante
+    -
+      value: tuteur
+      label: Tuteur
   allowed_values_function: ''
 module: options
 locked: false

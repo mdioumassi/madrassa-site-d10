@@ -3,7 +3,7 @@
 {% if child.getGender() == 'Garçon' %}
 	{% set photo =  child.getPath() ~ '/images/children/garcon.jpeg' %}
 	{% set gender = 'Garçon' %}
-{% elseif child.getGender() == 'girl' %}
+{% elseif child.getGender() == 'Fille' %}
 	{% set photo = child.getPath() ~ '/images/children/fille.png' %}
 	{% set gender = 'Fille' %}
 {% endif %}
@@ -62,11 +62,11 @@
 			{# Bloc Enfant  #}
 			<div class="w3-card-2 centered-element mb-5 mt-2" style="width:80%;">
 				<header class="w3-container w3-green w3-padding">
-					<h3>{{ child.getFullName()}}</h3>
+					<h3>{{ child.getFullName() }}</h3>
 				</header>
 				<div class="w3-container w3-padding">
 					<div class="row">
-						<div class="col-md-2">
+						<div class="col-2 mt-3">
 							{% if child.getPhoto() %}
 								{{ content.field_photo }}
 							{% else %}
@@ -112,7 +112,7 @@
 				</header>
 				<div class="w3-container w3-padding">
 					<div class="row">
-						<div class="col-md-2">
+						<div class="col-2 mt-5">
 							{% if parent.getPicture() %}
 								{{ content.user_picture }}
 							{% else %}
@@ -249,7 +249,7 @@
 									<td>
 										<strong>Date de paiement:</strong>
 									</td>
-									<td>{{payment_date }}</td>
+									<td>{{ payment_date }}</td>
 								</tr>
 								<tr>
 									<td>
@@ -264,6 +264,14 @@
 					</div>
 				</div>
 			</div>
+			{% if parent_id %}
+				<div class="mt-4 w3-center mb-5">
+					<a href="{{path('madrassa_parent.list.children', {'parentId': parent_id })}}">
+						<button class="btn btn-primary">Liste des enfants</button>
+					</a>
+					<button class="btn btn-success">Télécharger la fiche</button>
+				</div>
+			{% endif %}
 		</div>
 	</div>
 </div>

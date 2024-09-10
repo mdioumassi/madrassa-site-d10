@@ -44,14 +44,14 @@ class RegistrationController extends ControllerBase
    *
    * @return void
    */
-  public function childrenCourse(int $enfantId)
+  public function childrenCourse(int $parentId, int $enfantId)
   {
-    $enfant = $this->em->getStorage('children')->load($enfantId);
-    $parent_id = $enfant->get('field_parent_id')->getValue()[0]['target_id'];
-    $registration_data = [
-      'child_id' => $enfantId,
-      'parent_id' => $parent_id,
-    ];
+    if (isset($enfantId) && isset($parentId)) {
+      $registration_data = [
+        'child_id' => $enfantId,
+        'parent_id' => $parentId,
+      ];
+    }
 
     $this->session->set('registration_data', $registration_data);
 
@@ -95,22 +95,21 @@ class RegistrationController extends ControllerBase
   public function schooling()
   {
     $registration_data = $this->session->get('registration_data');
-    $child = $this->em->getStorage('children')->load($registration_data['child_id']);
-    $parent = $this->em->getStorage('user')->load($registration_data['parent_id']);
-    $level = $this->em->getStorage('madrassa_level')->load($registration_data['level_id']);
-    $course = $this->em->getStorage('madrassa_course')->load($registration_data['course_id']);
+
+    if (isset($registration_data['child_id']) && isset($registration_data['parent_id']) 
+    && isset($registration_data['level_id']) && isset($registration_data['course_id'])) {
+      $child = $this->em->getStorage('children')->load($registration_data['child_id']);
+      $parent = $this->em->getStorage('user')->load($registration_data['parent_id']);
+      $level = $this->em->getStorage('madrassa_level')->load($registration_data['level_id']);
+      $course = $this->em->getStorage('madrassa_course')->load($registration_data['course_id']);
+    }
 
     $build['content'] = [
       '#theme' => 'schooling',
-      '#attached' => [
-        'library' => [
-          'madrassa_regisration/registration',
-        ],
-      ],
-      '#child' => $child,
-      '#parent' => $parent,
-      '#level' => $level,
-      '#course' => $course
+      '#child' => $child ?? '',
+      '#parent' => $parent ?? '',
+      '#level' => $level ?? '',
+      '#course' => $course ?? '',
     ];
 
     return $build;
@@ -295,17 +294,18 @@ class RegistrationController extends ControllerBase
 
     $build['content'] = [
       '#theme' => 'fiche',
-      '#child' => $child,
-      '#parent' => $parent,
-      '#level' => $level,
-      '#course' => $course,
-      '#payment_amount' => $registration_data['payment_amount'],
-      '#payment_method' => $registration_data['payment_method'],
-      '#payment_date' => $registration_data['payment_date'],
-      '#payment_status' => $registration_data['payment_status'],
-      '#payment_note' => $registration_data['payment_note'],
-      '#registration_date' => $registration_data['registration_date'],
-      '#registration_status' => $registration_data['registration_status'],
+      '#parent_id' => $registration_data['parent_id'] ?? 0,
+      '#child' => $child ?? '',
+      '#parent' => $parent ?? '',
+      '#level' => $level ?? '',
+      '#course' => $course ?? '',
+      '#payment_amount' => $registration_data['payment_amount'] ?? 0,
+      '#payment_method' => $registration_data['payment_method'] ?? '',
+      '#payment_date' => $registration_data['payment_date'] ?? '',
+      '#payment_status' => $registration_data['payment_status'] ?? '',
+      '#payment_note' => $registration_data['payment_note'] ?? '',
+      '#registration_date' => $registration_data['registration_date'] ?? '',
+      '#registration_status' => $registration_data['registration_status'] ?? '',
     ];
 
     return $build;

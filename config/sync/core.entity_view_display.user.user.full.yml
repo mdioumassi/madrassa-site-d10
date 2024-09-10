@@ -16,7 +16,6 @@ dependencies:
   module:
     - image
     - layout_builder
-    - layout_discovery
     - options
     - telephone
     - user
@@ -62,13 +61,6 @@ content:
     third_party_settings: {  }
     weight: 8
     region: content
-  field_user_type:
-    type: list_default
-    label: visually_hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 11
-    region: content
   member_for:
     settings: {  }
     third_party_settings: {  }
@@ -88,4 +80,5 @@ content:
 hidden:
   field_firstname: true
   field_lastname: true
+  field_user_type: true
   langcode: true

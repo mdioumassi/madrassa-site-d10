@@ -1,4 +1,4 @@
-uuid: 9962cf46-4618-4a60-afd8-9e49355512ad
+uuid: 89063a8b-6641-479c-a06e-259919b893e0
 langcode: fr
 status: true
 dependencies:
@@ -11,7 +11,7 @@ id: user.user.field_user_type
 field_name: field_user_type
 entity_type: user
 bundle: user
-label: 'Type utilisateur'
+label: 'Type de parent'
 description: ''
 required: true
 translatable: false

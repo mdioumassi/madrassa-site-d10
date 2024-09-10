@@ -1,5 +1,5 @@
 children.register.step2.course:
-  path: '/register/child/{enfantId}/course'
+  path: '/register/parent/{parentId}/child/{enfantId}/course'
   defaults:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::childrenCourse'
     _title: 'Example'

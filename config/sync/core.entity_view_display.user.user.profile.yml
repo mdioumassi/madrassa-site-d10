@@ -77,13 +77,6 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_user_type:
-    type: list_default
-    label: visually_hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
   user_picture:
     type: image
     label: visually_hidden
@@ -96,5 +89,6 @@ content:
     weight: 0
     region: content
 hidden:
+  field_user_type: true
   langcode: true
   member_for: true

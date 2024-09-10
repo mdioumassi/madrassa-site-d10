@@ -2,7 +2,7 @@
 <div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog {{ size }} modal-dialog-scrollable">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header bg-success">
 				<h5 class="modal-title" id="exampleModalLabel">{{ title }}</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
@@ -80,7 +80,7 @@
 								<div class="col">
 									<table class="w3-table w3-bordered">
 										<tr>
-											<td class="w3-blue-grey">
+											<td class="w3-blue-grey" width="285">
 												<strong>Sexe:</strong>
 											</td>
 											<td>{{ child.gender }}</td>
@@ -202,10 +202,8 @@
 				</div>
 			</div>
 		</div>
-		<div
-			class="modal-footer">
-			{# {{ footer_modal|raw }} #}
-			<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+		<div class="modal-footer w3-light-blue">
+			<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
 		</div>
 	</div>
 </div>

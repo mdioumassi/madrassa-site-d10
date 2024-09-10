@@ -3,14 +3,15 @@
 {% elseif user.field_civility.value == 'mme' %}
 	{% set photo = base_path ~ directory ~ "/images/femme.png" %}
 {% endif %}
-{{ dump(title)}}
-<div class="card">
-	<div class="card-header">
-		<h4 class="card-title">Mon profil</h4>
-	</div>
-	<div class="card-body">
+
+<div class="w3-card-2 mb-5">
+	<header class="w3-container w3-indigo">
+		<h1>Mon profil</h1>
+	</header>
+
+	<div class="w3-container w3-padding-16">
 		<div class="row">
-			<div class="col-2">
+			<div class="col-2 mt-4">
 				{% if user.user_picture is not empty %}
 					{{ drupal_field('user_picture', 'user', user.id) }}
 				{% else %}
@@ -18,22 +19,6 @@
 				{% endif %}
 			</div>
 			<div class="col">
-				<div class="row">
-					<div class="col">
-						<label>
-							Nom utilisateur:</label>
-						<input id="username" type="text" class="form-control" value="{{ user.name.value }}">
-					</div>
-					<div class="col">
-						<label>
-							E-mail:</label>
-						<input id="email" type="text" class="form-control" value="{{ user.mail.value }}"></div>
-					<div class="col">
-						<label>
-							Mot de passe:</label>
-						<input id="pass" type="password" class="form-control" value="{{ user.pass.value }}">
-					</div>
-				</div>
 				<div class="row mt-3">
 					<div class="col">
 						<label>Civilité</label>
@@ -53,8 +38,35 @@
 							Nom:</label>
 						<input id="field_lastname" type="text" class="form-control" value="{{ user.field_lastname.value }}">
 					</div>
+					<div class="col">
+						<label>Type</label>
+						<input type="text" id="field_type_user" class="form-control" value="{{ user.field_user_type.value}}">
+					</div>
 				</div>
 				<div class="row mt-3">
+					<div class="col">
+						<label>
+							Nom utilisateur:</label>
+						<input id="username" type="text" class="form-control" value="{{ user.name.value }}">
+					</div>
+					<div class="col">
+						<label>
+							Fonction:</label>
+						<input id="field_fonction" type="text" class="form-control" value="{{ user.field_fonction.value }}">
+					</div>
+					<div class="col">
+						<label>
+							Mot de passe:</label>
+						<input id="pass" type="password" class="form-control" value="{{ user.pass.value }}">
+					</div>
+				</div>
+
+				<div class="row mt-3">
+					<div class="col">
+						<label>
+							E-mail:</label>
+						<input id="email" type="text" class="form-control" value="{{ user.mail.value }}">
+					</div>
 					<div class="col">
 						<label>
 							Téléphone:</label>
@@ -69,9 +81,8 @@
 			</div>
 		</div>
 	</div>
-</div>
-<a href="/parent/{{user.id}}/children" class="btn btn-success mt-3">Mes Enfants</a>
 
-{% for child in children %}
-	{{ dump(child) }}
-{% endfor %}
+	<footer class="w3-container w3-light-grey mb-2 w3-border">
+		<a href="/parent/{{user.id}}/children" class="btn btn-success mt-3">Mes Enfants</a>
+	</footer>
+</div>
