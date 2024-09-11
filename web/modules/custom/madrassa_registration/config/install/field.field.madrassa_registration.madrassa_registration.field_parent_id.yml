@@ -10,9 +10,9 @@ id: madrassa_registration.madrassa_registration.field_parent_id
 field_name: field_parent_id
 entity_type: madrassa_registration
 bundle: madrassa_registration
-label: 'Parent ID'
+label: 'Parent'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

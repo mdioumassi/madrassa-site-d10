@@ -10,9 +10,9 @@ id: madrassa_registration.madrassa_registration.field_level_id
 field_name: field_level_id
 entity_type: madrassa_registration
 bundle: madrassa_registration
-label: 'Niveau ID'
+label: 'Niveau'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

@@ -36,5 +36,17 @@
 
 
 .withSteps {
-    width: 11% !important;
-  }
+width: 11% !important;
+}
+
+.photo-child img {
+border-radius: 50%;
+height: 12rem;
+width: 12rem;
+}
+
+.picture-parent img {
+    border-radius: 50%;
+    height: 12rem;
+    width: 12rem;
+}

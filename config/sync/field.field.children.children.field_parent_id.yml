@@ -12,9 +12,9 @@ id: children.children.field_parent_id
 field_name: field_parent_id
 entity_type: children
 bundle: children
-label: 'Parent ID'
+label: Parent
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -25,8 +25,8 @@ settings:
     sort:
       field: _none
       direction: ASC
-    auto_create: false
+    auto_create: true
     filter:
       type: _none
-    include_anonymous: true
+    include_anonymous: false
 field_type: entity_reference

@@ -1,3 +1,15 @@
+{# {{dd(child)}} #}
+{% if child.gender == 'Garçon' %}
+	{% set photo =  child.path ~ '/images/children/garcon.jpeg' %}
+{% else %}
+	{% set photo = child.path ~ '/images/children/fille.png' %}
+{% endif %}
+{% if child.registration.parent.civilite == 'Monsieur' %}
+	{% set photo_child =  child.registration.parent.path ~ '/images/homme.png' %}
+{% else %}
+	{% set photo_child = child.registration.parent.path ~ '/images/femmme.png' %}
+{% endif %}
+
 <!-- Modal -->
 <div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog {{ size }} modal-dialog-scrollable">
@@ -19,8 +31,12 @@
 						</header>
 						<div class="w3-container w3-padding">
 							<div class="row">
-								<div
-									class="col-3">{# <img src="{{ $registration->child->parent->getAvatarUrlAttribute() }}" class="v-center img-thumbnail img-fluid w3-circle" style="width: 200px;"> #}
+								<div class="col-3 mt-4 ms-5 picture-parent">
+									{% if child.registration.parent.picture is not empty %}
+										{{ drupal_image(child.registration.parent.picture.uri.0.value) }}
+									{% else %}
+										<img src="/{{ photo }}" class="v-center img-thumbnail img-fluid w3-circle" style="width: 200px;">
+									{% endif %}
 								</div>
 								<div class="col">
 									<table class="w3-table w3-bordered">
@@ -74,8 +90,12 @@
 						</header>
 						<div class="w3-container w3-padding">
 							<div class="row">
-								<div
-									class="col-3">{# <img src="{{ $registration->child->getPhotoUrlAttribute() }}" class="img-thumbnail img-fluid w3-circle" style="width: 200px;"> #}
+								<div class="col-3  photo-child ms-5">
+									{% if child.photo is not empty %}
+										{{ drupal_image(child.photo.field_media_image.0.entity.uri.value) }}
+									{% else %}
+										<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ node.title.value }}">
+									{% endif %}
 								</div>
 								<div class="col">
 									<table class="w3-table w3-bordered">

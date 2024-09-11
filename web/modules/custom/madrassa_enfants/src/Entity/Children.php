@@ -237,7 +237,8 @@ class Children extends ContentEntityBase implements ChildrenInterface {
           'address' => $reg->getParent()->getAddress(),
           'fonction' => $reg->getParent()->getFonction(),
           'typeser' => $reg->getParent()->getTypeser(),
-          'picture' => $reg->getParent()->getPicture()
+          'picture' => $reg->getParent()->getPicture(),
+          'path' => $reg->getParent()->getPath(),
         ],
         'course' => [
           'label' => $reg->getCourse()->label(),

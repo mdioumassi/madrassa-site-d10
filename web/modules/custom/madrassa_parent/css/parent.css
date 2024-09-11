@@ -1,3 +1,8 @@
 .withSteps {
     width: 11% !important;
   }
+
+  .photo-child img {
+    border-radius: 50%;
+    height: 12rem;
+  }

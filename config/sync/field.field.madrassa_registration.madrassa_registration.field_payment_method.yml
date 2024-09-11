@@ -12,7 +12,7 @@ entity_type: madrassa_registration
 bundle: madrassa_registration
 label: 'Methode paiement'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
