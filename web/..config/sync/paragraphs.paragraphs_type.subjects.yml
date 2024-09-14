@@ -1,0 +1,10 @@
+uuid: 8595aa22-8d67-431a-a677-0ddb652f2687
+langcode: fr
+status: true
+dependencies: {  }
+id: subjects
+label: Matières
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

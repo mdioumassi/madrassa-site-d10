@@ -72,7 +72,7 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
     $fields = parent::baseFieldDefinitions($entity_type);
 
     $fields['label'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Enfant'))
+      ->setLabel(t('Label'))
       ->setDescription(t('The name of the inscription entity.'))
       ->setRequired(TRUE)
       ->setTranslatable(TRUE)
@@ -166,23 +166,38 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
     return $this->get('field_payment_amount')->value;
   }
 
+  public function getChildId()
+  {
+    if ($this->get('field_child_id')->referencedEntities()[0] === null) {
+      return '';
+    }
+
+    return $this->get('field_child_id')->referencedEntities()[0]->id();
+  }
+
   public function getLevelId()
   {
+    if ($this->get('field_level_id')->referencedEntities()[0] === null) {
+      return '';
+    }
+
     return $this->get('field_level_id')->referencedEntities()[0]->id();
   }
 
   public function getCourseId()
   {
+    if ($this->get('field_course_id')->referencedEntities()[0] === null) {
+      return '';
+    }
     return $this->get('field_course_id')->referencedEntities()[0]->id();
-  }
-
-  public function getChildId()
-  {
-    return $this->get('field_child_id')->referencedEntities()[0]->id();
   }
 
   public function getParentId()
   {
+    if ($this->get('field_parent_id')->referencedEntities()[0] === null) {
+      return '';
+    }
+
     return $this->get('field_parent_id')->referencedEntities()[0]->id();
   }
 
@@ -214,27 +229,30 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
 
   public function getLevelLabel()
   {
-    $level_id = $this->get('field_level_id')->referencedEntities()[0]->id();
-    $level = \Drupal::entityTypeManager()
-      ->getStorage('madrassa_level')
-      ->load($level_id);
-
-    return $level->toLink();
+      return $this->getLevel()->toLink();
   }
 
   public function getCourseName()
   {
-   return $this->getCourse()->toLink();
+    return $this->getCourse()->toLink();
   }
 
   public function getChildGender()
   {
+    if ($this->getChild() === null) {
+      return '';
+    }
+
     return $this->getChild()->getGender();
   }
 
   public function getChildFullName()
   {
-    return $this->getChild()->getLinkFullName();
+    if ($this->getChild() === null) {
+      return '';
+    }
+
+    return $this->getChild()->getLinkFullName() ?? '';
   }
 
   public function getParentFullName()
@@ -244,7 +262,12 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
 
   public function getChild()
   {
-    $child_id = $this->get('field_child_id')->referencedEntities()[0]->id();
+
+    $child_id = $this->getChildId();
+
+    if ($child_id === '') {
+      return null;
+    }
 
     $child = \Drupal::entityTypeManager()
       ->getStorage('children')
@@ -255,7 +278,11 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
 
   public function getParent()
   {
-    $parent_id = $this->get('field_parent_id')->referencedEntities()[0]->id();
+    $parent_id = $this->getParentId();
+
+    if ($parent_id === '') {
+      return null;
+    }
 
     $parent = \Drupal::entityTypeManager()
       ->getStorage('user')
@@ -267,7 +294,12 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
 
   public function getCourse()
   {
-    $course_id = $this->get('field_course_id')->referencedEntities()[0]->id();
+    $course_id = $this->getCourseId();
+
+    if ($course_id === '') {
+      return null;
+    }
+
     $course = \Drupal::entityTypeManager()
       ->getStorage('madrassa_course')
       ->load($course_id);
@@ -277,7 +309,12 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
 
   public function getLevel()
   {
-    $level_id = $this->get('field_level_id')->referencedEntities()[0]->id();
+    $level_id = $this->getLevelId();
+
+    if ($level_id === '') {
+      return null;
+    }
+
     $level = \Drupal::entityTypeManager()
       ->getStorage('madrassa_level')
       ->load($level_id);

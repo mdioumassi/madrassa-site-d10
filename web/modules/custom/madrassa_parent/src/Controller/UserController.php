@@ -115,11 +115,14 @@ class UserController extends ControllerBase
 
   public function storeChild(Request $request, int $parentId)
   {
-    $path = "/parent/" . $parentId . "/children";
-    if ($request->isMethod('POST')) {
-      $data = $request->request->all();
 
-      if ($this->isExistChild($data['firstname'], $data['lastname'], $data['birthdate'])) {
+    if ($request->isMethod('POST') && $parentId) {
+      $path = "/parent/" . $parentId . "/children";
+
+      $data = $request->request->all();
+      $label = $data['firstname'] . ' ' . strtoupper($data['lastname']);
+
+      if ($this->isExistChild($label, $data['birthdate'])) {
         // $child = $this->isExistChild($data['firstname'], $data['lastname'], $data['birthdate']);
         // if (isset($enfantId) && isset($parentId)) {
         //   $registration_data = [
@@ -128,34 +131,31 @@ class UserController extends ControllerBase
         //   ];
         // }
         // $this->session->set('registration_data', $registration_data);
-  
+
         $response = new RedirectResponse($path);
         $response->send();
       } else {
         Children::create([
-          'firstname' => $data['firstname'],
-          'lastname' => $data['lastname'],
+          'label' => $label,
           'field_birthday' => $data['birthdate'],
           'gender' => $data['gender'],
           'frenchclass' => $data['frenchclass'],
           'field_old' => $data['old'],
-          'field_parent_id' => $data['parent_id'],
+          'field_parent_id' => $parentId,
           'status' => 1,
         ])->save();
         $response = new RedirectResponse($path);
         $response->send();
       }
-
     }
   }
 
-  public function isExistChild(string $firstname, string $lastname, string $birthdate)
+  public function isExistChild(string $fullname, string $birthdate)
   {
     $child = \Drupal::entityTypeManager()
       ->getStorage('children')
       ->loadByProperties([
-        'firstname' => $firstname,
-        'lastname' => $lastname,
+        'label' => $fullname,
         'field_birthday' => $birthdate,
       ]);
     $child_id = array_shift($child);
@@ -165,31 +165,40 @@ class UserController extends ControllerBase
 
   public function listChildren(int $parentId)
   {
+
     /**@var \Drupal\madrassa_parent\Entity\MadrassaParent $parent */
     $parent = User::load($parentId);
-    /**@var \Drupal\madrassa_enfants\Entity\Children $children */
-    $children = \Drupal::entityTypeManager()
-      ->getStorage('children')
-      ->loadByProperties(['field_parent_id' => $parentId]);
 
-    foreach ($children as $child) {
-      $data_children[] = [
-        'id' => $child->id(),
-        'fullname' => $child->getFullName(),
-        'birthdate' => $child->getBirthday(),
-        'frenchclass' => $child->getFrenchClass(),
-        'old' => $child->getOldOfBirthday(),
-        'gender' => $child->getGender(),
-        'photo' => $child->getPhoto(),
-        'path' => $child->getPath(),
-        'registration' => $child->getRegistrationData(),
-      ];
+    if (isset($parentId)) {
+      /**@var \Drupal\madrassa_enfants\Entity\Children $children */
+      // $children = \Drupal::entityTypeManager()
+      //   ->getStorage('children')
+      //   ->loadByProperties(['field_parent_id' => $parentId]);
+      //   dd($children);
+      $children = $this->em->getStorage('children')->loadByProperties(['field_parent_id' => $parentId]);
+
+      foreach ($children as $child) {
+   
+        $data_children[] = [
+          'id' => $child->id() ?? '',
+          'fullname' => $child->getFullName() ?? '',
+          'birthdate' => $child->getBirthday() ?? '',
+          'frenchclass' => $child->getFrenchClass() ?? '',
+          'old' => $child->getOldOfBirthday() ?? '',
+          'gender' => $child->getGender(),
+          'photo' => $child->getPhoto(),
+          'path' => $child->getPath() ?? '',
+          'registration' => $child->getRegistrationData(),
+        ];
+      }
     }
+
+
 
     return [
       '#theme' => 'list_children',
       '#title' => $this->t('Les enfants de: @parent', ['@parent' => $parent->getFullName()]),
-      '#datas' => $data_children,
+      '#datas' => $data_children ?? [],
       '#parentId' => $parentId,
     ];
   }

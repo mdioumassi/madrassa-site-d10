@@ -1,0 +1,27 @@
+uuid: a90da95c-01ec-4fcf-85da-4cfd70d4e35a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_type_display
+field_name: field_type_display
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: link
+      label: Lien
+    -
+      value: content_course
+      label: 'Contenu nos cours'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

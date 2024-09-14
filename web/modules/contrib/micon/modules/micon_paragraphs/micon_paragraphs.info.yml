@@ -1,0 +1,13 @@
+name: Micon Paragraphs
+type: module
+description: Provides the ability to set icons for paragraph bundles.
+core_version_requirement: ^10.3 || ^11
+package: Micon
+dependencies:
+  - micon:micon
+  - paragraphs:paragraphs
+
+# Information added by Drupal.org packaging script on 2024-08-21
+version: '2.1.0'
+project: 'micon'
+datestamp: 1724231362

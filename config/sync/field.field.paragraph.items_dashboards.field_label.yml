@@ -1,0 +1,19 @@
+uuid: a87d2a02-3b1c-4cc1-a6b0-da4a74a943f4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_label
+    - paragraphs.paragraphs_type.items_dashboards
+id: paragraph.items_dashboards.field_label
+field_name: field_label
+entity_type: paragraph
+bundle: items_dashboards
+label: Libellé
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,15 @@
+uuid: c6216cb3-8426-42c6-b627-c90fc32acc4a
+langcode: fr
+status: true
+dependencies:
+  module:
+    - micon_paragraphs
+third_party_settings:
+  micon_paragraphs:
+    icon: fa-th
+id: item_dashboard
+label: Item
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

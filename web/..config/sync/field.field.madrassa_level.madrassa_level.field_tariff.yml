@@ -1,0 +1,26 @@
+uuid: f6bc090c-0943-4221-ad50-f2724dd4edb9
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_level.field_tariff
+  module:
+    - madrassa_niveaux
+_core:
+  default_config_hash: Ac61KA1xKPS6k2Nmh0QOttRrUBI2f4yG6ri6vCVL3sM
+id: madrassa_level.madrassa_level.field_tariff
+field_name: field_tariff
+entity_type: madrassa_level
+bundle: madrassa_level
+label: Tarif
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: €/an
+field_type: integer

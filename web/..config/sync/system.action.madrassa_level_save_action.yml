@@ -1,0 +1,13 @@
+uuid: b1dad41e-6066-4321-8761-86bc4a3176ba
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_niveaux
+_core:
+  default_config_hash: pJvdc6KT43Y4akwNkTCy1qokOaMylKiu-IWZcPUqpCM
+id: madrassa_level_save_action
+label: 'Save madrassa niveaux'
+type: madrassa_level
+plugin: 'entity:save_action:madrassa_level'
+configuration: {  }

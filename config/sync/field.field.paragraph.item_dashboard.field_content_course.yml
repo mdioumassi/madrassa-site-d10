@@ -1,0 +1,26 @@
+uuid: 5d6bdf1e-7681-4f06-aef8-accb2c873897
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_course
+    - paragraphs.paragraphs_type.item_dashboard
+id: paragraph.item_dashboard.field_content_course
+field_name: field_content_course
+entity_type: paragraph
+bundle: item_dashboard
+label: 'Contenu cours'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:madrassa_course'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

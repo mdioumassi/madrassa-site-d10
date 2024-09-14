@@ -1,0 +1,9 @@
+uuid: 21615e16-7f93-4ab5-8a8c-aa204b79e46b
+langcode: fr
+status: true
+dependencies: {  }
+id: teacher_role
+label: Enseignant
+weight: 5
+is_admin: null
+permissions: {  }

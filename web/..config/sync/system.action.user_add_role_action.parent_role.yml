@@ -1,0 +1,14 @@
+uuid: f478cc11-a44c-41bb-bcba-5ee82c3c0e04
+langcode: fr
+status: true
+dependencies:
+  config:
+    - user.role.parent_role
+  module:
+    - user
+id: user_add_role_action.parent_role
+label: 'Ajouter le rôle Parent aux utilisateurs sélectionnés'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: parent_role

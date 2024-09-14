@@ -1,0 +1,22 @@
+uuid: 3fd77ad7-d157-445e-b04e-4f47e275105f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.subjects.field_subject_name
+    - paragraphs.paragraphs_type.subjects
+  module:
+    - text
+id: paragraph.subjects.default
+targetEntityType: paragraph
+bundle: subjects
+mode: default
+content:
+  field_subject_name:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

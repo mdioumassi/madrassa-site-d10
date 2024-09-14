@@ -1,0 +1,23 @@
+uuid: 550cddd4-a7b1-4ae3-bc2d-d169761c0d97
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_registration_fees
+    - paragraphs.paragraphs_type.level
+id: paragraph.level.field_registration_fees
+field_name: field_registration_fees
+entity_type: paragraph
+bundle: level
+label: "Frais d'inscription"
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' €'
+field_type: integer

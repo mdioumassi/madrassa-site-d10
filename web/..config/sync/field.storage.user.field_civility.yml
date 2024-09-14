@@ -1,0 +1,30 @@
+uuid: 9f694005-ef6f-46d9-b8c0-55ed9cc5ba91
+langcode: fr
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_civility
+field_name: field_civility
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: mme
+      label: Madame
+    -
+      value: mr
+      label: Monsieur
+    -
+      value: mlle
+      label: Mademoiselle
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3eb98c02e5df7bfb030a8959fdb99ccb",
+    "content-hash": "86ef1f84d29c1592770da50c6aa59645",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -864,6 +864,38 @@
                 "source": "https://github.com/consolidation/site-process/tree/5.4.0"
             },
             "time": "2024-04-06T00:00:28+00:00"
+        },
+        {
+            "name": "d34dman/vanilla-icon-picker",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/d34dman/vanilla-icon-picker.git",
+                "reference": "43af6de98462f360fd1f6289e3eb4aa15757b6df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/d34dman/vanilla-icon-picker/zipball/43af6de98462f360fd1f6289e3eb4aa15757b6df",
+                "reference": "43af6de98462f360fd1f6289e3eb4aa15757b6df",
+                "shasum": ""
+            },
+            "type": "drupal-library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shibin Das",
+                    "email": "shibinkidd@gmail.com"
+                }
+            ],
+            "description": "Package appolodev/vanilla-icon-picker as \"drupal-library\" type composer library",
+            "support": {
+                "issues": "https://github.com/d34dman/vanilla-icon-picker/issues",
+                "source": "https://github.com/d34dman/vanilla-icon-picker/tree/1.3.0"
+            },
+            "time": "2024-07-23T18:16:58+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -2413,6 +2445,111 @@
             }
         },
         {
+            "name": "drupal/fontawesome",
+            "version": "2.26.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/fontawesome.git",
+                "reference": "8.x-2.26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fontawesome-8.x-2.26.zip",
+                "reference": "8.x-2.26",
+                "shasum": "22e67458e1ebc274c3a8b494ce2c4056a3d2af29"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.26",
+                    "datestamp": "1688063477",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10 || ^11"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel.Moberly",
+                    "homepage": "https://www.drupal.org/user/1160788"
+                },
+                {
+                    "name": "truls1502",
+                    "homepage": "https://www.drupal.org/user/325866"
+                }
+            ],
+            "description": "The web's most popular icon set and toolkit.",
+            "homepage": "https://www.drupal.org/project/fontawesome",
+            "support": {
+                "source": "https://git.drupalcode.org/project/fontawesome",
+                "issues": "https://drupal.org/project/issues/fontawesome"
+            }
+        },
+        {
+            "name": "drupal/fontawesome_iconpicker",
+            "version": "3.0.0-rc1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/fontawesome_iconpicker.git",
+                "reference": "3.0.0-rc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fontawesome_iconpicker-3.0.0-rc1.zip",
+                "reference": "3.0.0-rc1",
+                "shasum": "52f9a1c47e009554cbfaea40363214a0baec55b4"
+            },
+            "require": {
+                "composer/installers": "^1.9 || ^2.0",
+                "d34dman/vanilla-icon-picker": "^1.3.0",
+                "drupal/core": "^8.8 || ^9 || ^10",
+                "drupal/fontawesome": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.0-rc1",
+                    "datestamp": "1721769592",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "D34dMan",
+                    "homepage": "https://www.drupal.org/user/751698"
+                }
+            ],
+            "description": "Fontawesome iconpicker using AppoloDev/vanilla-icon-picker",
+            "homepage": "https://www.drupal.org/project/fontawesome_iconpicker",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/fontawesome_iconpicker",
+                "issues": "https://www.drupal.org/project/issues/fontawesome_iconpicker"
+            }
+        },
+        {
             "name": "drupal/gin",
             "version": "3.0.0-rc13",
             "source": {
@@ -2862,6 +2999,70 @@
             "homepage": "https://www.drupal.org/project/menu_per_role",
             "support": {
                 "source": "https://git.drupalcode.org/project/menu_per_role"
+            }
+        },
+        {
+            "name": "drupal/micon",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/micon.git",
+                "reference": "2.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/micon-2.1.0.zip",
+                "reference": "2.1.0",
+                "shasum": "d862ca26182cc06f7160e4835eb7c8b730fbcfb5"
+            },
+            "require": {
+                "drupal/core": "^10.3 || ^11"
+            },
+            "require-dev": {
+                "drupal/micon_link": "*",
+                "drupal/paragraphs": "^1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.0",
+                    "datestamp": "1724231360",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
+                {
+                    "name": "JaceRider",
+                    "homepage": "https://www.drupal.org/user/81495"
+                },
+                {
+                    "name": "jacobbell84",
+                    "homepage": "https://www.drupal.org/user/3408772"
+                }
+            ],
+            "description": "An IcoMoon-based icon manager for Drupal.",
+            "homepage": "https://www.drupal.org/project/micon",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/micon",
+                "issues": "https://www.drupal.org/project/issues/micon"
             }
         },
         {
@@ -8092,6 +8293,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "drupal/fontawesome_iconpicker": 5,
         "drupal/gin": 5,
         "drupal/gin_toolbar": 5
     },

@@ -17,9 +17,9 @@ final class RegistrationListBuilder extends EntityListBuilder {
    */
   public function buildHeader(): array {
     // $header['id'] = $this->t('ID');
-    $header['label'] = $this->t('Enfant');
+    // $header['label'] = $this->t('Enfant');
     $header['gender'] = $this->t('Genre');
-    // $header['child'] = $this->t('Enfant');
+    $header['child'] = $this->t('Enfant');
     $header['parent'] = $this->t('Parent');
     $header['course'] = $this->t('Cours');
     $header['level'] = $this->t('Niveau');
@@ -38,9 +38,8 @@ final class RegistrationListBuilder extends EntityListBuilder {
   public function buildRow(EntityInterface $entity): array {
     /** @var \Drupal\madrassa_registration\Entity\Registration $entity */
     // $row['id'] = $entity->toLink();
-    $row['label'] = $entity->getChildFullName();
-    $row['gender'] = $entity->getChildGender();
-  
+    $row['gender'] = $entity->getChildGender() ?? '';
+    $row['child'] = $entity->getChildFullName();
     $row['parent'] = $entity->getParentFullName();
     $row['course'] = $entity->getCourseName();
     $row['level'] = $entity->getLevelLabel();

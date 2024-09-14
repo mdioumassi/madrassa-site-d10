@@ -1,0 +1,9 @@
+uuid: ea3ff253-ae85-4504-b67e-35847b239734
+langcode: fr
+status: true
+dependencies: {  }
+name: 'Type de cours'
+vid: type_course
+description: null
+weight: 0
+new_revision: false

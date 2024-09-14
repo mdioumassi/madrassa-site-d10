@@ -34,4 +34,4 @@ madrassa_parent.list.children:
   defaults:
     _controller: '\Drupal\madrassa_parent\Controller\UserController::listChildren'
   requirements:
-    _permission: 'access content'
+    _role: administrator+parent_role+webmaster

@@ -7,6 +7,12 @@ madrassa_webmaster.admin:
   route_name: madrassa_webmaster.admin
   parent: system.admin
 
+madrassa_webmaster.dashboard:
+  title: 'Dashboard'
+  description: 'Dashboard'
+  route_name: madrassa_webmaster.dashboard
+  parent: system.admin
+
 madrassa_webmaster.admin.users:
   title: 'Grstion des tilisateurs'
   description: ''

@@ -1,0 +1,27 @@
+uuid: 5b974bb9-75a3-473c-b4d7-9c27a1e0f3dd
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_registration.field_course_id
+  module:
+    - madrassa_registration
+id: madrassa_registration.madrassa_registration.field_course_id
+field_name: field_course_id
+entity_type: madrassa_registration
+bundle: madrassa_registration
+label: Cours
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:madrassa_course'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

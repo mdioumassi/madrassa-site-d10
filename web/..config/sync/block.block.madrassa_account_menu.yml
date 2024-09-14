@@ -1,0 +1,27 @@
+uuid: 83616058-09a5-4038-b844-73b1a2e8c22a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - madrassa
+_core:
+  default_config_hash: NB3u2LNXbUl7yjmhPVysZHHvpnBkN_wLpPX2-Ht6tFo
+id: madrassa_account_menu
+theme: madrassa
+region: nav_additional
+weight: -6
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: "Menu du compte de l'utilisateur"
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

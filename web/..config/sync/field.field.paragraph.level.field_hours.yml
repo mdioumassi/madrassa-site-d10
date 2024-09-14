@@ -1,0 +1,23 @@
+uuid: c6226376-3818-4255-820a-030b7fef0679
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hours
+    - paragraphs.paragraphs_type.level
+id: paragraph.level.field_hours
+field_name: field_hours
+entity_type: paragraph
+bundle: level
+label: Horaires
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: h/semaines
+field_type: integer

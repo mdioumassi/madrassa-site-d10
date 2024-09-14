@@ -1,0 +1,20 @@
+uuid: 9bd3f01f-1232-4b30-9a97-a99f43ecb2a6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_fonction
+  module:
+    - user
+id: user.user.field_fonction
+field_name: field_fonction
+entity_type: user
+bundle: user
+label: Fonction
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

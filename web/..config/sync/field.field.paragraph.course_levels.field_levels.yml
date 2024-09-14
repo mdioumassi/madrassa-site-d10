@@ -1,0 +1,34 @@
+uuid: cc25870c-9fc4-4031-8b8f-c7dbf1e07680
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_levels
+    - paragraphs.paragraphs_type.course_levels
+    - paragraphs.paragraphs_type.level
+  module:
+    - entity_reference_revisions
+id: paragraph.course_levels.field_levels
+field_name: field_levels
+entity_type: paragraph
+bundle: course_levels
+label: Niveaux
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      level: level
+    negate: 0
+    target_bundles_drag_drop:
+      course_levels:
+        weight: 3
+        enabled: false
+      level:
+        weight: 4
+        enabled: true
+field_type: entity_reference_revisions

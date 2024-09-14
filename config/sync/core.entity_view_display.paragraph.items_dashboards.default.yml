@@ -1,0 +1,33 @@
+uuid: 166f2b29-4e50-4c2e-bfed-33161ae91b09
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.items_dashboards.field_items
+    - field.field.paragraph.items_dashboards.field_label
+    - paragraphs.paragraphs_type.items_dashboards
+  module:
+    - entity_reference_revisions
+id: paragraph.items_dashboards.default
+targetEntityType: paragraph
+bundle: items_dashboards
+mode: default
+content:
+  field_items:
+    type: entity_reference_revisions_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_label:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

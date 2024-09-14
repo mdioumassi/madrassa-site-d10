@@ -4,12 +4,16 @@
 /**
  * hook_form_alter()
  */
-function madrassa_content_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+// function madrassa_content_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+//   if (in_array($form_id, ['node_dashboard_form', 'node_dashboard_edit_form'])) {
+//   //  dd($form['field_items']);
+//   } 
+// }
 
-  if (in_array($form_id, ['node_child_form', 'node_child_edit_form'])) {
-    //$form['field_old']['widget'][0]['value']['#default_value'] = 'test';
-  } 
-}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
 
 /**
  * hook_page_attachments()

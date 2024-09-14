@@ -36,7 +36,7 @@ final class ChildrenListBuilder extends EntityListBuilder {
     /** @var \Drupal\madrassa_enfants\Entity\Children $entity */
     $row['id'] = $entity->id();
     $row['gender'] = $entity->get('gender')->value ? $this->t('Garçon') : $this->t('Fille');
-    $row['label'] = $entity->getLinkFullName();
+    $row['label'] = $entity->toLink();//$entity->getLinkFullName();
     $row['birthdate'] = $entity->getBirthday();
     $row['old'] = $entity->getOldOfBirthday();
     $row['frenchclass'] = $entity->get('frenchclass')->value;
