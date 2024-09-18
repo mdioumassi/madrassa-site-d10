@@ -6,6 +6,8 @@ dependencies:
     - field.storage.madrassa_registration.field_course_id
   module:
     - madrassa_registration
+_core:
+  default_config_hash: BdmFMS5DbgCjrHgeLEr19J2MgeZdjFVfPfo3c2dLpMo
 id: madrassa_registration.madrassa_registration.field_course_id
 field_name: field_course_id
 entity_type: madrassa_registration

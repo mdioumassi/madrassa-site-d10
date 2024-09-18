@@ -8,3 +8,9 @@ entity.madrassa_registration.delete_form:
   group: madrassa_registration
   title: 'Delete'
   weight: 10
+
+entity.madrassa_registration.fiche:
+  route_name: entity.madrassa_registration.fiche
+  group: madrassa_registration
+  title: 'Fiche'
+  weight: 20

@@ -17,38 +17,24 @@ dependencies:
   module:
     - datetime
     - madrassa_registration
+_core:
+  default_config_hash: y2goI3XD4fU-NAKjMoo-6evOYVFOCzSOboy4uRM9v0U
 id: madrassa_registration.madrassa_registration.default
 targetEntityType: madrassa_registration
 bundle: madrassa_registration
 mode: default
 content:
   field_child_id:
-    type: options_select
+    type: entity_reference_autocomplete
     weight: 1
     region: content
-    settings: {  }
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_course_id:
-    type: entity_reference_autocomplete
-    weight: 3
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_level_id:
-    type: entity_reference_autocomplete
-    weight: 4
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_parent_id:
     type: entity_reference_autocomplete
     weight: 2
     region: content
@@ -58,22 +44,32 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_level_id:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_payment_amount:
     type: number
-    weight: 5
+    weight: 4
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_payment_date:
     type: datetime_default
-    weight: 6
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   field_payment_method:
     type: string_textfield
-    weight: 7
+    weight: 6
     region: content
     settings:
       size: 60
@@ -81,7 +77,7 @@ content:
     third_party_settings: {  }
   field_payment_note:
     type: string_textfield
-    weight: 11
+    weight: 7
     region: content
     settings:
       size: 60
@@ -111,7 +107,7 @@ content:
     third_party_settings: {  }
   label:
     type: string_textfield
-    weight: 0
+    weight: -5
     region: content
     settings:
       size: 60
@@ -119,11 +115,12 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 12
+    weight: 0
     region: content
     settings:
       display_label: false
     third_party_settings: {  }
 hidden:
   created: true
+  field_parent_id: true
   langcode: true

@@ -6,7 +6,7 @@ namespace Drupal\madrassa_parent\Entity;
 
 use Drupal\user\Entity\User;
 
-class MadrassaParent extends User
+class MadrassaParent extends User implements MadrassaParentInterface
 {
 
   /**
@@ -49,7 +49,7 @@ class MadrassaParent extends User
     return $this->get('field_fonction')->value;
   }
 
-  public function getTypeser(): string
+  public function getTypeUser(): string
   {
     return $this->get('field_user_type')->value;
   }

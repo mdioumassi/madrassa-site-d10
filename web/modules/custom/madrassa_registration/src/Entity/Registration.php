@@ -53,6 +53,7 @@ use Drupal\madrassa_registration\RegistrationInterface;
  *     "canonical" = "/registration/{madrassa_registration}",
  *     "edit-form" = "/registration/{madrassa_registration}/edit",
  *     "delete-form" = "/registration/{madrassa_registration}/delete",
+ *     "fiche" = "/registration/{madrassa_registration}/fiche",
  *     "delete-multiple-form" = "/admin/content/madrassa-registration/delete-multiple",
  *   },
  *   field_ui_base_route = "entity.madrassa_registration.settings",
@@ -156,6 +157,11 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
   //   return date('d/m/Y', $this->get('created')->value);
   // }
 
+  public function getPaymentNote()
+  {
+    return $this->get('field_payment_note')->value;
+  }
+
   public function getPaymentMethod()
   {
     return $this->get('field_payment_method')->value;
@@ -252,7 +258,7 @@ final class Registration extends ContentEntityBase implements RegistrationInterf
       return '';
     }
 
-    return $this->getChild()->getLinkFullName() ?? '';
+    return $this->toLink($this->getChild()->getFullname());
   }
 
   public function getParentFullName()

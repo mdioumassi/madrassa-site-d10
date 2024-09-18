@@ -741,63 +741,79 @@ display:
           default_row_class: true
           columns:
             user_bulk_form: user_bulk_form
+            uid: uid
+            field_civility: field_civility
             name: name
-            status: status
-            rid: rid
-            created: created
-            access: access
-            edit_node: edit_node
-            dropbutton: dropbutton
-          default: created
+            field_lastname: field_lastname
+            field_firstname: field_firstname
+            field_phone: field_phone
+            mail: mail
+            roles_target_id: roles_target_id
+            operations: operations
+          default: '-1'
           info:
             user_bulk_form:
+              align: views-align-center
+              separator: ''
+              empty_column: false
+              responsive: ''
+            uid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_civility:
+              sortable: false
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
             name:
-              sortable: true
+              sortable: false
+              default_sort_order: asc
+              align: views-align-center
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_lastname:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            status:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            rid:
+            field_firstname:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
-              responsive: priority-low
-            created:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            access:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            edit_node:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            dropbutton:
+              responsive: ''
+            field_phone:
               sortable: false
               default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            mail:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            roles_target_id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
               align: ''
               separator: ''
               empty_column: false
@@ -806,6 +822,8 @@ display:
           sticky: false
           summary: ''
           empty_table: true
+          caption: ''
+          description: ''
       row:
         type: fields
       query:
@@ -837,7 +855,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "  <div class=\"w3-row\">\r\n      <a href=\"/parents\"><div class=\"w3-third tablink w3-bottombar w3-border-indigo  w3-green  w3-hover-light-grey w3-padding\">Parents</div></a>\r\n      <a href=\"/adultes\"><div class=\"w3-third tablink w3-bottombar w3-hover-light-grey w3-padding\">Adulte</div></a>\r\n     <a href=\"/enseignants\"><div class=\"w3-third tablink w3-bottombar w3-hover-light-grey w3-padding\">Enseignants</div></a>\r\n  </div>"
+            value: "  <div class=\"w3-row\">\r\n      <a href=\"/parents\"><div class=\"w3-third tablink w3-bottombar w3-border-indigo  w3-green  w3-hover-light-grey w3-padding\">Parents</div></a>\r\n      <a href=\"/adultes\"><div class=\"w3-third tablink w3-bottombar w3-light-grey w3-padding\">Adulte</div></a>\r\n     <a href=\"/enseignants\"><div class=\"w3-third tablink w3-bottombar w3-light-grey w3-padding\">Enseignants</div></a>\r\n  </div>"
             format: full_html
           tokenize: false
         area:
@@ -885,14 +903,15 @@ display:
         title: Lister
         description: 'Trouver et gérer les personnes interagissant avec votre site.'
         weight: -10
+        expanded: false
         menu_name: admin
-        context: ''
+        parent: ''
+        context: '0'
       tab_options:
         type: normal
         title: Personnes
         description: 'Gérer les comptes utilisateurs, les rôles et les droits.'
         weight: 0
-        menu_name: admin
     cache_metadata:
       max-age: 0
       contexts:

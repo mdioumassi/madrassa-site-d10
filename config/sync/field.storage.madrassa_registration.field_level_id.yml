@@ -5,6 +5,8 @@ dependencies:
   module:
     - madrassa_niveaux
     - madrassa_registration
+_core:
+  default_config_hash: m6YCLFIc7Mey7HqrxHuJ1lZgJyQwK774PEdpUc89328
 id: madrassa_registration.field_level_id
 field_name: field_level_id
 entity_type: madrassa_registration

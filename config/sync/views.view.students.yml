@@ -30,7 +30,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Etudiants
+      title: Adultes
       fields:
         user_bulk_form:
           id: user_bulk_form
@@ -826,7 +826,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "  <div class=\"w3-row\">\r\n      <a href=\"/parents\"><div class=\"w3-third tablink w3-bottombar w3-hover-light-grey w3-padding\">Parents</div></a>\r\n      <a href=\"/adultes\"><div class=\"w3-third tablink w3-bottombar w3-border-indigo  w3-green  w3-hover-light-grey w3-padding\">Adulte</div></a>\r\n     <a href=\"/enseignants\"><div class=\"w3-third tablink w3-bottombar w3-hover-light-grey w3-padding\">Enseignants</div></a>\r\n  </div>"
+            value: "  <div class=\"w3-row\">\r\n      <a href=\"/parents\"><div class=\"w3-third tablink w3-bottombar w3-light-grey w3-padding\">Parents</div></a>\r\n      <a href=\"/adultes\"><div class=\"w3-third tablink w3-bottombar w3-border-indigo  w3-green  w3-hover-light-grey w3-padding\">Adulte</div></a>\r\n     <a href=\"/enseignants\"><div class=\"w3-third tablink w3-bottombar w3-light-grey w3-padding\">Enseignants</div></a>\r\n  </div>"
             format: full_html
           tokenize: false
         area:

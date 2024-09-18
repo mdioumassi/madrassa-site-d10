@@ -66,9 +66,9 @@
 				</header>
 				<div class="w3-container w3-padding">
 					<div class="row">
-						<div class="col-2 mt-3">
+						<div class="col-3 photo-child">
 							{% if child.getPhoto() %}
-								{{ content.field_photo }}
+								{{ drupal_image(child.getPhoto().field_media_image.0.entity.uri.value) }}
 							{% else %}
 								<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ content.title.value }}">
 							{% endif %}
@@ -112,9 +112,9 @@
 				</header>
 				<div class="w3-container w3-padding">
 					<div class="row">
-						<div class="col-2 mt-5">
+						<div class="col-3 photo-child mt-4">
 							{% if parent.getPicture() %}
-								{{ content.user_picture }}
+								{{ drupal_image(parent.getPicture().uri.0.value) }}
 							{% else %}
 								<img src="/{{ picture }}" class="img-fluid rounded-circle" alt="">
 							{% endif %}
@@ -131,7 +131,7 @@
 									<td>
 										<strong>Type de parent:</strong>
 									</td>
-									<td>{{ parent.getTypeser() }}</td>
+									<td>{{ parent.getTypeUser() }}</td>
 								</tr>
 								<tr>
 									<td>

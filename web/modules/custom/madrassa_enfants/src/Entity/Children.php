@@ -12,6 +12,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\madrassa_enfants\ChildrenInterface;
 use Drupal\user\EntityOwnerTrait;
 
+
 /**
  * Defines the enfant entity class.
  *
@@ -232,7 +233,7 @@ class Children extends ContentEntityBase implements ChildrenInterface
     return $fields;
   }
 
-  public function getFiche()
+  public function getFiche(): array
   {
     $data = [];
 
@@ -251,7 +252,7 @@ class Children extends ContentEntityBase implements ChildrenInterface
     return $data;
   }
 
-  public function getRegistrationData()
+  public function getRegistrationData(): array
   {
     $id = $this->id();
     $data = [];
@@ -279,7 +280,7 @@ class Children extends ContentEntityBase implements ChildrenInterface
             'phone' => $reg->getParent()->getPhone(),
             'address' => $reg->getParent()->getAddress(),
             'fonction' => $reg->getParent()->getFonction(),
-            'typeser' => $reg->getParent()->getTypeser(),
+            'typeser' => $reg->getParent()->getTypeUser(),
             'picture' => $reg->getParent()->getPicture(),
             'path' => $reg->getParent()->getPath(),
           ],
@@ -300,11 +301,6 @@ class Children extends ContentEntityBase implements ChildrenInterface
     }
 
     return $data;
-  }
-
-  public function getId()
-  {
-    return $this->id();
   }
 
   public function getBirthday(): string
@@ -338,10 +334,11 @@ class Children extends ContentEntityBase implements ChildrenInterface
 
   public function getParent()
   {
-    /**@var \Drupal\madrassa_parent\Entity\MadrassaParent */
-    $parent = \Drupal::entityTypeManager()->getStorage('user')->load($this->get('field_parent_id')->target_id);
-
-    return $parent->get('field_firstname')->value . ' ' . $parent->get('field_lastname')->value;
+    $parent_id = $this->get('field_parent_id')->target_id;
+  
+    return \Drupal::entityTypeManager()
+          ->getStorage('user')
+          ->load($parent_id);
   }
 
   public function getOldOfBirthday(): string
@@ -366,7 +363,7 @@ class Children extends ContentEntityBase implements ChildrenInterface
     return $this->get('gender')->value == 'boy' ? 'Garçon' : 'Fille';
   }
 
-  public function getPath()
+  public function getPath(): string
   {
     return \Drupal::service('module_handler')->getModule('madrassa_enfants')->getPath();
   }

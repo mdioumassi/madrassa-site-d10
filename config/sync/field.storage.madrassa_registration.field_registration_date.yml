@@ -5,6 +5,8 @@ dependencies:
   module:
     - datetime
     - madrassa_registration
+_core:
+  default_config_hash: DxMQ2kzpnS1nUMRaVjA0nwrMLbIzS4e35zf_OxCJMqY
 id: madrassa_registration.field_registration_date
 field_name: field_registration_date
 entity_type: madrassa_registration

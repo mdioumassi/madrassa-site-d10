@@ -1,4 +1,4 @@
-uuid: 627bf0ac-bc33-4965-8b67-e343daae7041
+uuid: 766aeb01-7d8d-493b-8b09-874a5f4ab660
 langcode: fr
 status: true
 dependencies:
@@ -6,6 +6,8 @@ dependencies:
     - field.storage.madrassa_registration.field_child_id
   module:
     - madrassa_registration
+_core:
+  default_config_hash: Woeb0oxV5o9qhb3GWIYzt6v7tnoRRyhxuicC7x2eQhg
 id: madrassa_registration.madrassa_registration.field_child_id
 field_name: field_child_id
 entity_type: madrassa_registration
@@ -23,5 +25,5 @@ settings:
     sort:
       field: _none
       direction: ASC
-    auto_create: true
+    auto_create: false
 field_type: entity_reference
