@@ -1,10 +1,12 @@
-uuid: 92b01a6d-7d89-4e11-8813-3cde258932b8
+uuid: 25351726-c150-4db9-ba14-5deb3b5b2d2c
 langcode: fr
 status: true
 dependencies:
   module:
     - madrassa_enfants
     - madrassa_registration
+_core:
+  default_config_hash: HQZhv-y-91r56XEdCr6ZLiR586CLLHWU_rIqspkJKgM
 id: madrassa_registration.field_child_id
 field_name: field_child_id
 entity_type: madrassa_registration

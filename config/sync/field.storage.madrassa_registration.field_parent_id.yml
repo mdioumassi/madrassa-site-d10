@@ -5,6 +5,8 @@ dependencies:
   module:
     - madrassa_registration
     - user
+_core:
+  default_config_hash: lSjIiQjGgHK_gHzeuR_cxwrp_yWMKVUFVhaQMpkiiXs
 id: madrassa_registration.field_parent_id
 field_name: field_parent_id
 entity_type: madrassa_registration

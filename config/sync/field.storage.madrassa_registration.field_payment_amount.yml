@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - madrassa_registration
+_core:
+  default_config_hash: 9qo-RheKogzwtTsYBx1euZU81cdHX2DHfxohMR37qFk
 id: madrassa_registration.field_payment_amount
 field_name: field_payment_amount
 entity_type: madrassa_registration

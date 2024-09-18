@@ -1,0 +1,7 @@
+views.field.madrassa_parent_testfield:
+  type: views.field.field
+  label: 'testField'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

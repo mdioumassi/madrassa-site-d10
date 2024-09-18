@@ -6,6 +6,8 @@ dependencies:
     - field.storage.madrassa_registration.field_registration_status
   module:
     - madrassa_registration
+_core:
+  default_config_hash: NVm-XtcznyPNPaMyrQBodbuQ7aeOM567byfjhFbyNKY
 id: madrassa_registration.madrassa_registration.field_registration_status
 field_name: field_registration_status
 entity_type: madrassa_registration

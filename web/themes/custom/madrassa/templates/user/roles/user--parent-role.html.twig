@@ -3,10 +3,11 @@
 {% elseif user.field_civility.value == 'mme' %}
 	{% set photo = base_path ~ directory ~ "/images/femme.png" %}
 {% endif %}
+{% set fullname =  user.field_firstname.value ~' '~  user.field_lastname.value %}
 
 <div class="w3-card-2 mb-5">
 	<header class="w3-container w3-indigo">
-		<h1>Mon profil</h1>
+		<h1>{{ fullname }}</h1>
 	</header>
 
 	<div class="w3-container w3-padding-16">

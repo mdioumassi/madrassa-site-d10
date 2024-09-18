@@ -6,6 +6,8 @@ dependencies:
     - field.storage.madrassa_registration.field_parent_id
   module:
     - madrassa_registration
+_core:
+  default_config_hash: h1TWObewt1Kt0-ve1MAKTNHcD6N7uNh72QevtzTbvsg
 id: madrassa_registration.madrassa_registration.field_parent_id
 field_name: field_parent_id
 entity_type: madrassa_registration
@@ -26,5 +28,5 @@ settings:
     auto_create: false
     filter:
       type: _none
-    include_anonymous: false
+    include_anonymous: true
 field_type: entity_reference

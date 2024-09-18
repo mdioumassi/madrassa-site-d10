@@ -6,11 +6,13 @@ dependencies:
     - field.storage.madrassa_registration.field_payment_amount
   module:
     - madrassa_registration
+_core:
+  default_config_hash: eWBDZBkvYrOPVCLLhWuh2aCzmh5DPOfEpfHZJSCMiyA
 id: madrassa_registration.madrassa_registration.field_payment_amount
 field_name: field_payment_amount
 entity_type: madrassa_registration
 bundle: madrassa_registration
-label: 'Montant à payer'
+label: Montant
 description: ''
 required: true
 translatable: false
@@ -20,5 +22,5 @@ settings:
   min: null
   max: null
   prefix: ''
-  suffix: €/an
+  suffix: ''
 field_type: integer

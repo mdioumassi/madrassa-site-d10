@@ -13,4 +13,20 @@ use Drupal\user\EntityOwnerInterface;
  */
 interface ChildrenInterface extends ContentEntityInterface, EntityOwnerInterface, EntityChangedInterface {
 
+    public function getBirthday(): string;
+
+    public function getOldOfBirthday(): string;
+
+    public function getParentLink();
+
+    public function getGender(): string;
+
+    public function getFrenchClass(): string;
+
+    public function getParent();
+
+    public function getRegistrationData(): array;
+
+    public function getFiche(): array;
+
 }

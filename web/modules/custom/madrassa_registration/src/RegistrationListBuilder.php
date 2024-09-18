@@ -27,7 +27,8 @@ final class RegistrationListBuilder extends EntityListBuilder {
     $header['payment_method'] = $this->t('Paiement méthode');
     $header['payment_status'] = $this->t('Paiement stztus');
     $header['registration_status'] = $this->t('Inscription status');
-    $header['status'] = $this->t('Status');
+    // $header['status'] = $this->t('Status');
+   // $header['operations'] = $this->t('Fiche');
     
     return $header + parent::buildHeader();
   }
@@ -38,7 +39,7 @@ final class RegistrationListBuilder extends EntityListBuilder {
   public function buildRow(EntityInterface $entity): array {
     /** @var \Drupal\madrassa_registration\Entity\Registration $entity */
     // $row['id'] = $entity->toLink();
-    $row['gender'] = $entity->getChildGender() ?? '';
+    $row['gender'] = $entity->getChildGender();
     $row['child'] = $entity->getChildFullName();
     $row['parent'] = $entity->getParentFullName();
     $row['course'] = $entity->getCourseName();
@@ -47,7 +48,9 @@ final class RegistrationListBuilder extends EntityListBuilder {
     $row['payment_method'] = $entity->get('field_payment_method')->value;
     $row['payment_status'] = $entity->get('field_payment_status')->value;
     $row['registration_status'] = $entity->get('field_registration_status')->value;
-    $row['status'] = $entity->get('status')->value ? $this->t('Enabled') : $this->t('Disabled');
+    // $row['status'] = $entity->get('status')->value ? $this->t('Enabled') : $this->t('Disabled');
+    $row['operations']['data'] = $this->buildOperations($entity);
+
     return $row + parent::buildRow($entity);
   }
 

@@ -66,6 +66,13 @@ children.register.step6.fiche:
   requirements:
     _role: parent_role+administrator
 
+children.registration.fiche:
+  path: '/registration/{registrationId}'
+  defaults:
+    _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::fiche'
+  requirements:
+    _role: parent_role+administrator
+
 entity.madrassa_registration.settings:
   path: 'admin/structure/madrassa-registration'
   defaults:

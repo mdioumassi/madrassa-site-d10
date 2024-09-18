@@ -83,5 +83,16 @@ function template_preprocess_madrassa_registration(array &$variables): void {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
+
+  $registration = $variables['elements']['#madressa_registration'];
+  $variables['registration'] = $registration;
 }
 
+/**
+ * Adds template possibility for view modes
+ * Implements hook_provider_theme_suggestions_hook_alter
+ */
+function madrassa_registration_theme_suggestions_inscription_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'fiche__' . $variables['elements']['#view_mode'];
+  dd($suggestions);
+}

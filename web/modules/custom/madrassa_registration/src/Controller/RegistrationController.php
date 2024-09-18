@@ -279,9 +279,35 @@ class RegistrationController extends ControllerBase
    *
    * @return void
    */
-  public function fiche()
+  public function fiche($registrationId = null)
   {
-    $registration_data = $this->session->get('registration_data');
+    $registration_data = [];
+
+    if ($registrationId) {
+      /**@var \Drupal\madrassa_registration\Entity\Registration $registration */
+      $registration = $this->em->getStorage('madrassa_registration')->load($registrationId);
+      $child = $this->em->getStorage('children')->load($registration->getChildId());
+      $parent = $this->em->getStorage('user')->load($registration->getParentId());
+      $level = $this->em->getStorage('madrassa_level')->load($registration->getLevelId());
+      $course = $this->em->getStorage('madrassa_course')->load($registration->getCourseId());
+      $registration_data = [
+        'child_id' => $child->id(),
+        'parent_id' => $parent->id(),
+        'level_id' => $level->id(),
+        'course_id' => $course->id(),
+        'payment_amount' => $registration->getPaymentAmount(),
+        'payment_method' => $registration->getPaymentMethod(),
+       // 'payment_date' => $registration->getPaymentDate(),
+        'payment_status' => $registration->getPaymentStatus(),
+        'payment_note' => $registration->getPaymentNote(),
+        'registration_date' => $registration->getRegistrationDate(),
+        'registration_status' => $registration->getRegistrationStatus(),
+      ];
+    }
+
+
+    $registration_data = $this->session->get('registration_data') ?? $registration_data;
+
     if (isset($registration_data['child_id']) && isset($registration_data['parent_id']) 
     && isset($registration_data['level_id']) && isset($registration_data['course_id'])) {
 
@@ -290,7 +316,6 @@ class RegistrationController extends ControllerBase
       $level = $this->em->getStorage('madrassa_level')->load($registration_data['level_id']);
       $course = $this->em->getStorage('madrassa_course')->load($registration_data['course_id']);
     }
-
 
     $build['content'] = [
       '#theme' => 'fiche',

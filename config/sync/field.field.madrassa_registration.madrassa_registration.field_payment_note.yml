@@ -6,6 +6,8 @@ dependencies:
     - field.storage.madrassa_registration.field_payment_note
   module:
     - madrassa_registration
+_core:
+  default_config_hash: GCOlhXvefzHsvkAiU6Wvm39NfRQtZ3BT8c7XcyaqWew
 id: madrassa_registration.madrassa_registration.field_payment_note
 field_name: field_payment_note
 entity_type: madrassa_registration

@@ -5,6 +5,8 @@ dependencies:
   module:
     - datetime
     - madrassa_registration
+_core:
+  default_config_hash: RcL7g_nHtKVDj0_JAR34kjxR-8PHvl4uWKO8Zs4PLTU
 id: madrassa_registration.field_payment_date
 field_name: field_payment_date
 entity_type: madrassa_registration

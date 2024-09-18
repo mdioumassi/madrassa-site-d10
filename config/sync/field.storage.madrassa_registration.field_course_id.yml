@@ -5,6 +5,8 @@ dependencies:
   module:
     - madrassa_courses
     - madrassa_registration
+_core:
+  default_config_hash: k-LXjlmS4Yt6OQh-Jtqh0zx-4nt7xYee15JT-KmCtkw
 id: madrassa_registration.field_course_id
 field_name: field_course_id
 entity_type: madrassa_registration

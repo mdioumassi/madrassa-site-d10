@@ -32,3 +32,10 @@ function madrassa_content_user_login($account) {
   // dd($account);
   
 }
+
+/**
+ * hook_views_data_alter()
+ */
+function madrassa_content_views_data_alter(array &$data) {
+ //dd($data);
+}

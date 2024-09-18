@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - madrassa_registration
+_core:
+  default_config_hash: Ha3OWQkh0f5hU8QJ236MliUxRbhSDXCojvKzyFMTrgs
 id: madrassa_registration.field_registration_status
 field_name: field_registration_status
 entity_type: madrassa_registration
