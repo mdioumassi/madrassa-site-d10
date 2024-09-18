@@ -1,0 +1,11 @@
+administer madrassa_level:
+  title: 'Administer madrassa niveaux'
+  restrict access: true
+view madrassa_level:
+  title: 'View madrassa niveaux'
+edit madrassa_level:
+  title: 'Edit madrassa niveaux'
+delete madrassa_level:
+  title: 'Delete madrassa niveaux'
+create madrassa_level:
+  title: 'Create madrassa niveaux'

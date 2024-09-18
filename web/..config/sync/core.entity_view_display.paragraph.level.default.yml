@@ -1,0 +1,72 @@
+uuid: 79e8c480-2fd8-4a6c-948a-40adb4d88c81
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.level.field_description
+    - field.field.paragraph.level.field_hours
+    - field.field.paragraph.level.field_name
+    - field.field.paragraph.level.field_registration_fees
+    - field.field.paragraph.level.field_subjects_level
+    - field.field.paragraph.level.field_tarif
+    - paragraphs.paragraphs_type.level
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.level.default
+targetEntityType: paragraph
+bundle: level
+mode: default
+content:
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_hours:
+    type: number_integer
+    label: visually_hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_name:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_registration_fees:
+    type: number_integer
+    label: visually_hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_subjects_level:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_tarif:
+    type: number_integer
+    label: visually_hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

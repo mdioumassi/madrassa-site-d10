@@ -1,0 +1,11 @@
+uuid: 4e65d5f7-b8ff-487a-850e-af0ba10fd893
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_enfants
+id: children.full
+label: full
+description: ''
+targetEntityType: children
+cache: true

@@ -1,25 +1,28 @@
-uuid: 31bf068b-6c48-4c9c-88f1-41ee4c3f0525
+uuid: baa58504-121c-4896-905a-e3e80bca09ac
 langcode: fr
 status: true
 dependencies:
   config:
-    - field.storage.node.field_birthday
-    - field.storage.node.field_frenchclass
-    - field.storage.node.field_gender
-    - field.storage.node.field_parent_id
-    - node.type.child
+    - field.storage.children.field_birthday
+    - field.storage.children.field_old
+    - field.storage.user.field_firstname
+    - field.storage.user.field_lastname
+    - user.role.administrator
+    - user.role.webmaster
   module:
     - datetime
-    - node
+    - madrassa_enfants
     - options
     - user
+_core:
+  default_config_hash: GUTMtVWR119GDQadQXqODmVr2Ao6Th0gdPD0kw2SYMw
 id: children
 label: Enfants
 module: views
 description: ''
 tag: ''
-base_table: node_field_data
-base_field: nid
+base_table: children
+base_field: id
 display:
   default:
     id: default
@@ -29,26 +32,108 @@ display:
     display_options:
       title: Enfants
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
+        gender:
+          id: gender
+          table: children
+          field: gender
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: title
+          entity_type: children
+          entity_field: gender
           plugin_id: field
-          label: Titre
+          label: Genre
           exclude: false
           alter:
             alter_text: false
+            text: ''
             make_link: false
+            path: ''
             absolute: false
-            word_boundary: false
-            ellipsis: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
             strip_tags: false
             trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        label:
+          id: label
+          table: children
+          field: label
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: children
+          entity_field: label
+          plugin_id: field
+          label: 'Nom & Prénom'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
@@ -76,13 +161,15 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_frenchclass:
-          id: field_frenchclass
-          table: node__field_frenchclass
-          field: field_frenchclass
+        frenchclass:
+          id: frenchclass
+          table: children
+          field: frenchclass
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: children
+          entity_field: frenchclass
           plugin_id: field
           label: 'Classe française'
           exclude: false
@@ -141,7 +228,7 @@ display:
           field_api_classes: false
         field_birthday:
           id: field_birthday
-          table: node__field_birthday
+          table: children__field_birthday
           field: field_birthday
           relationship: none
           group_type: group
@@ -150,8 +237,8 @@ display:
           label: 'Date de naissance'
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '{{ field_birthday|date("m-d-Y") }}'
             make_link: false
             path: ''
             absolute: false
@@ -189,10 +276,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: datetime_default
+          type: datetime_plain
           settings:
             timezone_override: ''
-            format_type: medium
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -203,15 +289,15 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_gender:
-          id: field_gender
-          table: node__field_gender
-          field: field_gender
+        field_old:
+          id: field_old
+          table: children__field_old
+          field: field_old
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: Genre
+          label: Age
           exclude: false
           alter:
             alter_text: false
@@ -253,8 +339,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: list_default
-          settings: {  }
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -265,19 +353,211 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_parent_id:
-          id: field_parent_id
-          table: node__field_parent_id
-          field: field_parent_id
-          relationship: none
+        field_lastname:
+          id: field_lastname
+          table: user__field_lastname
+          field: field_lastname
+          relationship: field_parent_id
           group_type: group
           admin_label: ''
           plugin_id: field
+          label: Nom
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_firstname:
+          id: field_firstname
+          table: user__field_firstname
+          field: field_firstname
+          relationship: field_parent_id
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Prénom
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        uid:
+          id: uid
+          table: users_field_data
+          field: uid
+          relationship: field_parent_id
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          entity_field: uid
+          plugin_id: field
+          label: 'Identifiant (ID) utilisateur'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
           label: Parent
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: '<a  href="/user/{{ uid }}">{{ field_firstname }} {{ field_lastname }}  </a>'
             make_link: false
             path: ''
             absolute: false
@@ -306,36 +586,23 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
+          hide_alter_empty: false
         operations:
           id: operations
-          table: node
+          table: children
           field: operations
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
+          entity_type: null
+          entity_field: null
           plugin_id: entity_operations
           label: "Liens d'actions"
           exclude: false
@@ -370,7 +637,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -409,52 +676,18 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
+            webmaster: webmaster
       cache:
         type: tag
         options: {  }
       empty: {  }
-      sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          order: DESC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
-          granularity: second
+      sorts: {  }
       arguments: {  }
-      filters:
-        status:
-          id: status
-          table: node_field_data
-          field: status
-          entity_type: node
-          entity_field: status
-          plugin_id: boolean
-          value: '1'
-          group: 1
-          expose:
-            operator: ''
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          value:
-            child: child
+      filters: {  }
       style:
         type: table
       row:
@@ -470,13 +703,13 @@ display:
       relationships:
         field_parent_id:
           id: field_parent_id
-          table: node__field_parent_id
+          table: children__field_parent_id
           field: field_parent_id
           relationship: none
           group_type: group
           admin_label: 'field_parent_id : Utilisateur'
           plugin_id: standard
-          required: true
+          required: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -486,20 +719,18 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
-        - 'config:field.storage.node.field_birthday'
-        - 'config:field.storage.node.field_frenchclass'
-        - 'config:field.storage.node.field_gender'
-        - 'config:field.storage.node.field_parent_id'
+        - 'config:field.storage.children.field_birthday'
+        - 'config:field.storage.children.field_old'
+        - 'config:field.storage.user.field_firstname'
+        - 'config:field.storage.user.field_lastname'
   page_1:
     id: page_1
-    display_title: 'Liste des enfants'
+    display_title: Page
     display_plugin: page
     position: 1
     display_options:
-      display_description: ''
       display_extenders: {  }
       path: admin/enfants
     cache_metadata:
@@ -508,10 +739,9 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url.query_args
-        - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
-        - 'config:field.storage.node.field_birthday'
-        - 'config:field.storage.node.field_frenchclass'
-        - 'config:field.storage.node.field_gender'
-        - 'config:field.storage.node.field_parent_id'
+        - 'config:field.storage.children.field_birthday'
+        - 'config:field.storage.children.field_old'
+        - 'config:field.storage.user.field_firstname'
+        - 'config:field.storage.user.field_lastname'

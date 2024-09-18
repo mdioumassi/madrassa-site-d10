@@ -1,0 +1,33 @@
+uuid: ee9b92c6-6690-44d8-88b0-1c0bdde7933f
+langcode: fr
+status: false
+dependencies:
+  config:
+    - system.menu.menu-parent
+  module:
+    - system
+    - user
+  theme:
+    - madrassa
+id: madrassa_menuparent
+theme: madrassa
+region: nav_additional
+weight: -4
+provider: null
+plugin: 'system_menu_block:menu-parent'
+settings:
+  id: 'system_menu_block:menu-parent'
+  label: 'Menu parent'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      parent_role: parent_role

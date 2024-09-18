@@ -1,0 +1,20 @@
+uuid: eba4fb73-bb53-441d-9cbd-3c5f8341e631
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_niveaux
+id: madrassa_level.field_tariff
+field_name: field_tariff
+entity_type: madrassa_level
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,92 @@
+uuid: 51f2ef90-5549-4d54-b9c7-a27820ae6597
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.children.children.field_birthday
+    - field.field.children.children.field_old
+    - field.field.children.children.field_parent_id
+    - field.field.children.children.field_photo
+  module:
+    - datetime
+    - madrassa_enfants
+    - media_library
+_core:
+  default_config_hash: T7dUmB131b9eSh7fF2JWZLmEzuQViVFOPbkKtpo0hJk
+id: children.children.default
+targetEntityType: children
+bundle: children
+mode: default
+content:
+  field_birthday:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_old:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_parent_id:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_photo:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  firstname:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  frenchclass:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  gender:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  lastname:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,10 @@
+entity.madrassa_registration.edit_form:
+  route_name: entity.madrassa_registration.edit_form
+  group: madrassa_registration
+  title: 'Edit'
+
+entity.madrassa_registration.delete_form:
+  route_name: entity.madrassa_registration.delete_form
+  group: madrassa_registration
+  title: 'Delete'
+  weight: 10

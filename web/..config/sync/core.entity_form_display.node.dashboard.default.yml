@@ -1,0 +1,54 @@
+uuid: bb1dafaf-f291-4100-8d6a-33de98c8b796
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.dashboard.field_items
+    - node.type.dashboard
+  module:
+    - paragraphs
+    - path
+id: node.dashboard.default
+targetEntityType: node
+bundle: dashboard
+mode: default
+content:
+  field_items:
+    type: entity_reference_paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraphe
+      title_plural: Paragraphs
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: items_dashboards
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  promote: true
+  sticky: true
+  uid: true

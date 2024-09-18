@@ -1,0 +1,39 @@
+uuid: 27327bd4-8ec7-477f-9c6c-b6ce301e4ed2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.items_dashboards.field_items
+    - field.field.paragraph.items_dashboards.field_label
+    - paragraphs.paragraphs_type.items_dashboards
+  module:
+    - entity_reference_revisions
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.items_dashboards.preview
+targetEntityType: paragraph
+bundle: items_dashboards
+mode: preview
+content:
+  field_items:
+    type: entity_reference_revisions_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_label:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

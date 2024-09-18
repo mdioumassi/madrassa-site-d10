@@ -1,0 +1,11 @@
+administer madrassa_course:
+  title: 'Administer courss'
+  restrict access: true
+view madrassa_course:
+  title: 'View cours'
+edit madrassa_course:
+  title: 'Edit cours'
+delete madrassa_course:
+  title: 'Delete cours'
+create madrassa_course:
+  title: 'Create cours'

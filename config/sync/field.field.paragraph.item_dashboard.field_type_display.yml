@@ -1,0 +1,21 @@
+uuid: 048f8614-a3d5-4753-a548-63be44b35910
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_type_display
+    - paragraphs.paragraphs_type.item_dashboard
+  module:
+    - options
+id: paragraph.item_dashboard.field_type_display
+field_name: field_type_display
+entity_type: paragraph
+bundle: item_dashboard
+label: 'Type affichage'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

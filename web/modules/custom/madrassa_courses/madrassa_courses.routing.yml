@@ -1,0 +1,7 @@
+entity.madrassa_course.settings:
+  path: 'admin/structure/madrassa-course'
+  defaults:
+    _form: '\Drupal\madrassa_courses\Form\CourseSettingsForm'
+    _title: 'Cours'
+  requirements:
+    _permission: 'administer madrassa_course'

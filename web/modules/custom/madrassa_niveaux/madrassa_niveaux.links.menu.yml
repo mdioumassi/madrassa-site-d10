@@ -1,0 +1,12 @@
+entity.madrassa_level.settings:
+  title: 'Configurer les niveaux'
+  description: 'Configure a Madrassa Niveaux entity type.'
+  route_name:  entity.madrassa_level.settings
+  parent: system.admin_structure
+  weight: -1
+
+entity.madrassa_level.collection:
+  title: 'Niveaux'
+  description: 'List of madrassa niveaux.'
+  route_name: entity.madrassa_level.collection
+  parent: system.admin_content

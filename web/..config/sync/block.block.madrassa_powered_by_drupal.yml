@@ -1,0 +1,22 @@
+uuid: a6d55532-4373-445d-9d5d-66af60e14593
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - madrassa
+_core:
+  default_config_hash: yhNzQ1RgS2NZWemI-GNUm7S45YMivp8L-EXFIcy9t58
+id: madrassa_powered_by_drupal
+theme: madrassa
+region: footer
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Propulsé par Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

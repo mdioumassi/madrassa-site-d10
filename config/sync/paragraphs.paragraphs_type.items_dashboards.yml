@@ -1,0 +1,15 @@
+uuid: 5ed47b9c-bb67-47e2-866a-b932fcd227e5
+langcode: fr
+status: true
+dependencies:
+  module:
+    - micon_paragraphs
+third_party_settings:
+  micon_paragraphs:
+    icon: fa-th-list
+id: items_dashboards
+label: Items
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

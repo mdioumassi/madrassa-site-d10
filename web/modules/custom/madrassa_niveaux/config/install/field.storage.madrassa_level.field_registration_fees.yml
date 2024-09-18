@@ -1,0 +1,20 @@
+uuid: b80d7beb-ba33-41e4-9803-086f5cc50c3b
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_niveaux
+id: madrassa_level.field_registration_fees
+field_name: field_registration_fees
+entity_type: madrassa_level
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

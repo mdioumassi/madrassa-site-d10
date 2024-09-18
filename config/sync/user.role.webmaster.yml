@@ -1,0 +1,110 @@
+uuid: 77afc549-08c5-4678-a7f0-ada3996014a4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - media.type.audio
+    - media.type.document
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
+    - node.type.article
+    - node.type.page
+  module:
+    - help
+    - madrassa_parent
+    - media
+    - node
+    - search
+    - shortcut
+    - system
+    - taxonomy
+    - toolbar
+    - tour
+id: webmaster
+label: Webmaster
+weight: 7
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access content'
+  - 'access content overview'
+  - 'access help pages'
+  - 'access media overview'
+  - 'access shortcuts'
+  - 'access taxonomy overview'
+  - 'access toolbar'
+  - 'access tour'
+  - 'administer nodes'
+  - 'administer parent'
+  - 'bypass node access'
+  - 'create article content'
+  - 'create audio media'
+  - 'create document media'
+  - 'create image media'
+  - 'create media'
+  - 'create page content'
+  - 'create parent'
+  - 'create remote_video media'
+  - 'create video media'
+  - 'delete any article content'
+  - 'delete any audio media'
+  - 'delete any audio media revisions'
+  - 'delete any document media'
+  - 'delete any document media revisions'
+  - 'delete any image media'
+  - 'delete any image media revisions'
+  - 'delete any media'
+  - 'delete any page content'
+  - 'delete any remote_video media'
+  - 'delete any remote_video media revisions'
+  - 'delete any video media'
+  - 'delete any video media revisions'
+  - 'delete article revisions'
+  - 'delete media'
+  - 'delete own article content'
+  - 'delete own audio media'
+  - 'delete own document media'
+  - 'delete own image media'
+  - 'delete own page content'
+  - 'delete own remote_video media'
+  - 'delete own video media'
+  - 'delete page revisions'
+  - 'delete parent'
+  - 'edit any article content'
+  - 'edit any document media'
+  - 'edit any image media'
+  - 'edit any page content'
+  - 'edit any remote_video media'
+  - 'edit any video media'
+  - 'edit own article content'
+  - 'edit own audio media'
+  - 'edit own document media'
+  - 'edit own image media'
+  - 'edit own page content'
+  - 'edit own remote_video media'
+  - 'edit own video media'
+  - 'edit parent'
+  - 'revert any audio media revisions'
+  - 'revert any document media revisions'
+  - 'revert any image media revisions'
+  - 'revert any remote_video media revisions'
+  - 'revert any video media revisions'
+  - 'revert article revisions'
+  - 'revert page revisions'
+  - 'search content'
+  - 'update any media'
+  - 'update media'
+  - 'use advanced search'
+  - 'view all media revisions'
+  - 'view any document media revisions'
+  - 'view any image media revisions'
+  - 'view any remote_video media revisions'
+  - 'view any video media revisions'
+  - 'view article revisions'
+  - 'view media'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view page revisions'
+  - 'view parent'
+  - 'view the administration theme'

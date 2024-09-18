@@ -1,4 +1,4 @@
-madrassa_webmaster.principal.admin:
+madrassa_webmaster.admin:
   path: 'admin/webmaster/dashboard'
   defaults:
     _controller: '\Drupal\system\Controller\SystemController::overview'
@@ -8,3 +8,11 @@ madrassa_webmaster.principal.admin:
     _role: administrator+webmaster
 
 
+madrassa_webmaster.dashboard:
+  path: 'admin/dashboard'
+  # defaults:
+  #   _controller: '\Drupal\system\Controller\SystemController::overview'
+  #   link_id: 'madrassa_webmaster.admin'
+  #   _title: 'Dashboard Administration webmaster'
+  requirements:
+    _role: administrator+webmaster

@@ -1,0 +1,74 @@
+uuid: 16626dc8-3b20-4c90-8108-b3332ca7a44a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.madrassa_level.madrassa_level.field_course_id
+    - field.field.madrassa_level.madrassa_level.field_hours
+    - field.field.madrassa_level.madrassa_level.field_registration_fees
+    - field.field.madrassa_level.madrassa_level.field_tariff
+  module:
+    - madrassa_niveaux
+    - text
+_core:
+  default_config_hash: jcwujDrUDWyU0UJltmCdQ-2AnQfg79OBs1c8jhtLHYc
+id: madrassa_level.madrassa_level.default
+targetEntityType: madrassa_level
+bundle: madrassa_level
+mode: default
+content:
+  description:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_course_id:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_hours:
+    type: number_integer
+    label: visually_hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_registration_fees:
+    type: number_integer
+    label: visually_hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_tariff:
+    type: number_integer
+    label: visually_hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  label:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  status: true
+  uid: true

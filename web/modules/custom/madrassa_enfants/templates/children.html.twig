@@ -13,12 +13,85 @@
  * @see template_preprocess_children()
  */
 #}
-<article{{ attributes }}>
-  {% if view_mode != 'full' %}
-    {{ title_prefix }}
-    {{ title_suffix }}
-  {% endif %}
-  {% if content %}
-    {{- content -}}
-  {% endif %}
+
+{{ attach_library('madrassa_enfants/children') }}
+
+{% if children.getGender() == 'Garçon' %}
+	{% set photo =  children.getPath() ~ '/images/children/garcon.jpeg' %}
+	{% set gender = 'Garçon' %}
+{% elseif children.getGender() == 'girl' %}
+	{% set photo = children.getPath() ~ '/images/children/fille.png' %}
+	{% set gender = 'Fille' %}
+{% endif %}
+
+{% set child = children.getRegistrationData() %}
+{% set parentId = children.getParentId() %}
+{% set fiche = children.getFiche() %}
+
+
+<article{{attributes}}>
+	<div class="mb-5">
+		<div class="w3-card-4" style="width:50%">
+			<header class="w3-container w3-indigo w3-padding">
+				<h1>{{ children.getFullName() }}</h1>
+			</header>
+			<div class="w3-container">
+				<div class="row">
+					<div class="col-3 children mt-3">
+						{% if children.getPhoto() %}
+							{{ content.field_photo }}
+						{% else %}
+							<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ content.title.value }}">
+						{% endif %}
+					</div>
+					<div class="col">
+						<table class="w3-table w3-bordered">
+							<tr>
+								<td>Genre:</td>
+								<td>{{ gender }}</td>
+							</tr>
+							<tr>
+								<td>Date de naissance:</td>
+								<td>{{ children.getBirthday() }}</td>
+							</tr>
+							<tr>
+								<td>Age:</td>
+								<td>
+									<span>{{ children.getOldOfBirthday() }}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>Classe française:</td>
+								<td>{{ children.getFrenchClass() }}</td>
+							</tr>
+							<tr>
+								<td>Parent:</td>
+								{# <td><a href="/children/{{content.field_parent_id.value.0['target_id']}}"><strong>{{ children.getParent() }}</string></a></td> #}
+								<td>{{content.field_parent_id}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+			<footer class="w3-container w3-border w3-padding">
+				{% if fiche.registration is not empty  %}
+					<a class="w3-btn w3-disabled float-right" href="{{ path('children.register.step2.course', {'parentId': parentId, 'enfantId': fiche.childId} )}}">Inscrire</a>
+					<a href="" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#myModal{{fiche.childId}}">Fiche inscription</a>
+				{% else %}
+					<a class="btn btn-success" href="{{ path('children.register.step2.course', {'parentId': parentId, 'enfantId': fiche.childId} )}}">Inscrire</a>
+					<a href="" class="w3-btn w3-disabled float-end" data-bs-toggle="modal" data-bs-target="#myModal{{fiche.childId}}">Fiche inscription</a>
+				{% endif %}
+			</footer>
+		</div>
+	</div>
 </article>
+{% include '@madrassa/modals/modal_registration.html.twig' with {
+			'title': 'Fiche inscription',
+			'size': 'modal-xl',
+			'child': fiche,
+			'modal_id': 'myModal' ~ fiche.childId,
+			'header_title_modal': 'Modal Header',
+		}
+%}

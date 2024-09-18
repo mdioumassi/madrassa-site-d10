@@ -1,0 +1,22 @@
+uuid: 40e9747d-4b5c-49ee-9e82-6e3d49735e09
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - madrassa
+_core:
+  default_config_hash: oTnxuyW5zB6YRKi9CWBYQeZwT68ZE6k6pCli3HrpSN0
+id: madrassa_content
+theme: madrassa
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Contenu de la page principale'
+  label_display: '0'
+  provider: system
+visibility: {  }

@@ -1,0 +1,61 @@
+{#
+/**
+ * @file
+ * Theme override for a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @see template_preprocess_views_exposed_form()
+ */
+#}
+<div class="w3-row w3-border mb-5">
+		<div class="w3-col m2 tablink w3-bottombar w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">1</span><br/>
+			Ajouter un parent
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">2</span><br/>
+			Ajouter un enfant
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar w3-border-indigo  w3-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">3</span><br/>
+			Choix d'une classe</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">4</span><br/>
+			Frais & Scolarité
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">5</span><br/>
+			Paiement
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">6</span><br/>
+			Recapitulatif
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">6</span><br/>
+			Fiche
+		</div>
+	</div>
+{% if q is not empty %}
+	{#
+			    This ensures that, if clean URLs are off, the 'q' is added first,
+			    as a hidden form element, so that it shows up first in the POST URL.
+			  #}
+	{{ q }}
+{% endif %}
+{# <div class="form--inline clearfix">
+  {{ form.field_course_intended_value }}
+</div> #}
+<div class="row w3-light-grey">
+	<div class="col ">
+		<span>{{ form.field_course_intended_value }}</span>
+	</div>
+	<div class="col">
+		<span>{{ form.field_type_of_course_value }}</span>
+	</div>
+</div>
+<div class="form-actions ">
+	{{ form.actions }}
+</div>

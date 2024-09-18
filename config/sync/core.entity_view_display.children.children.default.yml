@@ -1,0 +1,93 @@
+uuid: 854505c9-c20c-4a68-a71a-8c1073d6a89f
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.children.children.field_birthday
+    - field.field.children.children.field_old
+    - field.field.children.children.field_parent_id
+    - field.field.children.children.field_photo
+    - image.style.medium
+  module:
+    - datetime
+    - madrassa_enfants
+    - media
+    - options
+_core:
+  default_config_hash: RTWnz7qi2nKfqvVcskuxUbm-YzK0gjic7CAuBwwsUGw
+id: children.children.default
+targetEntityType: children
+bundle: children
+mode: default
+content:
+  field_birthday:
+    type: datetime_plain
+    label: visually_hidden
+    settings:
+      timezone_override: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_parent_id:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_photo:
+    type: media_thumbnail
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  firstname:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  frenchclass:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  gender:
+    type: list_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  label:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  lastname:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  created: true
+  field_old: true
+  status: true
+  uid: true

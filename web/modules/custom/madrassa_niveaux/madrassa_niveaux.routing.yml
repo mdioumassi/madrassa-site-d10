@@ -1,0 +1,7 @@
+entity.madrassa_level.settings:
+  path: 'admin/structure/madrassa-level'
+  defaults:
+    _form: '\Drupal\madrassa_niveaux\Form\LevelSettingsForm'
+    _title: 'Madrassa Niveaux'
+  requirements:
+    _permission: 'administer madrassa_level'

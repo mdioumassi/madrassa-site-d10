@@ -18,7 +18,7 @@ final class ChildrenListBuilder extends EntityListBuilder {
   public function buildHeader(): array {
     $header['id'] = $this->t('ID');
     $header['gender'] = $this->t('Genre');
-    $header['fullname'] = $this->t('Nom & Prénom');
+    $header['label'] = $this->t('Nom & Prénom');
     $header['birthdate'] = $this->t('Date de naissance');
     $header['old'] = $this->t('Age');
     $header['frenchclass'] = $this->t('Classe de français');
@@ -36,11 +36,11 @@ final class ChildrenListBuilder extends EntityListBuilder {
     /** @var \Drupal\madrassa_enfants\Entity\Children $entity */
     $row['id'] = $entity->id();
     $row['gender'] = $entity->get('gender')->value ? $this->t('Garçon') : $this->t('Fille');
-    $row['fullname'] = $entity->getLink();
+    $row['label'] = $entity->toLink();//$entity->getLinkFullName();
     $row['birthdate'] = $entity->getBirthday();
     $row['old'] = $entity->getOldOfBirthday();
-    $row['frechclass'] = $entity->get('frenchclass')->value;
-    $row['parent'] = $entity->getParent();
+    $row['frenchclass'] = $entity->get('frenchclass')->value;
+    $row['parent'] = $entity->getParentLink();
     $row['status'] = $entity->get('status')->value ? $this->t('Enabled') : $this->t('Disabled');
     $username_options = [
       'label' => 'hidden',

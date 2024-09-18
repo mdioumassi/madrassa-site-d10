@@ -1,0 +1,9 @@
+uuid: 80af4033-1651-4cca-863b-fa2784dd2faa
+langcode: fr
+status: true
+dependencies: {  }
+name: Public
+vid: public
+description: 'Cours destiné au public(enfant et adulte)'
+weight: 0
+new_revision: false

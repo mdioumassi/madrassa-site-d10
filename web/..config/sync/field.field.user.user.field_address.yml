@@ -1,0 +1,20 @@
+uuid: f3acc088-fd0d-43b7-9424-f859ac7183b1
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_address
+  module:
+    - user
+id: user.user.field_address
+field_name: field_address
+entity_type: user
+bundle: user
+label: Adresse
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

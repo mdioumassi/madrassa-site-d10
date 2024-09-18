@@ -1,0 +1,5 @@
+madrassa_registration.add_form:
+  title: 'Add inscription'
+  route_name: entity.madrassa_registration.add_form
+  appears_on:
+    - entity.madrassa_registration.collection

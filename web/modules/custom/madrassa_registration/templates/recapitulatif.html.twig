@@ -1,0 +1,219 @@
+{{ attach_library('madrassa_registration/registration') }}
+
+{% if child.getGender() == 'Garçon' %}
+	{% set photo =  child.getPath() ~ '/images/children/garcon.jpeg' %}
+	{% set gender = 'Garçon' %}
+{% elseif child.getGender() == 'Fille' %}
+	{% set photo = child.getPath() ~ '/images/children/fille.png' %}
+	{% set gender = 'Fille' %}
+{% endif %}
+
+<div class="container">
+	<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="">Dashboard</a>
+			</li>
+			<li class="breadcrumb-item">
+				<a href="">Inscriptions</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">Recapitulatif</li>
+		</ol>
+	</nav>
+	<div class="w3-row w3-border">
+		<div class="w3-col m2 tablink w3-bottombar w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">1</span><br/>
+			Ajouter un parent
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">2</span><br/>
+			Ajouter un enfant
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">3</span><br/>
+			Choix d'une classe</div>
+		<div class="w3-col m2 tablink w3-bottombar w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">4</span><br/>
+			Frais & Scolarité
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">5</span><br/>
+			Paiement
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar w3-border-indigo  w3-green w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">6</span><br/>
+			Recapitulatif
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">6</span><br/>
+			Fiche
+		</div>
+	</div>
+
+	<div class="row">
+		<form action="{{path('children.register.step5.recapitulatif.store')}}" method="post">
+			<div
+				class="col-12">
+				{# Bloc Enfant  #}
+				<div class="w3-card-2 centered-element mb-5 mt-5" style="width:80%;">
+					<header class="w3-container w3-green w3-padding">
+						<h3>{{ child.getFullName()}}</h3>
+					</header>
+					<div class="w3-container w3-padding">
+						<div class="row">
+							<div class="col-2 mt-3">
+								{% if child.getPhoto() %}
+									{{ content.field_photo }}
+								{% else %}
+									<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ content.title.value }}">
+								{% endif %}
+							</div>
+							<div class="col">
+								<table class="w3-table w3-bordered">
+									<tr>
+										<td>
+											<strong>Genre:</strong>
+										</td>
+										<td>{{ child.getGender() }}</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Date de naissance:</strong>
+										</td>
+										<td>{{ child.getBirthday() }}</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Age:</strong>
+										</td>
+										<td>{{ child.getOldOfBirthday() }}
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Classe Française:</strong>
+										</td>
+										<td>{{ child.getFrenchClass() }}</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				{# Bloc Classe #}
+				<div class="w3-card-2 centered-element mb-5" style="width:80%;">
+					<header class="w3-container w3-indigo w3-padding">
+						<h3>{{ level.label.value }}
+							-
+							{{ course.label.value }}</h3>
+					</header>
+					<div class="w3-container w3-padding">
+						<div class="row">
+							<div class="col">
+								<table class="w3-table w3-bordered">
+									<tr>
+										<td class="w3-light-grey">
+											<strong>Libellé</strong>
+										</td>
+										<td class="w3-light-grey">
+											<strong>Montant</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Frais d'inscription:</strong>
+										</td>
+										<td>{{ level.getFraisInscription() }}</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Frais de scolarité:</strong>
+										</td>
+										<td>{{ level.getTariff() }}</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Montant total:</strong>
+										</td>
+										<td>
+											<span class="display-5">{{ level.getTotalTariffAndFees() }}
+												€</span>/an
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Date d'inscription:</strong>
+										</td>
+										<td>{{ registration_date|date('d/m/Y') }}</td>
+									</tr>
+								</table>
+							</div>
+							{# <div class="col-md-4">
+																							                                <strong class="mb-3">Professeur:</strong> {{ $level->teacher->getFullNameAttribute() }}
+																							                                <ul class="w3-ul w3-card">
+																							                                    <li><strong>Email:</strong> {{ $level->teacher->email }}</li>
+																							                                    <li> <strong>Téléphone:</strong> {{ $level->teacher->phone }}</li>
+																							                                    <li> <strong>Fonction:</strong> {{ $level->teacher->function }}</li>
+																							                                </ul>
+																							                            </div> #}
+						</div>
+					</div>
+				</div>
+				{# Bloc Paiement #}
+				<div class="w3-card-2 centered-element mb-5" style="width:80%;">
+					<header class="w3-container w3-blue-grey w3-padding">
+						<h3>Moyen de paiement</h3>
+					</header>
+					<div class="w3-container w3-padding">
+						<div class="row">
+							<div class="col">
+								<table class="w3-table w3-bordered">
+									<tr>
+										<td class="w3-light-grey">
+											<strong>Libellé</strong>
+										</td>
+										<td class="w3-light-grey">
+											<strong>Montant</strong>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Montant total:</strong>
+										</td>
+										<td>
+											<span class="display-5">{{ payment_amount }}€</span>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Moyen de paiement:</strong>
+										</td>
+										<td>{{ payment_method }}</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Date de paiement:</strong>
+										</td>
+										<td>{{payment_date }}</td>
+									</tr>
+									<tr>
+										<td>
+											<strong>Paiement status:</strong>
+										</td>
+										<td>
+											<span class="badge w3-green">{{ payment_status }}</span>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="mt-3 mb-5 w3-center">
+				<button class="btn btn-primary" type="submit">Suivant &raquo;</button>
+			</div>
+		</form>
+	</div>
+</div>

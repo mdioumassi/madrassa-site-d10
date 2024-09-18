@@ -1,0 +1,20 @@
+uuid: 6283aa57-1c19-4ab4-ad2b-e2564b337cb3
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - madrassa
+_core:
+  default_config_hash: nnnJ-wXc9Bu6jJU5pDrNGVIzJh_IgEgO2Jx9A0Ameq0
+id: madrassa_local_actions
+theme: madrassa
+region: content
+weight: -2
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: "Actions d'administration principales"
+  label_display: '0'
+  provider: core
+visibility: {  }

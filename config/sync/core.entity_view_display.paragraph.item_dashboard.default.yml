@@ -1,0 +1,55 @@
+uuid: 1a9b88e7-123f-47c7-aed1-46ca33ba92d4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.item_dashboard.field_content_course
+    - field.field.paragraph.item_dashboard.field_icon
+    - field.field.paragraph.item_dashboard.field_link
+    - field.field.paragraph.item_dashboard.field_type_display
+    - paragraphs.paragraphs_type.item_dashboard
+  module:
+    - fontawesome
+    - link
+    - options
+id: paragraph.item_dashboard.default
+targetEntityType: paragraph
+bundle: item_dashboard
+mode: default
+content:
+  field_content_course:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_icon:
+    type: fontawesome_icon_formatter
+    label: visually_hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link_separate
+    label: visually_hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: _blank
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_type_display:
+    type: list_key
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

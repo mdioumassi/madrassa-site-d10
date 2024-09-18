@@ -1,0 +1,25 @@
+uuid: 3209eb54-67f2-42d4-aef9-1bb1ec010133
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.subjects.field_subject_name
+    - paragraphs.paragraphs_type.subjects
+  module:
+    - text
+id: paragraph.subjects.default
+targetEntityType: paragraph
+bundle: subjects
+mode: default
+content:
+  field_subject_name:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

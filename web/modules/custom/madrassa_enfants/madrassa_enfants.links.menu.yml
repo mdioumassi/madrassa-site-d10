@@ -1,8 +1,9 @@
 entity.children.settings:
-  title: 'Enfant'
+  title: 'Configurer les enfants'
   description: 'Configure an Enfant entity type.'
   route_name:  entity.children.settings
   parent: system.admin_structure
+  weight: -1
 
 entity.children.collection:
   title: 'Enfants'

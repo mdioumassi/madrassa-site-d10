@@ -1,0 +1,19 @@
+uuid: 0d15a2ad-3ec1-44ae-99eb-f7ae780d6f6d
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_courses
+    - text
+id: madrassa_course.field_description
+field_name: field_description
+entity_type: madrassa_course
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

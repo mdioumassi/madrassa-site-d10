@@ -1,0 +1,28 @@
+uuid: 555fac9f-240f-4979-a91f-fa3e0e34857e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dashboard.field_items
+    - node.type.dashboard
+  module:
+    - entity_reference_revisions
+    - user
+id: node.dashboard.teaser
+targetEntityType: node
+bundle: dashboard
+mode: teaser
+content:
+  field_items:
+    type: entity_reference_revisions_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true
+  links: true

@@ -1,0 +1,52 @@
+.field--name-user-picture img {
+    width:  174px;
+    border-radius: 100%;
+    height: 11rem;
+}
+
+.picture-default-user {
+    height: 11rem;
+}
+
+.picture-child {
+    border: 1px solid gray;
+    width: 90%;
+    /* height: 7rem;
+    width: 11rem; */
+}
+
+.picture-child-grid {
+    height: 9rem;
+    width: 11rem;
+}
+
+.row{
+    overflow: hidden; 
+}
+
+.paragraph--type--course-levels [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+.centered-element{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.withSteps {
+width: 11% !important;
+}
+
+.photo-child img {
+border-radius: 50%;
+height: 12rem;
+width: 12rem;
+}
+
+.picture-parent img {
+    border-radius: 50%;
+    height: 12rem;
+    width: 12rem;
+}

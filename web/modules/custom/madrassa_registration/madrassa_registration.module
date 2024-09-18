@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Madrassa Inscription module.
+ */
+function madrassa_registration_theme() {
+    return [
+        'schooling' => [
+            'path' => 'modules/custom/madrassa_registration/templates',
+            'template' => 'schooling',
+            'variables' => [
+                'child' => NULL,
+                'parent' => NULL,
+                'course' => NULL,
+                'level' => NULL
+            ],
+        ],
+        'payment' => [
+            'path' => 'modules/custom/madrassa_registration/templates',
+            'template' => 'payment',
+            'variables' => [
+                'child' => NULL,
+                'parent' => NULL,
+                'course' => NULL,
+                'level' => NULL,
+                'payment_amount' => NULL,
+                'date_now' => NULL
+            ],
+        ],
+        'recapitulatif' => [
+            'path' => 'modules/custom/madrassa_registration/templates',
+            'template' => 'recapitulatif',
+            'variables' => [
+                'child' => NULL,
+                'parent' => NULL,
+                'course' => NULL,
+                'level' => NULL,
+                'payment_amount' => NULL,
+                'payment_method' => NULL,
+                'payment_date' => NULL,
+                'payment_status' => NULL,
+                'payment_note' => NULL,
+                'registration_date' => NULL,
+                'registration_status' => NULL
+            ],
+        ],
+        'fiche' => [
+            'path' => 'modules/custom/madrassa_registration/templates',
+            'template' => 'fiche',
+            'variables' => [
+                'parent_id' => NULL,
+                'child' => NULL,
+                'parent' => NULL,
+                'course' => NULL,
+                'level' => NULL,
+                'payment_amount' => NULL,
+                'payment_method' => NULL,
+                'payment_date' => NULL,
+                'payment_status' => NULL,
+                'payment_note' => NULL,
+                'registration_date' => NULL,
+                'registration_status' => NULL
+            ],
+        ],
+    ];
+}
+
+
+/**
+ * Prepares variables for inscription templates.
+ *
+ * Default template: madrassa-registration.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the inscription information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_madrassa_registration(array &$variables): void {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+

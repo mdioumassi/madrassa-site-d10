@@ -1,0 +1,20 @@
+uuid: 244b0fd1-d99b-4872-aa2f-270206c1f624
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_niveaux
+id: madrassa_level.field_hours
+field_name: field_hours
+entity_type: madrassa_level
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

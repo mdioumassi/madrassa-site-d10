@@ -1,0 +1,22 @@
+uuid: e3609473-8428-48e2-b54d-03e427f8de7a
+langcode: fr
+status: true
+dependencies:
+  theme:
+    - madrassa
+_core:
+  default_config_hash: 9Qlh7hCN1vO6MTuCljFlRKKrxsNRLl08x4MQt7gsK5w
+id: madrassa_local_tasks
+theme: madrassa
+region: content
+weight: -4
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Onglets
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

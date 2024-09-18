@@ -1,0 +1,22 @@
+uuid: 473370a5-7b31-48cb-90f4-17d57aecaad0
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_enfants
+    - media
+_core:
+  default_config_hash: ufJ2QoXskoGtoeE2drChoIFdq7ggDCE58NyJeef_CVk
+id: children.field_photo
+field_name: field_photo
+entity_type: children
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,5 @@
+name: 'Madrassa content'
+type: module
+description: 'Gestion du content'
+package: Madrassa
+core_version_requirement: ^10 || ^11

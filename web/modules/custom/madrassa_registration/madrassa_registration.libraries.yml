@@ -1,0 +1,10 @@
+# Custom library for general purposes.
+registration:
+  js:
+    js/registration.js: {}
+  css:
+    component:
+      css/registration.css: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery 

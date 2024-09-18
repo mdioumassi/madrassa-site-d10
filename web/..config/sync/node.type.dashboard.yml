@@ -1,0 +1,17 @@
+uuid: be300f5e-967e-44fb-a8b8-2db7b152894d
+langcode: fr
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Dashboard
+type: dashboard
+description: null
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: false

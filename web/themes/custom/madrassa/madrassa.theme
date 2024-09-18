@@ -4,3 +4,63 @@
  * @file
  * madrassa theme file.
  */
+
+use Drupal\taxonomy\Entity\Term;
+
+ /**
+ * Implements hook_theme_suggestions_user_alter().
+ */
+function madrassa_theme_suggestions_user_alter(array &$suggestions, array $variables) {
+    foreach ($variables['elements']['#user']->getRoles() as $role) {
+      $suggestions[] = 'user__' . $role;
+    }
+}
+
+function madrassa_preprocess_user(&$variables) {
+  $user = $variables['user'];
+
+  if (in_array('parent_role', $user->getRoles())) {
+    $user_id = $user->id();
+    $children = \Drupal::entityTypeManager()
+      ->getStorage('children')
+      ->loadByProperties(['field_parent_id' => $user_id]);
+    $variables['children'] = $children;
+  }
+
+  if (!$user->user_picture->isEmpty()) {
+    $variables['uri_user_picture'] = $user->user_picture->entity->getFileUri();
+  }    
+}
+
+function madrassa_preprocess_field(&$variables) {
+  $element = $variables['element'];
+  $field_name = $element['#field_name'];
+  $bundle = $element['#bundle'];
+  $view_mode = $element['#view_mode'];
+
+  if ($field_name == 'field_course_intended_for') {
+    // $variables['uri_user_picture'] = $element['#items']->first()->entity->getFileUri();
+    $variables['label-course'] = Term::load($element['#items']->first()->target_id)->getName();
+  }
+}
+
+function madrassa_preprocess_views_view_unformatted__children_of_parent(&$variables) {
+  $view = $variables['view'];
+  $rows = $variables['rows'];
+  $variables['user'] = $view->getUser();
+  // if ($view->id() == 'children_of_parent') {
+
+  //   foreach ($rows as $key => $row) {
+  //     $variables['rows'][$key]['#row'] = $row['content']['#row'];
+  //   }
+  //   // $variables['rows'] = array_values($variables['rows']);
+  //   // kint($variables);
+  //  // $variables['user'] = $view->getUser();
+  // }
+}
+
+// function madrassa_preprocess_user(&$variables) {
+//   $role = $variables['elements']['#role'];
+//   $variables['role_name'] = $role->label();
+//   dd($role);
+// }

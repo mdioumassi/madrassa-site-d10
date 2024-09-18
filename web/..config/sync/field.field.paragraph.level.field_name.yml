@@ -1,0 +1,19 @@
+uuid: 3d4361c4-4f69-43cd-a4dd-ac7344374819
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_name
+    - paragraphs.paragraphs_type.level
+id: paragraph.level.field_name
+field_name: field_name
+entity_type: paragraph
+bundle: level
+label: Nom
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

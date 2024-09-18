@@ -1,0 +1,22 @@
+entity.madrassa_course.settings:
+  title: 'Settings'
+  route_name: entity.madrassa_course.settings
+  base_route: entity.madrassa_course.settings
+entity.madrassa_course.view:
+  title: 'View'
+  route_name: entity.madrassa_course.canonical
+  base_route: entity.madrassa_course.canonical
+entity.madrassa_course.edit_form:
+  title: 'Edit'
+  route_name: entity.madrassa_course.edit_form
+  base_route: entity.madrassa_course.canonical
+entity.madrassa_course.delete_form:
+  title: 'Delete'
+  route_name: entity.madrassa_course.delete_form
+  base_route: entity.madrassa_course.canonical
+  weight: 10
+entity.madrassa_course.collection:
+  title: 'Cours'
+  route_name: entity.madrassa_course.collection
+  base_route: system.admin_content
+  weight: 10

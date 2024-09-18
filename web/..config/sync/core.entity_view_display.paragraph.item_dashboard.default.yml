@@ -1,0 +1,37 @@
+uuid: 1a9b88e7-123f-47c7-aed1-46ca33ba92d4
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.item_dashboard.field_icon
+    - field.field.paragraph.item_dashboard.field_link
+    - paragraphs.paragraphs_type.item_dashboard
+  module:
+    - fontawesome
+    - link
+id: paragraph.item_dashboard.default
+targetEntityType: paragraph
+bundle: item_dashboard
+mode: default
+content:
+  field_icon:
+    type: fontawesome_icon_formatter
+    label: visually_hidden
+    settings:
+      layers: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: visually_hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,5 @@
+madrassa_level.add_form:
+  title: 'Ajouter un niveau'
+  route_name: entity.madrassa_level.add_form
+  appears_on:
+    - entity.madrassa_level.collection

@@ -1,0 +1,27 @@
+uuid: e519ed8e-8804-488f-839d-405b7cd0e157
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_courses
+    - options
+id: madrassa_course.field_course_intended
+field_name: field_course_intended
+entity_type: madrassa_course
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: adult
+      label: Adulte
+    -
+      value: child
+      label: Enfant
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

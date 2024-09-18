@@ -1,0 +1,20 @@
+uuid: bf4860e8-fe67-4505-9dbd-248337dc8958
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_courses
+    - madrassa_niveaux
+id: madrassa_level.field_course_id
+field_name: field_course_id
+entity_type: madrassa_level
+type: entity_reference
+settings:
+  target_type: madrassa_course
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

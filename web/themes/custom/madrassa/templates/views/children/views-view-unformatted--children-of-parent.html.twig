@@ -1,0 +1,91 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+
+{% if title %}
+	<h3>{{ title }}</h3>
+{% endif %}
+
+<div class="row">
+
+	{% for row in rows %}
+		{% set child = row.content['#row']._entity %}
+		{% if child.gender.value == 'boy' %}
+			{% set photo =  base_path ~ directory ~ '/images/children/garcon.jpeg' %}
+			{% set gender = 'Garçon' %}
+		{% elseif child.gender.value == 'girl' %}
+			{% set photo = base_path ~ directory ~ '/images/children/fille.png' %}
+			{% set gender = 'Fille' %}
+		{% endif %}
+
+		<div class="col-4 mb-4">
+			<div class="w3-card-4">
+				<header class="w3-container w3-blue">
+					<h2>
+						{{ child.firstname.value }} {{ child.lastname.value }}
+					</h2>
+				</header>
+				<div class="w3-container">
+					<div class="row mt-4">
+						<div class="col-4">
+							{% if child.field_photo.value.0['target_id'] is not empty %}
+								{{ drupal_field('field_photo', 'children', child.field_photo.value.0['target_id']) }}
+							{% else %}
+								<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ node.title.value }}">
+							{% endif %}
+						</div>
+						<div class="col">
+							<table class="w3-table w3-bordered">
+								<tr>
+									<td>Genre:</td>
+									<td>{{ gender }}</td>
+								</tr>
+								<tr>
+									<td>Date de naissance:</td>
+									<td>{{ child.field_birthday.value }}</td>
+								</tr>
+								<tr>
+									<td>Age:</td>
+									<td>{{ child.field_old.value~' ans' }}</td>
+								</tr>
+								<tr>
+									<td>Classe Française:</td>
+									<td>{{ child.frenchclass.value }}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<footer class="w3-container w3-border w3-padding">
+					<a class="btn btn-success" href="{{ path('children.register.step2.course', {'enfantId': child.id.value} )}}">Inscrire</a>
+					<a href="" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#myModal">Fiche inscription</a>
+				</footer>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+  {% include '@madrassa/shared/modal.html.twig' with {
+    'modal_content': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit,quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
+
+	quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
+	quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.',
+    'modal_id': 'myModal',
+    'header_title_modal': 'Modal Header',
+    'footer_modal': '<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>'
+  } %}

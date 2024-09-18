@@ -1,0 +1,23 @@
+uuid: 3dabf0cb-e48a-470e-bf3f-38ff2b17b9ce
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tarif
+    - paragraphs.paragraphs_type.level
+id: paragraph.level.field_tarif
+field_name: field_tarif
+entity_type: paragraph
+bundle: level
+label: Tarif
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ' €/an'
+field_type: integer

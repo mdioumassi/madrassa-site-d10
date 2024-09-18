@@ -2,3 +2,11 @@ global-styling:
   css:
     theme:
       css/style.css: {}
+      css/w3.css: {}
+      css/custom.css: {}
+
+modal:
+  js:
+    js/modal.js: {}
+  dependencies:
+    - core/jquery

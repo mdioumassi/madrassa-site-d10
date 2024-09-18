@@ -1,0 +1,11 @@
+uuid: 3c20b0e5-783b-43cc-acb9-e720f8e13d3b
+langcode: fr
+status: true
+dependencies:
+  config:
+    - node.type.dashboard
+id: node.dashboard
+target_entity_type_id: node
+target_bundle: dashboard
+default_langcode: site_default
+language_alterable: false

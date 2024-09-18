@@ -1,0 +1,22 @@
+uuid: da467df3-000a-4ad7-baa7-9b0546ca2374
+langcode: fr
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - madrassa
+_core:
+  default_config_hash: VyC7d3ToggXy1czEBYilwGLlXvQ9lSVLZe9p_o-zyOg
+id: madrassa_breadcrumbs
+theme: madrassa
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: "Fils d'ariane"
+  label_display: '0'
+  provider: system
+visibility: {  }

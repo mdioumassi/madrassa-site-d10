@@ -1,0 +1,23 @@
+uuid: 4828eae9-3eb9-47c2-99e2-7e1debf934e6
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.children.field_birthday
+  module:
+    - datetime
+    - madrassa_enfants
+_core:
+  default_config_hash: 8c6rWHjcA5-QXbHjYiADRinU3Lk5jEEtAc2v2MX42Ww
+id: children.children.field_birthday
+field_name: field_birthday
+entity_type: children
+bundle: children
+label: 'Date de naissance'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

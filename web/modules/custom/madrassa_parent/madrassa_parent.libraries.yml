@@ -1,0 +1,10 @@
+# Custom library for general purposes.
+parent:
+  js:
+    js/parent.js: {}
+  css:
+    component:
+      css/parent.css: {}
+  dependencies:
+    - core/drupalSettings
+    - core/jquery

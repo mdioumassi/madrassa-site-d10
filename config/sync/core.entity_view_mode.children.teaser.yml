@@ -1,0 +1,13 @@
+uuid: fdb480ed-2e5e-4ab4-8f59-64e9e69fd596
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_enfants
+_core:
+  default_config_hash: D0fjfcVoR0KDMl2EzeFPmH-LU6CRb4fq4YkDLaP31Tg
+id: children.teaser
+label: teaser
+description: ''
+targetEntityType: children
+cache: true

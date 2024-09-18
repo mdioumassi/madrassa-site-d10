@@ -1,0 +1,27 @@
+uuid: 6eec9465-f540-4a07-91e5-b69342b0740e
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_registration.field_level_id
+  module:
+    - madrassa_registration
+id: madrassa_registration.madrassa_registration.field_level_id
+field_name: field_level_id
+entity_type: madrassa_registration
+bundle: madrassa_registration
+label: Niveau
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:madrassa_level'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

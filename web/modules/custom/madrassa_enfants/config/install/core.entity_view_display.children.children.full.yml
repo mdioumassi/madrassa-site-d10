@@ -1,0 +1,89 @@
+uuid: 1a85ffc7-5a09-49be-a187-d7b8be8c1238
+langcode: fr
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.children.full
+    - field.field.children.children.field_birthday
+    - field.field.children.children.field_parent_id
+    - field.field.children.children.field_photo
+    - image.style.medium
+  module:
+    - datetime
+    - layout_builder
+    - madrassa_enfants
+    - media
+    - options
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: W-Z3EYNcs238eqhJEiHu2jM3ailNk8WdaBF5DxGXDlc
+id: children.children.full
+targetEntityType: children
+bundle: children
+mode: full
+content:
+  field_birthday:
+    type: datetime_plain
+    label: visually_hidden
+    settings:
+      timezone_override: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_parent_id:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_photo:
+    type: media_thumbnail
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  firstname:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  frenchclass:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  gender:
+    type: list_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  lastname:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

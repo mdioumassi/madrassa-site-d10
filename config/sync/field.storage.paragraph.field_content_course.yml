@@ -1,0 +1,20 @@
+uuid: 76170b69-cf96-4f5f-b4d0-a8f8e90cfc14
+langcode: fr
+status: true
+dependencies:
+  module:
+    - madrassa_courses
+    - paragraphs
+id: paragraph.field_content_course
+field_name: field_content_course
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: madrassa_course
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

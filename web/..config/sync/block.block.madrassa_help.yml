@@ -1,0 +1,22 @@
+uuid: 330011f2-1263-435f-a6e3-5cf353616a87
+langcode: fr
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - madrassa
+_core:
+  default_config_hash: 0_3h_Y2QUwvCQ8ULYvfgt6WA0yNZiWLI8o2_m2sXC3w
+id: madrassa_help
+theme: madrassa
+region: content
+weight: -3
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Aide
+  label_display: '0'
+  provider: help
+visibility: {  }

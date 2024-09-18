@@ -1,0 +1,5 @@
+name: 'madrassa_cours'
+type: module
+description: 'Gestion de cours de la plateform'
+package: Madrassa
+core_version_requirement: ^10 || ^11

@@ -29,4 +29,9 @@ madrassa_parent.child.store:
   requirements:
     _permission: 'access content'
 
-
+madrassa_parent.list.children:
+  path: '/parent/{parentId}/children'
+  defaults:
+    _controller: '\Drupal\madrassa_parent\Controller\UserController::listChildren'
+  requirements:
+    _role: administrator+parent_role+webmaster

@@ -1,0 +1,5 @@
+name: 'Madrassa Inscription'
+type: module
+description: 'Etapes d&#039;inscriptions, enfants et adultes'
+package: Madrassa
+core_version_requirement: ^10 || ^11

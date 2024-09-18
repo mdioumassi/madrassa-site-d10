@@ -4,20 +4,63 @@ declare(strict_types=1);
 
 namespace Drupal\madrassa_parent\Entity;
 
-use Drupal\Core\Entity\ContentEntityBase;
-use Drupal\Core\Entity\EntityChangedTrait;
-use Drupal\Core\Entity\EntityStorageInterface;
-use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\Core\Field\BaseFieldDefinition;
-use Drupal\madrassa_parent\MadrassaParentInterface;
 use Drupal\user\Entity\User;
-use Drupal\user\EntityOwnerTrait;
 
-class MadrassaParent extends User {
+class MadrassaParent extends User
+{
 
-
-  public function getCivility(): string {
-    return $this->get('field_civility')->value;
+  /**
+   * @var mixed
+   *
+   * @return string
+   */
+  public function getCivility(): string
+  {
+    return $this->get('field_civility')->value == 'mr' ? 'Monsieur' : 'Madame';
   }
 
+  public function getLinkFullName()
+  {
+    return $this->toLink($this->getFullName());
+  }
+
+  public function getFullName(): string
+  {
+    return $this->get('field_firstname')->value . ' ' . $this->get('field_lastname')->value;
+  }
+
+  public function getPhone(): string
+  {
+    return $this->get('field_phone')->value;
+  }
+
+  public function getEmail(): string
+  {
+    return $this->get('mail')->value;
+  }
+
+  public function getAddress(): string
+  {
+    return $this->get('field_address')->value;
+  }
+
+  public function getFonction(): string
+  {
+    return $this->get('field_fonction')->value;
+  }
+
+  public function getTypeser(): string
+  {
+    return $this->get('field_user_type')->value;
+  }
+
+  public function getPath()
+  {
+    return \Drupal::service('module_handler')->getModule('madrassa_parent')->getPath();
+  }
+
+  public function getPicture()
+  {
+    return $this->get('user_picture')->entity;
+  }
 }

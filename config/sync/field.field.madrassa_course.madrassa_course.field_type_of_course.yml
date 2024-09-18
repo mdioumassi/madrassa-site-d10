@@ -1,0 +1,23 @@
+uuid: 04a0134b-7a62-4622-9dfa-580e4865968a
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.madrassa_course.field_type_of_course
+  module:
+    - madrassa_courses
+    - options
+_core:
+  default_config_hash: GovnOF1e6QTg08vcBVGnntorAFIDu2P9948RE7UwswY
+id: madrassa_course.madrassa_course.field_type_of_course
+field_name: field_type_of_course
+entity_type: madrassa_course
+bundle: madrassa_course
+label: 'Type de cours'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -18,89 +18,124 @@
 	{% set label = 'Webmaster' %}
 {% endif %}
 
+<div class="container">
+	{% if type == 'parent' %}
+		<div class="w3-row w3-border mb-5">
+			<div class="w3-col m2 tablink w3-bottombar w3-border-indigo  w3-green w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+				<span class="w3-badge w3-indigo">1</span><br/>
+				Ajouter un parent
+			</div>
+			<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+				<span class="w3-badge w3-indigo">2</span><br/>
+				Ajouter un enfant
+			</div>
+			<div class="w3-col m2 tablink w3-bottombar  w3-hover-light-grey w3-padding w3-center">
+				<span class="w3-badge w3-indigo">3</span><br/>
+				Choix d'une classe</div>
+			<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+				<span class="w3-badge w3-indigo">4</span><br/>
+				Frais & Scolarité
+			</div>
+			<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+				<span class="w3-badge w3-indigo">5</span><br/>
+				Paiement
+			</div>
+			<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+				<span class="w3-badge w3-indigo">6</span><br/>
+				Recapitulatif
+			</div>
+			<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+				<span class="w3-badge w3-indigo">6</span><br/>
+				Fiche
+			</div>
+		</div>
+	{% endif %}
 
-<h1 class="mb-5">{{ title }}</h1>
-<form method="POST" action="{{path('madrassa_parent.user.store')}}" id="form-create-user">
-	<div class="row mb-3">
-		<input type="hidden" name="typeUser" value="{{type}}">
-		<div class="col">
-			<label for="civility">Civilité:</label>
-			<select id="field_civility" class="form-select" name="field_civility" required>
-				<option value='' selected="selected">-- Selectionner --</option>
-				<option value="Mr">Monsieur</option>
-				<option value="Mme">Madame</option>
-				<option value="Mlle">Mademoiselle</option>
-			</select>
-		</div>
-		{% if type == 'parent' %}
-		<div class="col">
-			<label for="field_user_type">Type:</label>
-			<select id="field_user_type" class="form-select" name="field_user_type">
-				<option value='' selected="selected">-- Selectionner --</option>
-				<option value="pere">Père</option>
-				<option value="mere">Mère</option>
-				<option value="oncle">Oncle</option>
-				<option value="tante">Tante</option>
-				<option value="tuteur">Tuteur</option>
-			</select>
-		</div>
-		{% endif %}
-		<div class="col">
-			<label for="role_user">Rôle:</label>
-			<select id="role_user" class="form-select" name="role_user">
-				<option value="{{ role }}" selected="selected">{{ label}}</option>
-			</select>
-		</div>
-		<div class="col">
-			<label for="field_fonction">Fonction:</label>
-			<input id="field_fonction" type="text" class="form-control" name="field_fonction">
-		</div>
-	</div>
+	<form method="POST" action="{{path('madrassa_parent.user.store')}}" id="form-create-user">
+		<div class="w3-card-2 centered-element" style="width:80%;">
+			<header class="w3-container w3-indigo">
+				<h1>Ajouter un parent</h1>
+			</header>
+			<div class="w3-container mt-3">
+				<div class="row mb-3">
+					<input type="hidden" name="typeUser" value="{{type}}">
+					<div class="col">
+						<label for="civility">Civilité:</label>
+						<select id="field_civility" class="form-select" name="field_civility" required>
+							<option value='' selected="selected">-- Selectionner --</option>
+							<option value="Mr">Monsieur</option>
+							<option value="Mme">Madame</option>
+							<option value="Mlle">Mademoiselle</option>
+						</select>
+					</div>
+					{% if type == 'parent' %}
+						<div class="col">
+							<label for="field_user_type">Type:</label>
+							<select id="field_user_type" class="form-select" name="field_user_type">
+								<option value='' selected="selected">-- Selectionner --</option>
+								<option value="pere">Père</option>
+								<option value="mere">Mère</option>
+								<option value="oncle">Oncle</option>
+								<option value="tante">Tante</option>
+								<option value="tuteur">Tuteur</option>
+							</select>
+						</div>
+					{% endif %}
+					<div class="col">
+						<label for="role_user">Rôle:</label>
+						<select id="role_user" class="form-select" name="role_user">
+							<option value="{{ role }}" selected="selected">{{ label}}</option>
+						</select>
+					</div>
+					<div class="col">
+						<label for="field_fonction">Fonction:</label>
+						<input id="field_fonction" type="text" class="form-control" name="field_fonction">
+					</div>
+				</div>
 
-	<div class="row mt-3">
-		<div class="col">
-			<label for="name">Nom utilisateur:</label>
-			<input id="name" type="text" class="form-control" name="name" required>
-		</div>
-		<div class="col">
-			<label for="pass">Mot de passe</label>
-			<input id="pass" type="password" class="form-control" name="pass" required>
-		</div>
-	</div>
+				<div class="row mt-3">
+					<div class="col">
+						<label for="name">Nom utilisateur:</label>
+						<input id="name" type="text" class="form-control" name="name" required>
+					</div>
+					<div class="col">
+						<label for="pass">Mot de passe</label>
+						<input id="pass" type="password" class="form-control" name="pass" required>
+					</div>
+				</div>
 
-	<div class="row mt-3">
-		<div class="col">
-			<label for="field_firstname">Prénom:</label>
-			<input id="field_firstname" type="text" class="form-control" name="field_firstname" required>
-		</div>
-		<div class="col">
-			<label for="field_lastname">Nom:</label>
-			<input id="field_lastname" type="text" class="form-control" name="field_lastname" required>
-		</div>
-	</div>
+				<div class="row mt-3">
+					<div class="col">
+						<label for="field_firstname">Prénom:</label>
+						<input id="field_firstname" type="text" class="form-control" name="field_firstname" required>
+					</div>
+					<div class="col">
+						<label for="field_lastname">Nom:</label>
+						<input id="field_lastname" type="text" class="form-control" name="field_lastname" required>
+					</div>
+				</div>
 
-	<div class="row mt-3">
-		<div class="col">
-			<label for="mail">Adresse E-Mail:</label>
-			<input id="mail" type="email" class="form-control" name="mail" required>
-		</div>
-		<div class="col">
-			<label for="field_phone">Téléphone:</label>
-			<input id="field_phone" type="text" class="form-control" name="field_phone" required>
-		</div>
-	</div>
+				<div class="row mt-3">
+					<div class="col">
+						<label for="mail">Adresse E-Mail:</label>
+						<input id="mail" type="email" class="form-control" name="mail" required>
+					</div>
+					<div class="col">
+						<label for="field_phone">Téléphone:</label>
+						<input id="field_phone" type="text" class="form-control" name="field_phone" required>
+					</div>
+				</div>
 
-	<div class="row mt-3">
-		<div class="col">
-			<label for="field_address">Adresse complète:</label>
-			<input id="field_address" type="text" class="form-control" name="field_address">
+				<div class="row mt-3">
+					<div class="col">
+						<label for="field_address">Adresse complète:</label>
+						<input id="field_address" type="text" class="form-control" name="field_address">
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="row mb-5 mt-3">
-		<div class="col">
-			<button type="submit" class="btn btn-primary">
-				'Valider'
-			</button>
+		<div class="mt-4 w3-center mb-5">
+			<button class="btn btn-primary" type="submit">Suivant &raquo;</button>
 		</div>
-	</div>
-</form>
+	</form>
+</div>

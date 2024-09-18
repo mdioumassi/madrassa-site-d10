@@ -1,0 +1,43 @@
+uuid: b5d2dbf6-c035-426b-8136-f0bcbdfd11f2
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.item_dashboard
+    - paragraphs.paragraphs_type.items_dashboards
+  module:
+    - entity_reference_revisions
+id: paragraph.items_dashboards.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: items_dashboards
+label: Items
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      item_dashboard: item_dashboard
+    negate: 0
+    target_bundles_drag_drop:
+      course_levels:
+        weight: 6
+        enabled: false
+      item_dashboard:
+        weight: 8
+        enabled: true
+      items_dashboards:
+        weight: 7
+        enabled: false
+      level:
+        weight: 9
+        enabled: false
+      subjects:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions
