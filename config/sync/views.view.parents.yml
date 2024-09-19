@@ -8,9 +8,11 @@ dependencies:
     - field.storage.user.field_lastname
     - field.storage.user.field_phone
     - user.role.administrator
-    - user.role.parent_role
+    - user.role.student_role
+    - user.role.teacher_role
     - user.role.webmaster
   module:
+    - better_exposed_filters
     - options
     - telephone
     - user
@@ -30,58 +32,8 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Parents
+      title: ''
       fields:
-        user_bulk_form:
-          id: user_bulk_form
-          table: users
-          field: user_bulk_form
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          plugin_id: user_bulk_form
-          label: 'Mise à jour en masse'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
         uid:
           id: uid
           table: users_field_data
@@ -622,7 +574,7 @@ display:
         options:
           offset: 0
           pagination_heading_level: h4
-          items_per_page: 50
+          items_per_page: 10
           total_pages: 0
           id: 0
           tags:
@@ -640,7 +592,7 @@ display:
             offset_label: Décalage
           quantity: 9
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Filtrer
           reset_button: true
@@ -649,6 +601,36 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: "Sélectionnez n'importe quel filtre et cliquez sur Appliquer pour voir les résultats"
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Options avancées'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_lastname_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_phone_value:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
       access:
         type: role
         options:
@@ -670,22 +652,19 @@ display:
           content: "Personne n'est disponible."
           tokenize: false
       sorts:
-        created:
-          id: created
-          table: users_field_data
-          field: created
+        field_firstname_value:
+          id: field_firstname_value
+          table: user__field_firstname
+          field: field_firstname_value
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
-          entity_field: created
-          plugin_id: date
-          order: DESC
+          plugin_id: standard
+          order: ASC
           expose:
             label: ''
-            field_identifier: created
+            field_identifier: ''
           exposed: false
-          granularity: second
       filters:
         roles_target_id:
           id: roles_target_id
@@ -699,7 +678,7 @@ display:
           plugin_id: user_roles
           operator: or
           value:
-            parent_role: parent_role
+            teacher_role: teacher_role
           group: 1
           exposed: false
           expose:
@@ -730,6 +709,110 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
+        field_lastname_value:
+          id: field_lastname_value
+          table: user__field_lastname
+          field: field_lastname_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: starts
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_lastname_value_op
+            label: Nom
+            description: ''
+            use_operator: false
+            operator: field_lastname_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_lastname_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              parent_role: '0'
+              teacher_role: '0'
+              student_role: '0'
+              webmaster: '0'
+            placeholder: 'Filtrer par nom de famille'
+          is_grouped: false
+          group_info:
+            label: 'Nom (field_lastname)'
+            description: ''
+            identifier: field_lastname_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: ''
+                operator: '='
+                value: ''
+              2:
+                title: ''
+                operator: '='
+                value: ''
+              3:
+                title: ''
+                operator: '='
+                value: ''
+        field_phone_value:
+          id: field_phone_value
+          table: user__field_phone
+          field: field_phone_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: starts
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_phone_value_op
+            label: Téléphone
+            description: ''
+            use_operator: false
+            operator: field_phone_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_phone_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              parent_role: '0'
+              teacher_role: '0'
+              student_role: '0'
+              webmaster: '0'
+            placeholder: 'Filtrer par numéro de téléphone'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups: {  }
@@ -836,7 +919,7 @@ display:
           query_tags: {  }
       relationships: {  }
       css_class: ''
-      use_ajax: false
+      use_ajax: true
       group_by: false
       show_admin_links: true
       use_more: false
@@ -845,6 +928,19 @@ display:
       link_display: page_1
       link_url: ''
       header:
+        area_2:
+          id: area_2
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: "<ul class=\"breadcrumb mt-5 mb-5\">\r\n\t\t<li>\r\n\t\t\t<a href=\"/admin/dashboard\">Dashboard</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a href=\"/parents\">Parents</a>\r\n\t\t</li>\r\n\t\t<li>Inscription enfant</li>\r\n\t</ul>"
+            format: full_html
+          tokenize: false
         area_1:
           id: area_1
           table: views
@@ -855,7 +951,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "  <div class=\"w3-row\">\r\n      <a href=\"/parents\"><div class=\"w3-third tablink w3-bottombar w3-border-indigo  w3-green  w3-hover-light-grey w3-padding\">Parents</div></a>\r\n      <a href=\"/adultes\"><div class=\"w3-third tablink w3-bottombar w3-light-grey w3-padding\">Adulte</div></a>\r\n     <a href=\"/enseignants\"><div class=\"w3-third tablink w3-bottombar w3-light-grey w3-padding\">Enseignants</div></a>\r\n  </div>"
+            value: "<ul class=\"nav nav-tabs mb-3\">\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link active\" aria-current=\"page\" href=\"/parents\">Parents</a>\r\n  </li>\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link\" href=\"/adultes\">Adultes</a>\r\n  </li>\r\n    <li class=\"nav-item\">\r\n    <a class=\"nav-link\" href=\"/enseignants\">Enseignants</a>\r\n  </li>\r\n</ul>"
             format: full_html
           tokenize: false
         area:
@@ -868,17 +964,336 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<a class="button button--action button--primary mt-2" href="/user/parent/create" style="float:right;margin-bottom:25px">Ajouter un parent</a>'
+            value: '<a class="button button--action button--primary mt-2" href="/user/parent/create" style="float:right;margin-bottom:25px"><i class="fa fa-plus"></i> Ajouter un parent</a>'
             format: full_html
           tokenize: false
       display_comment: ''
       hide_attachment_summary: false
       display_extenders: {  }
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.roles
+      tags:
+        - 'config:field.storage.user.field_civility'
+        - 'config:field.storage.user.field_firstname'
+        - 'config:field.storage.user.field_lastname'
+        - 'config:field.storage.user.field_phone'
+  page_1:
+    id: page_1
+    display_title: Adultes
+    display_plugin: page
+    position: 1
+    display_options:
+      title: ''
+      filters:
+        roles_target_id:
+          id: roles_target_id
+          table: user__roles
+          field: roles_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          entity_field: roles
+          plugin_id: user_roles
+          operator: or
+          value:
+            student_role: student_role
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_lastname_value:
+          id: field_lastname_value
+          table: user__field_lastname
+          field: field_lastname_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: starts
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_lastname_value_op
+            label: Nom
+            description: ''
+            use_operator: false
+            operator: field_lastname_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_lastname_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              parent_role: '0'
+              teacher_role: '0'
+              student_role: '0'
+              webmaster: '0'
+            placeholder: 'Filtrer par nom de famille'
+          is_grouped: false
+          group_info:
+            label: 'Nom (field_lastname)'
+            description: ''
+            identifier: field_lastname_value
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: ''
+                operator: '='
+                value: ''
+              2:
+                title: ''
+                operator: '='
+                value: ''
+              3:
+                title: ''
+                operator: '='
+                value: ''
+        field_phone_value:
+          id: field_phone_value
+          table: user__field_phone
+          field: field_phone_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: starts
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_phone_value_op
+            label: Téléphone
+            description: ''
+            use_operator: false
+            operator: field_phone_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_phone_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_editor: '0'
+              administrator: '0'
+              parent_role: '0'
+              teacher_role: '0'
+              student_role: '0'
+              webmaster: '0'
+            placeholder: 'Filtrer par numéro de téléphone'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        show_admin_links: false
+        filters: false
+        filter_groups: false
+        header: false
+      display_description: ''
+      show_admin_links: false
+      header:
+        area_2:
+          id: area_2
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: "<ul class=\"breadcrumb mt-5 mb-5\">\r\n\t\t<li>\r\n\t\t\t<a href=\"/admin/dashboard\">Dashboard</a>\r\n\t\t</li>\r\n\t\t<li>Liste des adultes</li>\r\n\t</ul>"
+            format: full_html
+          tokenize: false
+        area_1:
+          id: area_1
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: "<ul class=\"nav nav-tabs mb-3\">\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link\"href=\"/parents\">Parents</a>\r\n  </li>\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link active\"  aria-current=\"page\" href=\"/adultes\">Adultes</a>\r\n  </li>\r\n    <li class=\"nav-item\">\r\n    <a class=\"nav-link\" href=\"/enseignants\">Enseignants</a>\r\n  </li>\r\n</ul>"
+            format: full_html
+          tokenize: false
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: '<a class="button button--action button--primary mt-2" href="/user/etudiant/create" style="float:right;margin-bottom:25px"><i class="fa fa-plus"></i> Ajouter un adulte</a>'
+            format: full_html
+          tokenize: false
+      display_extenders: {  }
+      path: adultes/list
+      menu:
+        type: 'default tab'
+        title: Lister
+        description: 'Trouver et gérer les personnes interagissant avec votre site.'
+        weight: -10
+        expanded: false
+        menu_name: admin
+        parent: ''
+        context: '0'
+      tab_options:
+        type: normal
+        title: Personnes
+        description: 'Gérer les comptes utilisateurs, les rôles et les droits.'
+        weight: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.roles
+      tags:
+        - 'config:field.storage.user.field_civility'
+        - 'config:field.storage.user.field_firstname'
+        - 'config:field.storage.user.field_lastname'
+        - 'config:field.storage.user.field_phone'
+  page_2:
+    id: page_2
+    display_title: Enseignants
+    display_plugin: page
+    position: 1
+    display_options:
+      title: ''
+      defaults:
+        title: false
+        show_admin_links: false
+        header: false
+      display_description: ''
+      show_admin_links: false
+      header:
+        area_2:
+          id: area_2
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<ul class=\"breadcrumb mt-5 mb-5\">\r\n\t\t<li>\r\n\t\t\t<a href=\"/admin/dashboard\">Dashboard</a>\r\n\t\t</li>\r\n\t\t<li>Liste des enseignants</li>\r\n\t</ul>"
+            format: full_html
+          tokenize: false
+        area_1:
+          id: area_1
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: "<ul class=\"nav nav-tabs mb-3\">\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link\" href=\"/parents\">Parents</a>\r\n  </li>\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link\" href=\"/adultes\">Adultes</a>\r\n  </li>\r\n    <li class=\"nav-item\">\r\n    <a class=\"nav-link active\" aria-current=\"page\" href=\"/enseignants\">Enseignants</a>\r\n  </li>\r\n</ul>"
+            format: full_html
+          tokenize: false
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: '<a class="button button--action button--primary mt-2" href="/user/enseignant/create" style="float:right;margin-bottom:25px"><i class="fa fa-plus"></i> Ajouter un enseignant</a>'
+            format: full_html
+          tokenize: false
+      display_extenders: {  }
+      path: enseignants/list
+      menu:
+        type: 'default tab'
+        title: Lister
+        description: 'Trouver et gérer les personnes interagissant avec votre site.'
+        weight: -10
+        expanded: false
+        menu_name: admin
+        parent: ''
+        context: '0'
+      tab_options:
+        type: normal
+        title: Personnes
+        description: 'Gérer les comptes utilisateurs, les rôles et les droits.'
+        weight: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
         - url.query_args
         - user.roles
       tags:
@@ -894,8 +1309,49 @@ display:
     display_options:
       defaults:
         show_admin_links: false
+        header: false
       display_description: ''
       show_admin_links: false
+      header:
+        area_2:
+          id: area_2
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: "<ul class=\"breadcrumb mt-5 mb-5\">\r\n\t\t<li>\r\n\t\t\t<a href=\"/admin/dashboard\">Dashboard</a>\r\n\t\t</li>\r\n\t\t<li>Liste des parents</li>\r\n\t</ul>"
+            format: full_html
+          tokenize: false
+        area_1:
+          id: area_1
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<ul class=\"nav nav-tabs mb-3\">\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link active\" aria-current=\"page\" href=\"/parents\">Parents</a>\r\n  </li>\r\n  <li class=\"nav-item\">\r\n    <a class=\"nav-link\" href=\"/adultes\">Adultes</a>\r\n  </li>\r\n    <li class=\"nav-item\">\r\n    <a class=\"nav-link\" href=\"/enseignants\">Enseignants</a>\r\n  </li>\r\n</ul>"
+            format: full_html
+          tokenize: false
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: '<a class="button button--action button--primary mt-2" href="/user/parent/create" style="float:right;margin-bottom:25px"><i class="fa fa-plus"></i> Ajouter un parent</a>'
+            format: full_html
+          tokenize: false
       display_extenders: {  }
       path: parents/list
       menu:
@@ -913,10 +1369,11 @@ display:
         description: 'Gérer les comptes utilisateurs, les rôles et les droits.'
         weight: 0
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - user.roles
       tags:

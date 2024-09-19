@@ -17,7 +17,17 @@
 	{% set role = 'webmaster_role' %}
 	{% set label = 'Webmaster' %}
 {% endif %}
-
+<div class="container mb-5 mt-5">
+	<ul class="breadcrumb">
+		<li>
+			<a href="/admin/dashboard">Dashboard</a>
+		</li>
+		<li>
+			<a href="/parents">Parents</a>
+		</li>
+		<li>Inscription enfant</li>
+	</ul>
+</div>
 <div class="container">
 	{% if type == 'parent' %}
 		<div class="w3-row w3-border mb-5">
@@ -56,7 +66,7 @@
 			<header class="w3-container w3-indigo">
 				<h1>Ajouter un parent</h1>
 			</header>
-			<div class="w3-container mt-3">
+			<div class="w3-container mt-3 w3-padding-24">
 				<div class="row mb-3">
 					<input type="hidden" name="typeUser" value="{{type}}">
 					<div class="col">
@@ -139,3 +149,4 @@
 		</div>
 	</form>
 </div>
+{# </div> #}
