@@ -9,17 +9,30 @@
 {% endif %}
 
 <div class="container">
-	<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-		<ol class="breadcrumb">
-			<li class="breadcrumb-item">
-				<a href="">Dashboard</a>
-			</li>
-			<li class="breadcrumb-item">
-				<a href="">Inscriptions</a>
-			</li>
-			<li class="breadcrumb-item active" aria-current="page">Recapitulatif</li>
-		</ol>
-	</nav>
+	<ul class="breadcrumb mt-5 mb-5">
+		<li>
+			<a href="/admin/dashboard">Dashboard</a>
+		</li>
+		<li>
+			<a href="#">Inscription</a>
+		</li>
+		<li>
+			<a href="#">Parent</a>
+		</li>
+		<li>
+			<a href="#">Enfant</a>
+		</li>
+		<li>
+			<a href="#">Choix d'un niveau</a>
+		</li>
+		<li>
+			<a href="#">Scolarité</a>
+		</li>
+			<li>
+			<a href="#">Paiement</a>
+		</li>
+		<li>Recapitulatif</li>
+	</ul>
 	<div class="w3-row w3-border">
 		<div class="w3-col m2 tablink w3-bottombar w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
 			<span class="w3-badge w3-indigo">1</span><br/>
@@ -149,13 +162,13 @@
 								</table>
 							</div>
 							{# <div class="col-md-4">
-																							                                <strong class="mb-3">Professeur:</strong> {{ $level->teacher->getFullNameAttribute() }}
-																							                                <ul class="w3-ul w3-card">
-																							                                    <li><strong>Email:</strong> {{ $level->teacher->email }}</li>
-																							                                    <li> <strong>Téléphone:</strong> {{ $level->teacher->phone }}</li>
-																							                                    <li> <strong>Fonction:</strong> {{ $level->teacher->function }}</li>
-																							                                </ul>
-																							                            </div> #}
+																														                                <strong class="mb-3">Professeur:</strong> {{ $level->teacher->getFullNameAttribute() }}
+																														                                <ul class="w3-ul w3-card">
+																														                                    <li><strong>Email:</strong> {{ $level->teacher->email }}</li>
+																														                                    <li> <strong>Téléphone:</strong> {{ $level->teacher->phone }}</li>
+																														                                    <li> <strong>Fonction:</strong> {{ $level->teacher->function }}</li>
+																														                                </ul>
+																														                            </div> #}
 						</div>
 					</div>
 				</div>
@@ -210,8 +223,7 @@
 					</div>
 				</div>
 			</div>
-			<div
-				class="mt-3 mb-5 w3-center">
+			<div class="mt-3 mb-5 w3-center">
 				<button class="btn btn-primary" type="submit">Suivant &raquo;</button>
 			</div>
 		</form>

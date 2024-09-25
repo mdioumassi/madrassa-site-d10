@@ -4,10 +4,13 @@
 	{% set photo = base_path ~ directory ~ "/images/femme.png" %}
 {% endif %}
 {% set fullname =  user.field_firstname.value ~' '~  user.field_lastname.value %}
+{% if user.roles.value.0.target_id == 'parent_role' %}
+	{% set role = 'Parent' %}
+{% endif %}
 
 <div class="w3-card-2 mb-5">
 	<header class="w3-container w3-indigo">
-		<h1>{{ fullname }}</h1>
+		<h1>{{ fullname }}<span class="float-end badge bg-success">{{ role }}</span></h1>
 	</header>
 
 	<div class="w3-container w3-padding-16">
@@ -40,7 +43,7 @@
 						<input id="field_lastname" type="text" class="form-control" value="{{ user.field_lastname.value }}">
 					</div>
 					<div class="col">
-						<label>Type</label>
+						<label>Type de parent</label>
 						<input type="text" id="field_type_user" class="form-control" value="{{ user.field_user_type.value}}">
 					</div>
 				</div>
@@ -83,7 +86,7 @@
 		</div>
 	</div>
 
-	<footer class="w3-container w3-light-grey mb-2 w3-border">
-		<a href="/parent/{{user.id}}/children" class="btn btn-success mt-3">Mes Enfants</a>
+	<footer class="w3-container w3-light-grey w3-border w3-padding">
+		<a href="/parent/{{user.id}}/children" class="btn btn-success">Mes Enfants</a>
 	</footer>
 </div>

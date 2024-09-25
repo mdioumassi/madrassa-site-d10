@@ -59,6 +59,7 @@ class UserController extends ControllerBase
       if ($this->getUserId('mail', $data['mail'])) {
         $parent_id = $this->getUserId('mail', $data['mail']);
         if (isset($parent_id)) {
+          $this->messenger()->addMessage($this->t('Ce parent existe déjà.'));
           return $this->redirect('madrassa_parent.child.create', ['parentId' => $parent_id]);
         }
       }
@@ -104,10 +105,13 @@ class UserController extends ControllerBase
 
   public function createChild(int $parentId)
   {
+    /**@var \Drupal\madrassa_parent\Entity\MadrassaParent $parent */
+    $parent = User::load($parentId);
     $build['content'] = [
       '#theme' => 'madrassa_parent_create_child',
       '#title' => $this->t('Create a new child'),
       '#parent_id' => $parentId,
+      '#parent' => $parent->getFullName(),
     ];
 
     return $build;
@@ -121,19 +125,22 @@ class UserController extends ControllerBase
 
       $data = $request->request->all();
       $label = $data['firstname'] . ' ' . strtoupper($data['lastname']);
-
-      if ($this->isExistChild($label, $data['birthdate'])) {
-        // $child = $this->isExistChild($data['firstname'], $data['lastname'], $data['birthdate']);
-        // if (isset($enfantId) && isset($parentId)) {
-        //   $registration_data = [
-        //     'child_id' => $enfantId,
-        //     'parent_id' => $parentId,
-        //   ];
-        // }
-        // $this->session->set('registration_data', $registration_data);
-
+      /**@var \Drupal\madrassa_enfants\Entity\Children $child */
+      $child = $this->isExistChild($label, $data['birthdate'], $parentId);
+      if ($child) { 
+        $is_registered = $child->getRegistrationData();
+        if ($is_registered) {
+          $response = new RedirectResponse($path);
+          $response->send();
+          $this->messenger()->addMessage($this->t('L\'enfant @child est déjà inscrit.', ['@child' => $label]));
+        } else {
+          $path = "/register/parent/" . $parentId . "/child/" . $child->id() . "/course";
+          $response = new RedirectResponse($path);
+          $response->send();
+        }
         $response = new RedirectResponse($path);
         $response->send();
+        $this->messenger()->addMessage($this->t('L\'enfant @child existe déjà.', ['@child' => $label]));
       } else {
         Children::create([
           'label' => $label,
@@ -144,19 +151,30 @@ class UserController extends ControllerBase
           'field_parent_id' => $parentId,
           'status' => 1,
         ])->save();
-        $response = new RedirectResponse($path);
-        $response->send();
+    
+       // $this->messenger()->addMessage($this->t('Enfant @child créé avec succès.', ['@child' => $label]));
+        $child = $this->isExistChild($label, $data['birthdate'], $parentId);
+        if ($child) {
+          $path = "/register/parent/" . $parentId . "/child/" . $child->id() . "/course";
+          $response = new RedirectResponse($path);
+          $response->send();
+        }
+  
+
+        // $response = new RedirectResponse($path);
+        // $response->send();
       }
     }
   }
 
-  public function isExistChild(string $fullname, string $birthdate)
+  public function isExistChild(string $fullname, string $birthdate, int $parentId)
   {
     $child = \Drupal::entityTypeManager()
       ->getStorage('children')
       ->loadByProperties([
         'label' => $fullname,
         'field_birthday' => $birthdate,
+        'field_parent_id' => $parentId,
       ]);
     $child_id = array_shift($child);
 
@@ -165,20 +183,21 @@ class UserController extends ControllerBase
 
   public function listChildren(int $parentId)
   {
+    $data_children = [];
 
     /**@var \Drupal\madrassa_parent\Entity\MadrassaParent $parent */
     $parent = User::load($parentId);
 
     if (isset($parentId)) {
-      /**@var \Drupal\madrassa_enfants\Entity\Children $children */
-      // $children = \Drupal::entityTypeManager()
-      //   ->getStorage('children')
-      //   ->loadByProperties(['field_parent_id' => $parentId]);
-      //   dd($children);
-      $children = $this->em->getStorage('children')->loadByProperties(['field_parent_id' => $parentId]);
+      $children = $this
+                  ->em->getStorage('children')
+                  ->loadByProperties(['field_parent_id' => $parentId]);
+      if (empty($children)) {
+        $this->messenger()->addMessage($this->t('Aucun enfant trouvé.'));
+      }
 
       foreach ($children as $child) {
-   
+        /**@var \Drupal\madrassa_enfants\Entity\Children $child */
         $data_children[] = [
           'id' => $child->id() ?? '',
           'fullname' => $child->getFullName() ?? '',
@@ -193,13 +212,11 @@ class UserController extends ControllerBase
       }
     }
 
-
-
     return [
       '#theme' => 'list_children',
-      '#title' => $this->t('Les enfants de: @parent', ['@parent' => $parent->getFullName()]),
       '#datas' => $data_children ?? [],
       '#parentId' => $parentId,
+      '#parent' => $parent->getFullName(),
     ];
   }
 }

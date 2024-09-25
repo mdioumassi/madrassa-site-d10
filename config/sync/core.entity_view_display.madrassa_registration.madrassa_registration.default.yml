@@ -17,6 +17,8 @@ dependencies:
   module:
     - datetime
     - madrassa_registration
+    - options
+    - text
 _core:
   default_config_hash: WFi_8gSCGIpVjybbfxbW42Nbqbgh2rDIEA0N3kbUICQ
 id: madrassa_registration.madrassa_registration.default
@@ -75,28 +77,25 @@ content:
     weight: 5
     region: content
   field_payment_method:
-    type: string
-    label: visually_hidden
-    settings:
-      link_to_entity: false
+    type: list_default
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    weight: 6
+    weight: 13
     region: content
   field_payment_note:
-    type: string
-    label: visually_hidden
-    settings:
-      link_to_entity: false
+    type: text_default
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    weight: 7
+    weight: 14
     region: content
   field_payment_status:
-    type: string
-    label: visually_hidden
-    settings:
-      link_to_entity: false
+    type: list_default
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    weight: 8
+    weight: 12
     region: content
   field_registration_date:
     type: datetime_default

@@ -15,7 +15,32 @@
  * @see template_preprocess_views_view_unformatted()
  */
 #}
-{% if title %}
+{# {% if title %}
+	<h3>{{ title }}</h3>
+{% endif %}
+<div class="row">
+	{% for row in rows %}
+	{{dd(row)}}
+		<div class="col-6">
+			<div class="w3-card-4">
+
+				<header class="w3-container w3-blue">
+					<h1>Header</h1>
+				</header>
+
+				<div class="w3-container">
+					<p>Lorem ipsum...</p>
+				</div>
+
+				<footer class="w3-container w3-blue">
+					<h5>Footer</h5>
+				</footer>
+
+			</div>
+		</div>
+	{% endfor %}
+</div> #}
+{# {% if title %}
   <h3>{{ title }}</h3>
 {% endif %}
 {% for row in rows %}
@@ -27,4 +52,4 @@
   <div{{ row.attributes.addClass(row_classes) }}>
     {{- row.content -}}
   </div>
-{% endfor %}
+{% endfor %} #}

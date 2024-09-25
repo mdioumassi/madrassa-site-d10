@@ -264,9 +264,15 @@ class Children extends ContentEntityBase implements ChildrenInterface
 
       foreach ($registration as $reg) {
         /**@var \Drupal\madrassa_registration\Entity\Registration $reg*/
+        /**@var \Drupal\madrassa_parent\Entity\MadrassaParent $parent */
+
+        $parent = $reg->getParent();
+        /**@var \Drupal\madrassa_niveaux\Entity\Level $level */
+        $level = $reg->getLevel();
         $data = [
           'register' => [
             'id' => $reg->id(),
+            'registration_date' => $reg->getRegistrationDate(),
             'payment_date' => $reg->getRegistrationDate(),
             'registration_status' => $reg->getRegistrationStatus(),
             'payment_status' => $reg->getPaymentStatus(),
@@ -274,24 +280,24 @@ class Children extends ContentEntityBase implements ChildrenInterface
             'payment_method' => $reg->getPaymentMethod(),
           ],
           'parent' => [
-            'civilite' => $reg->getParent()->getCivility(),
-            'fullname' => $reg->getParent()->getFullName(),
-            'email' => $reg->getParent()->getEmail(),
-            'phone' => $reg->getParent()->getPhone(),
-            'address' => $reg->getParent()->getAddress(),
-            'fonction' => $reg->getParent()->getFonction(),
-            'typeser' => $reg->getParent()->getTypeUser(),
-            'picture' => $reg->getParent()->getPicture(),
-            'path' => $reg->getParent()->getPath(),
+            'civilite' => $parent->getCivility(),
+            'fullname' => $parent->getFullName(),
+            'email' => $parent->getEmail(),
+            'phone' => $parent->getPhone(),
+            'address' => $parent->getAddress(),
+            'fonction' => $parent->getFonction(),
+            'typeser' => $parent->getTypeUser(),
+            'picture' => $parent->getPicture(),
+            'path' => $parent->getPath(),
           ],
           'course' => [
             'label' => $reg->getCourse()->label(),
             'level' => [
-              'label' => $reg->getLevel()->label(),
-              'tarif' => $reg->getLevel()->getTariff(),
-              'frais' => $reg->getLevel()->getFraisInscription(),
-              'horaire' => $reg->getLevel()->getHoraire(),
-              'total' => $reg->getLevel()->getTotalTariffAndFees(),
+              'label' => $level->label(),
+              'tarif' => $level->getTariff(),
+              'frais' => $level->getFraisInscription(),
+              'horaire' => $level->getHoraire(),
+              'total' => $level->getTotalTariffAndFees(),
             ]
           ]
         ];

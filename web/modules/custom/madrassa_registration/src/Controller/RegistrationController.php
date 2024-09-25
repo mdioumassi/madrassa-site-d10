@@ -38,6 +38,25 @@ class RegistrationController extends ControllerBase
   }
 
   /**
+   * Parent choice page.
+   * name: register.parent.choice
+   * route: /register/parent/choice
+   *
+   * @return void
+   */
+  public function parentChoice()
+  {
+    $parents = $this->em->getStorage('user')->loadByProperties(['roles' => 'parent_role']);
+  
+    $build['content'] = [
+      '#theme' => 'parent_choice',
+      '#parents' => $parents,
+    ];
+
+    return $build;
+  }
+
+  /**
    * Children list page.
    * name: register.children
    * route: /register/children
@@ -55,7 +74,7 @@ class RegistrationController extends ControllerBase
 
     $this->session->set('registration_data', $registration_data);
 
-    $response = new RedirectResponse('/nos-cours/type/child');
+    $response = new RedirectResponse('/nos-cours/type/child?field_course_intended_value=child');
     $response->send();
   }
 
@@ -184,7 +203,6 @@ class RegistrationController extends ControllerBase
     $registration_data = $this->session->get('registration_data');
 
     if ($request->isMethod('POST') && $data = $request->request->all()) {
-      // $data = $request->request->all();
 
       $registration_data['payment_method'] = $data['payment_method'];
       $registration_data['payment_date'] = $data['payment_date'];
@@ -193,9 +211,12 @@ class RegistrationController extends ControllerBase
       if ($registration_data['payment_method'] === 'espece') {
         $registration_data['payment_status'] = 'paid';
         $registration_data['registration_status'] = 'registered';
+      } elseif($registration_data['payment_method'] === 'cheque') {
+        $registration_data['payment_status'] = 'paid';
+        $registration_data['registration_status'] = 'registered';
       } else {
         $registration_data['payment_status'] = 'pending';
-        $registration_data['registration_status'] = 'unregistered';
+        $registration_data['registration_status'] = 'registered';
       }
 
       $registration_data['registration_date'] = date('Y-m-d');

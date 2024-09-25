@@ -1,79 +1,185 @@
 {{ attach_library('madrassa_parent/parent') }}
 
+<div class="container">
+	<ul class="breadcrumb mb-5 mt-5">
+		<li>
+			<a href="/admin/dashboard">Dashboard</a>
+		</li>
+		<li>
+			<a href="/parents/grille">Parents</a>
+		</li>
+		<li>
+			<a href="/user/{{parent_id}}">{{ parent}}</a>
+		</li>
+		<li>Choix d'un enfant</li>
+	</ul>
+	<div class="w3-row w3-border mb-5">
+		<div class="w3-col m2 tablink w3-bottombar w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">1</span><br/>
+			Choix d'un parent
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar w3-border-indigo  w3-green w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">2</span><br/>
+			Choix d'un enfant
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">3</span><br/>
+			Choix d'une classe</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
+			<span class="w3-badge w3-indigo">4</span><br/>
+			Frais & Scolarité
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">5</span><br/>
+			Paiement
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">6</span><br/>
+			Recapitulatif
+		</div>
+		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
+			<span class="w3-badge w3-indigo">7</span><br/>
+			Fiche
+		</div>
+	</div>
 
-<h1>{{title}}</h1>
-<a href="{{ path('madrassa_parent.child.create', {'parentId': parentId}) }}" class="btn btn-success mb-3 mt-3">Inscrire un nouveau enfant</a>
-<div class="row">
-	{% if datas is not empty %}
+	<a href="{{ path('madrassa_parent.child.create', {'parentId': parentId}) }}" class="mb-5">
+		<button class="w3-button w3-xlarge w3-circle w3-green w3-card-4 mb-3">+</button>
+	</a>
+	<span class="h3">Enfant</span>
+	<div class="row">
+		{% if datas is not empty %}
+			{% for child in  datas %}
+				{% if child.gender == 'Garçon' %}
+					{% set photo =  child.path ~ '/images/children/garcon.jpeg' %}
+				{% else %}
+					{% set photo = child.path ~ '/images/children/fille.png' %}
+				{% endif %}
+				{% if child.registration.register.payment_status == 'paid' %}
+					{% set payment_status = 'Payé' %}
+				{% elseif child.registration.register.payment_status == 'pending' %}
+					{% set payment_status = 'En attente de paiement' %}
+				{% endif %}
 
-		{% for child in  datas %}
-			{% if child.gender == 'Garçon' %}
-				{% set photo =  child.path ~ '/images/children/garcon.jpeg' %}
-			{% else %}
-				{% set photo = child.path ~ '/images/children/fille.png' %}
-			{% endif %}
-
-			<div class="col-6 mb-3">
-				<div class="w3-card-4">
-					<header class="w3-container w3-indigo">
-						<h1>{{ child.fullname }}</h1>
-					</header>
-					<div class="w3-container">
-						<div class="row mt-4">
-							<div class="col-4 photo-child">
-								{% if child.photo is not empty %}
-									{{ drupal_image(child.photo.field_media_image.0.entity.uri.value) }}
-								{% else %}
-									<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ node.title.value }}">
-								{% endif %}
+				<div class="col-6 mb-3">
+					<div class="w3-card-4">
+						<header class="w3-container w3-indigo">
+							<h1>{{ child.fullname }}</h1>
+						</header>
+						<div class="w3-container">
+							<div class="row mt-4">
+								<div class="col-4 photo-child">
+									{% if child.photo is not empty %}
+										{{ drupal_image(child.photo.field_media_image.0.entity.uri.value) }}
+									{% else %}
+										<img src="/{{ photo }}" class="img-fluid rounded-circle picture-child w3-gray" alt="{{ node.title.value }}">
+									{% endif %}
+								</div>
+								<div class="col">
+									<table class="w3-table w3-bordered">
+										<tr>
+											<td>Genre:</td>
+											<td>{{ child.gender }}</td>
+										</tr>
+										<tr>
+											<td>Date de naissance:</td>
+											<td>{{ child.birthdate}}</td>
+										</tr>
+										<tr>
+											<td>Age:</td>
+											<td>{{ child.old }}</td>
+										</tr>
+										<tr>
+											<td>Classe Française:</td>
+											<td>{{ child.frenchclass }}</td>
+										</tr>
+										<tr>
+											<td>Status d'inscription:</td>
+											{% if child.registration is not empty %}
+												<td>
+													<span class="badge rounded-pill bg-success">Inscrit</span>
+												</td>
+											{% else %}
+												<td>
+													<span classe="badge rounded-pill bg-danger">Non inscrit</span>
+												</td>
+											{% endif %}
+										</tr>
+									</table>
+								</div>
 							</div>
-							<div class="col">
-								<table class="w3-table w3-bordered">
-									<tr>
-										<td>Genre:</td>
-										<td>{{ child.gender }}</td>
-									</tr>
-									<tr>
-										<td>Date de naissance:</td>
-										<td>{{ child.birthdate}}</td>
-									</tr>
-									<tr>
-										<td>Age:</td>
-										<td>{{ child.old }}</td>
-									</tr>
-									<tr>
-										<td>Classe Française:</td>
-										<td>{{ child.frenchclass }}</td>
-									</tr>
-									<tr>
-										<td>Status d'inscription:</td>
-										{% if child.registration is not empty %}
-											<td>
-												<span class="badge rounded-pill bg-success">Inscrit</span>
-											</td>
-										{% else %}
-											<td>
-												<span classe="badge rounded-pill bg-danger">Non inscrit</span>
-											</td>
-										{% endif %}
-									</tr>
-								</table>
+							<div class="row">
+								<div class="col">
+									{% if child.registration.register %}
+										<div class="accordion accordion-flush" id="accordion{{ child.registration.register.id }}">
+											<div class="accordion-item">
+												<h2 class="accordion-header" id="flush-headingOne{{ child.registration.register.id }}">
+													{% if child.registration.register.payment_status == 'paid' %}
+														<button class="accordion-button w3-panel w3-light-green w3-leftbar w3-padding" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ child.registration.register.id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ child.registration.register.id }}">
+															<b class="w3-center">PAIEMENT & INSCRIPTION</b>
+														</button>
+													{% else %}
+														<button class="accordion-button collapsed w3-panel w3-red w3-leftbar w3-padding" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne{{ child.registration.register.id }}" aria-expanded="false" aria-controls="flush-collapseOne{{ child.registration.register.id }}">
+															<b class="w3-center">PAIEMENT & INSCRIPTION</b>
+														</button>
+													{% endif %}
+												</h2>
+												<div id="flush-collapseOne{{ child.registration.register.id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne{{ child.registration.register.id }}" data-bs-parent="#accordion{{ child.registration.register.register.id }}">
+													<div class="accordion-body">
+														<table class="w3-table w3-bordered">
+															<tr>
+																<td>
+																	<strong>Date d'inscription:</strong>
+																</td>
+																<td>{{ child.registration.register.registration_date|date("d-m-Y") }}</td>
+															</tr>
+															<tr>
+																<td>
+																	<strong>Date de paiement:</strong>
+																</td>
+																<td>{{ child.registration.register.payment_date|date("d-m-Y")  }}</td>
+															</tr>
+															<tr>
+																<td>
+																	<strong>Paiement:</strong>
+																</td>
+																<td>{{ child.registration.register.payment_amount }}€</td>
+															</tr>
+															<tr>
+																<td>
+																	<strong>Paiement status:</strong>
+																</td>
+																<td>{{ payment_status }}</td>
+															</tr>
+															<tr>
+																<td>
+																	<strong>Paiement methode:</strong>
+																</td>
+																<td>{{ child.registration.register.payment_method }}</td>
+															</tr>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+									{% endif %}
+								</div>
 							</div>
 						</div>
+						<footer class="w3-container w3-border w3-padding">
+							{% if child.registration is not empty  %}
+								<a class="w3-btn w3-disabled float-right" href="{{ path('children.register.step2.course', {'parentId': parentId, 'enfantId': child.id} )}}">Inscrire</a>
+								<a href="" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#myModal{{child.registration.register.id}}">Fiche inscription</a>
+							{% else %}
+								<a class="btn btn-success" href="{{ path('children.register.step2.course', {'parentId': parentId, 'enfantId': child.id} )}}">Inscrire</a>
+								<a href="" class="w3-btn w3-disabled float-end" data-bs-toggle="modal" data-bs-target="#myModal{{child.registration.register.id}}">Fiche inscription</a>
+							{% endif %}
+						</footer>
 					</div>
-					<footer class="w3-container w3-border w3-padding">
-						{% if child.registration is not empty  %}
-							<a class="w3-btn w3-disabled float-right" href="{{ path('children.register.step2.course', {'parentId': parentId, 'enfantId': child.id} )}}">Inscrire</a>
-							<a href="" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#myModal{{child.registration.register.id}}">Fiche inscription</a>
-						{% else %}
-							<a class="btn btn-success" href="{{ path('children.register.step2.course', {'parentId': parentId, 'enfantId': child.id} )}}">Inscrire</a>
-							<a href="" class="w3-btn w3-disabled float-end" data-bs-toggle="modal" data-bs-target="#myModal{{child.registration.register.id}}">Fiche inscription</a>
-						{% endif %}
-					</footer>
 				</div>
-			</div>
 
-			{% include '@madrassa/modals/modal_registration.html.twig' with {
+
+				{% include '@madrassa/modals/modal_registration.html.twig' with {
 			'title': 'Fiche inscription',
 			'size': 'modal-xl',
 			'child': child,
@@ -81,6 +187,7 @@
 			'header_title_modal': 'Modal Header',
 		}
   		%}
-		{% endfor %}
-	{% endif %}
+			{% endfor %}
+		{% endif %}
+	</div>
 </div>

@@ -4,12 +4,16 @@
 	{% set photo = base_path ~ directory ~ '/images/femme.png' %}
 {% endif %}
 {% set fullname =  user.field_firstname.value ~' '~  user.field_lastname.value %}
+{% if user.roles.value.0.target_id == 'administrator' %}
+	{% set role = 'Adminitrateur' %}
+{% endif %}
 
-<div class="card mb-5">
-	<div class="card-header">
-		<h4 class="card-title">{{ fullname }}</h4>
-	</div>
-	<div class="card-body">
+<div class="w3-card-2 mb-5">
+	<header class="w3-container w3-indigo">
+		<h1>{{ fullname }}<span class="float-end badge bg-success">{{ role }}</span></h1>
+	</header>
+
+	<div class="w3-container w3-padding-16">
 		<div class="row">
 			<div class="col-2 mt-3">
 				{% if user.user_picture is not empty %}

@@ -1,0 +1,64 @@
+{% if user.field_civility.value == 'mr' %}
+	{% set photo = base_path ~ directory ~ "/images/homme.png" %}
+	{% set civility = 'Monsieur' %}
+{% elseif user.field_civility.value == 'mme' %}
+	{% set photo = base_path ~ directory ~ "/images/femme.png" %}
+	{% set civility = 'Madame' %}
+{% endif %}
+{% set fullname =  user.field_firstname.value ~' '~  user.field_lastname.value %}
+
+<div class="container mb-5">
+	<div class="w3-card-4">
+		<header class="w3-container w3-indigo">
+			<h4>{{ fullname }} <span class="badge bg-success w3-center">{{ user.field_user_type.value }}</span>
+				<a class="float-end" href="/user/{{ user.id }}/edit">
+					<i class="fa fa-edit" style="font-size:24px"></i>
+				</a>
+			</h4>
+		</header>
+
+		<div class="w3-container">
+			<div class="row">
+				<div class="col-4 photo-child mt-4">
+					{% if user.user_picture is not empty %}
+						{{ drupal_field('user_picture', 'user', user.id) }}
+					{% else %}
+						<img src="/{{ photo }}" class="img-fluid rounded-circle" alt="{{ user.name.value }}">
+					{% endif %}
+				</div>
+				<div class="col">
+					<table class="w3-table w3-bordered">
+						<tr>
+							<td>Civilite:</td>
+							<td>{{ civility}}</td>
+						</tr>
+						<tr>
+							<td>Login:</td>
+							<td>{{ user.name.value }}</td>
+						</tr>
+						<tr>
+							<td>Fonction:</td>
+							<td>{{ user.field_fonction.value }}</td>
+						</tr>
+						<tr>
+							<td>Email:</td>
+							<td>{{ user.mail.value }}</td>
+						</tr>
+						<tr>
+							<td>Telephone:</td>
+							<td>{{ user.field_phone.value }}</td>
+						</tr>
+						<tr>
+							<td>Adresse:</td>
+							<td>{{ user.field_address.value }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<footer class="w3-container w3-light-grey  w3-border w3-padding">
+			<a href="/parent/{{user.id}}/children" class="btn btn-success">Mes Enfants</a>
+		</footer>
+	</div>
+</div>

@@ -1,4 +1,4 @@
-uuid: 45c17f21-98dd-4251-8acd-d46f050de82e
+uuid: 84991510-31fc-48b3-9552-b49088cc964f
 langcode: fr
 status: true
 dependencies:
@@ -6,17 +6,16 @@ dependencies:
     - field.storage.madrassa_registration.field_payment_method
   module:
     - madrassa_registration
-_core:
-  default_config_hash: qVt8VBml0dlU2rRS-z0CujG_lgO0bB0DJ6c6DInPQ-w
+    - options
 id: madrassa_registration.madrassa_registration.field_payment_method
 field_name: field_payment_method
 entity_type: madrassa_registration
 bundle: madrassa_registration
-label: 'Methode paiement'
+label: 'Moyen de  paiement'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: string
+field_type: list_string

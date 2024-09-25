@@ -6,7 +6,7 @@ use Drupal\social_media_links\IconsetBase;
 use Drupal\social_media_links\IconsetInterface;
 
 /**
- * Provides 'elegantthemes' iconset.
+ * Provides 'Micon' iconset.
  *
  * @Iconset(
  *   id = "micon",

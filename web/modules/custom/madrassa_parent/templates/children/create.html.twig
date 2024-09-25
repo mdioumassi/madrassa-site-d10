@@ -1,5 +1,19 @@
 {{ attach_library('madrassa_parent/parent') }}
 
+<div class="container mb-5 mt-5">
+	<ul class="breadcrumb">
+		<li>
+			<a href="/admin/dashboard">Dashboard</a>
+		</li>
+		<li>
+			<a href="/parents/grille">Parents</a>
+		</li>
+		<li>
+			<a href="/user/{{parent_id}}">{{ parent}}</a>
+		</li>
+		<li>Ajouter un enfant</li>
+	</ul>
+</div>
 <div class="container">
 	<div class="w3-row w3-border mb-5">
 		<div class="w3-col m2 tablink w3-bottombar w3-hover-border-green w3-hover-light-grey w3-padding w3-center">
@@ -26,7 +40,7 @@
 			Recapitulatif
 		</div>
 		<div class="w3-col m2 tablink w3-bottombar  w3-hover-border-green w3-hover-light-grey w3-padding w3-center withSteps">
-			<span class="w3-badge w3-indigo">6</span><br/>
+			<span class="w3-badge w3-indigo">7</span><br/>
 			Fiche
 		</div>
 	</div>

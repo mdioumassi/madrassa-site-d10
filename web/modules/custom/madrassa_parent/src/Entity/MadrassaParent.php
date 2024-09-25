@@ -36,22 +36,22 @@ class MadrassaParent extends User implements MadrassaParentInterface
 
   public function getEmail(): string
   {
-    return $this->get('mail')->value;
+    return $this->get('mail')->value ?? '';
   }
 
   public function getAddress(): string
   {
-    return $this->get('field_address')->value;
+    return $this->get('field_address')->value ?? '';
   }
 
   public function getFonction(): string
   {
-    return $this->get('field_fonction')->value;
+    return $this->get('field_fonction')->value ?? '';
   }
 
   public function getTypeUser(): string
   {
-    return $this->get('field_user_type')->value;
+    return $this->get('field_user_type')->value ?? '';
   }
 
   public function getPath()

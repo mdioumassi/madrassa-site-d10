@@ -7,16 +7,22 @@
 
 use Drupal\taxonomy\Entity\Term;
 
- /**
+/**
  * Implements hook_theme_suggestions_user_alter().
  */
-function madrassa_theme_suggestions_user_alter(array &$suggestions, array $variables) {
+function madrassa_theme_suggestions_user_alter(array &$suggestions, array $variables)
+{
     foreach ($variables['elements']['#user']->getRoles() as $role) {
-      $suggestions[] = 'user__' . $role;
-    }
+    $suggestions[] = 'user__' . $role;
+  }
+
+  if ($variables['elements']['#view_mode'] == 'teaser') {
+    $suggestions[] = 'user__parent__teaser';
+  }
 }
 
-function madrassa_preprocess_user(&$variables) {
+function madrassa_preprocess_user(&$variables)
+{
   $user = $variables['user'];
 
   if (in_array('parent_role', $user->getRoles())) {
@@ -29,10 +35,11 @@ function madrassa_preprocess_user(&$variables) {
 
   if (!$user->user_picture->isEmpty()) {
     $variables['uri_user_picture'] = $user->user_picture->entity->getFileUri();
-  }    
+  }
 }
 
-function madrassa_preprocess_field(&$variables) {
+function madrassa_preprocess_field(&$variables)
+{
   $element = $variables['element'];
   $field_name = $element['#field_name'];
   $bundle = $element['#bundle'];
@@ -44,7 +51,8 @@ function madrassa_preprocess_field(&$variables) {
   }
 }
 
-function madrassa_preprocess_views_view_unformatted__children_of_parent(&$variables) {
+function madrassa_preprocess_views_view_unformatted__children_of_parent(&$variables)
+{
   $view = $variables['view'];
   $rows = $variables['rows'];
   $variables['user'] = $view->getUser();

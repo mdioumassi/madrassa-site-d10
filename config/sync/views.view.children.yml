@@ -12,6 +12,7 @@ dependencies:
   module:
     - datetime
     - madrassa_enfants
+    - madrassa_registration
     - options
     - user
 _core:
@@ -30,7 +31,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Enfants
+      title: ''
       fields:
         gender:
           id: gender
@@ -46,7 +47,7 @@ display:
           exclude: false
           alter:
             alter_text: false
-            text: ''
+            text: "{% if gender == \"Garçon\" %}\r\n<i class=\"fa-solid fa-child\" style=\"font-size: 32px\"></i>\r\n{% endif %}\r\n{% if gender == \"Fille\" %}\r\n<i class=\"fa-solid fa-child-dress\" style=\"font-size: 22px\"></i>\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
@@ -545,6 +546,72 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        id:
+          id: id
+          table: madrassa_registration_field_data
+          field: id
+          relationship: reverse__madrassa_registration__field_child_id
+          group_type: group
+          admin_label: ''
+          entity_type: madrassa_registration
+          entity_field: id
+          plugin_id: field
+          label: 'Inscription ID'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         nothing:
           id: nothing
           table: views
@@ -587,6 +654,55 @@ display:
           element_label_type: ''
           element_label_class: ''
           element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{% if id %}\r\n<span class=\"badge bg-success\">Inscrit</span>\r\n{% else %}\r\n<span class=\"badge bg-danger\">Non Inscrit</span>\r\n{% endif %}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -710,7 +826,30 @@ display:
           admin_label: 'field_parent_id : Utilisateur'
           plugin_id: standard
           required: false
-      header: {  }
+        reverse__madrassa_registration__field_child_id:
+          id: reverse__madrassa_registration__field_child_id
+          table: children
+          field: reverse__madrassa_registration__field_child_id
+          relationship: none
+          group_type: group
+          admin_label: 'field_child_id: inscription'
+          entity_type: children
+          plugin_id: entity_reverse
+          required: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: "<ul class=\"breadcrumb mt-5 mb-5\">\r\n\t\t<li>\r\n\t\t\t<a href=\"/admin/dashboard\">Dashboard</a>\r\n\t\t</li>\r\n\t\t<li>Liste des enfants</li>\r\n\t</ul>"
+            format: full_html
+          tokenize: false
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -727,10 +866,11 @@ display:
         - 'config:field.storage.user.field_lastname'
   page_1:
     id: page_1
-    display_title: Page
+    display_title: Enfants
     display_plugin: page
     position: 1
     display_options:
+      display_description: ''
       display_extenders: {  }
       path: enfants
     cache_metadata:

@@ -1,20 +1,33 @@
-uuid: 9715dc57-659e-41cc-9cdb-5d6cb0d39fed
+uuid: bf102bd6-c5dc-43d0-b637-0ac9d8760e38
 langcode: fr
 status: true
 dependencies:
   module:
     - madrassa_registration
-_core:
-  default_config_hash: qqKXSGkvXXF9q6bj0UnroMt6fKx9Yy8XmYf_FZvNOak
+    - options
 id: madrassa_registration.field_payment_method
 field_name: field_payment_method
 entity_type: madrassa_registration
-type: string
+type: list_string
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
-module: core
+  allowed_values:
+    -
+      value: espece
+      label: Espèce
+    -
+      value: cheque
+      label: Chèque
+    -
+      value: virement
+      label: Virement
+    -
+      value: carte_bancaire
+      label: 'Carte bancaire'
+    -
+      value: paypal
+      label: Paypal
+  allowed_values_function: ''
+module: options
 locked: false
 cardinality: 1
 translatable: true

@@ -22,6 +22,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
             'variables' => [
                 'parent_id' => NULL,
                 'title' => NULL,
+                'parent' => NULL,
             ],
         ],
         'list_children' => [
@@ -30,6 +31,7 @@ use Drupal\Core\Entity\EntityTypeInterface;
             'variables' => [
                 'datas' => [],
                 'parentId' => NULL,
+                'parent' => NULL,
             ],
         ],
     ];

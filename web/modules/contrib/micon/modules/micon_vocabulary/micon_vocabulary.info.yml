@@ -6,7 +6,7 @@ package: Micon
 dependencies:
   - micon:micon
 
-# Information added by Drupal.org packaging script on 2024-08-21
-version: '2.1.0'
+# Information added by Drupal.org packaging script on 2024-09-18
+version: '2.1.2'
 project: 'micon'
-datestamp: 1724231362
+datestamp: 1726678679

@@ -15,7 +15,7 @@ entity_type: madrassa_registration
 bundle: madrassa_registration
 label: 'Date paiement'
 description: ''
-required: true
+required: false
 translatable: false
 default_value:
   -

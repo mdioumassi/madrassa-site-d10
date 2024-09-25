@@ -4,10 +4,11 @@
 {% else %}
 	{% set photo = child.path ~ '/images/children/fille.png' %}
 {% endif %}
+
 {% if child.registration.parent.civilite == 'Monsieur' %}
-	{% set photo_child =  child.registration.parent.path ~ '/images/homme.png' %}
+	{% set photo_parent =  child.registration.parent.path ~ '/images/homme.png' %}
 {% else %}
-	{% set photo_child = child.registration.parent.path ~ '/images/femmme.png' %}
+	{% set photo_parent = child.registration.parent.path ~ '/images/femmme.png' %}
 {% endif %}
 
 <!-- Modal -->
@@ -35,7 +36,7 @@
 									{% if child.registration.parent.picture is not empty %}
 										{{ drupal_image(child.registration.parent.picture.uri.0.value) }}
 									{% else %}
-										<img src="/{{ photo }}" class="v-center img-thumbnail img-fluid w3-circle" style="width: 200px;">
+										<img src="/{{ photo_parent }}" class="w3-center img-thumbnail img-fluid w3-circle" style="width: 200px;">
 									{% endif %}
 								</div>
 								<div class="col">
@@ -100,7 +101,7 @@
 								<div class="col">
 									<table class="w3-table w3-bordered">
 										<tr>
-											<td class="w3-blue-grey" width="285">
+											<td class="w3-blue-grey" width="270">
 												<strong>Sexe:</strong>
 											</td>
 											<td>{{ child.gender }}</td>

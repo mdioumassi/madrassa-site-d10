@@ -1,3 +1,10 @@
+parent.register.choice.step0:
+  path: '/register/parent/choice'
+  defaults:
+    _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::parentChoice'
+  requirements:
+    _role: parent_role+administrator
+
 children.register.step2.course:
   path: '/register/parent/{parentId}/child/{enfantId}/course'
   defaults:
@@ -72,6 +79,7 @@ children.registration.fiche:
     _controller: '\Drupal\madrassa_registration\Controller\RegistrationController::fiche'
   requirements:
     _role: parent_role+administrator
+
 
 entity.madrassa_registration.settings:
   path: 'admin/structure/madrassa-registration'
