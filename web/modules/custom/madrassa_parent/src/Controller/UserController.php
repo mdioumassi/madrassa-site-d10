@@ -7,6 +7,7 @@ namespace Drupal\madrassa_parent\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\file\Entity\File;
 use Drupal\madrassa_enfants\Entity\Children;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -159,10 +160,6 @@ class UserController extends ControllerBase
           $response = new RedirectResponse($path);
           $response->send();
         }
-  
-
-        // $response = new RedirectResponse($path);
-        // $response->send();
       }
     }
   }
@@ -218,5 +215,48 @@ class UserController extends ControllerBase
       '#parentId' => $parentId,
       '#parent' => $parent->getFullName(),
     ];
+  }
+
+  /**
+   * path: /parent/{parentId}/edit
+   * @param int $parentId
+   * me
+   *
+   */
+  public function parentEdit(Request $request, int $parentId)
+  {
+
+    if ($request->isMethod('POST') && $parentId) {
+    /**@var \Drupal\madrassa_parent\Entity\MadrassaParent $parent */
+      $parent = User::load($parentId);
+      $data = $request->request->all();
+      $fileUser = $request->files->get('user_file');
+    
+    
+      if ($fileUser) {
+        $file = File::create([
+          'uri' => 'public://pictures/'.date('Y-m').'/'.$fileUser->getClientOriginalName(),
+          'uid' => $parent->id(),
+          'status' => 1,
+        ]);
+        $file->save();
+        $parent->set('user_picture', $file->id());
+      }
+
+      $parent->set('field_civility', $data['field_civilite']);
+      $parent->set('field_firstname', $data['field_firstname']);
+      $parent->set('field_lastname', $data['field_lastname']);
+      $parent->set('field_fonction', $data['field_fonction']);
+      $parent->set('field_phone', $data['field_phone']);
+      $parent->set('field_address', $data['field_address']);
+      $parent->set('field_user_type', $data['field_user_type']);
+      $parent->set('mail', $data['field_email']);
+
+      $parent->save();
+      $this->messenger()->addMessage($this->t('Parent @parent modifié avec succès.', ['@parent' => $parent->getFullName()]));
+    }
+    $path = "/parents/grille";
+    $response = new RedirectResponse($path);
+    $response->send();
   }
 }

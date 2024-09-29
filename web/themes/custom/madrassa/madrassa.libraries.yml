@@ -10,3 +10,13 @@ modal:
     js/modal.js: {}
   dependencies:
     - core/jquery
+    - core/drupal
+    - core/drupalSettings
+
+modal-parent:
+  js:
+    js/modal-parent.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

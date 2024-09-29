@@ -51,24 +51,21 @@ function madrassa_preprocess_field(&$variables)
   }
 }
 
-function madrassa_preprocess_views_view_unformatted__children_of_parent(&$variables)
+function madrassa_preprocess_views_view_grid(&$variables)
 {
   $view = $variables['view'];
   $rows = $variables['rows'];
-  $variables['user'] = $view->getUser();
-  // if ($view->id() == 'children_of_parent') {
-
-  //   foreach ($rows as $key => $row) {
-  //     $variables['rows'][$key]['#row'] = $row['content']['#row'];
-  //   }
-  //   // $variables['rows'] = array_values($variables['rows']);
-  //   // kint($variables);
-  //  // $variables['user'] = $view->getUser();
-  // }
+  if ($view->id() == 'parents' && $view->current_display == 'page_3') {
+    foreach ($rows as $row) {
+      $roles = $row['#user']->getRoles();
+      if (in_array('parent_role', $roles)) {
+        $parent = $row['#user'];
+        
+        $children = \Drupal::entityTypeManager()
+          ->getStorage('children')
+          ->loadByProperties(['field_parent_id' => $parent->id()]);
+        $variables['children'][$parent->id()] = count($children);
+      }
+    }
+  }
 }
-
-// function madrassa_preprocess_user(&$variables) {
-//   $role = $variables['elements']['#role'];
-//   $variables['role_name'] = $role->label();
-//   dd($role);
-// }

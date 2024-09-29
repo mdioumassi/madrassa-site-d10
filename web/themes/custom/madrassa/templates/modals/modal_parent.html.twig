@@ -1,0 +1,94 @@
+{{ attach_library('madrassa/modal-parent') }}
+<!-- Modal -->
+<div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog {{ size }} modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header w3-green">
+				<h5 class="modal-title" id="exampleModalLabel">{{ title }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<form action="{{ path('madrassa_parent.edit', {'parentId': user.id}) }}" method="POST" enctype="multipart/form-data" id="formEditParent">
+				<div class="modal-body">
+					<div class="w3-container">
+						<div class="row">
+							<div class="col-4 photo-child ">
+								{% if user.user_picture is not empty %}
+									{{ drupal_field('user_picture', 'user', user.id) }}
+								{% else %}
+									<img src="/{{ photo }}" class="img-fluid rounded-circle" alt="{{ user.name.value }}">
+								{% endif %}
+								{# <input class="form-control mt-3" type="file" id="formFile" name="user_file"> #}
+							</div>
+							<div class="col">
+								<div class="row mt-3">
+									<div class="col">
+										{# {{dd(user.field_civility.value)}} #}
+										<label>Civilité</label>
+										<select id="field_civilite" class="form-select" name="field_civilite">
+											<option value="mr" {% if user.field_civility.value == 'mr' %} selected {% endif %}>Monsieur</option>
+											<option value="mme" {% if user.field_civility.value == 'mme' %} selected {% endif %}>Madame</option>
+											<option value="mlle" {% if user.field_civility.value == 'mlle' %} selected {% endif %}>Mademoiselle</option>
+										</select>
+									</div>
+									<div class="col">
+										<label>Type de parent</label>
+										<select name="field_user_type" class="form-select">
+											<option value="pere" {% if user.field_type_user.value == 'pere' %} selected {% endif %}>Père</option>
+											<option value="mere" {% if user.field_type_user.value == 'mere' %} selected {% endif %}>Mère</option>
+											<option value="oncle" {% if user.field_type_user.value == 'oncle' %} selected {% endif %}>Oncle</option>
+											<option value="tante" {% if user.field_type_user.value == 'tante' %} selected {% endif %}>Tante</option>
+											<option value="tuteur" {% if user.field_type_user.value == 'tuteur' %} selected {% endif %}>Tuteur</option>
+										</select>
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label>
+											Prénom:</label>
+										<input id="field_firstname" type="text" class="form-control" name="field_firstname" value="{{ user.field_firstname.value }}">
+									</div>
+									<div class="col">
+										<label>
+											Nom:</label>
+										<input id="field_lastname" type="text" class="form-control" name="field_lastname" value="{{ user.field_lastname.value }}">
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label>
+											Fonction:</label>
+										<input id="field_fonction" type="text" class="form-control" name="field_fonction" value="{{ user.field_fonction.value }}">
+									</div>
+									<div class="col">
+										<label>
+											Téléphone:</label>
+										<input id="field_phone" type="text" class="form-control" name="field_phone" value="{{ user.field_phone.value }}">
+									</div>
+								</div>
+								<div class="row mt-3">
+									<div class="col">
+										<label>
+											E-mail:</label>
+										<input id="email" type="text" class="form-control" name="field_email" value="{{ user.mail.value }}">
+									</div>
+								</div>
+
+								<div class="row mt-3">
+									<div class="col">
+										<label>
+											Adresse:</label>
+										<input id="field_adresse" type="text" class="form-control" name="field_address" value="{{ user.field_address.value }}">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary" id="edit-parent" data-id="{{ user.id }}">Enregistrer</button>
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

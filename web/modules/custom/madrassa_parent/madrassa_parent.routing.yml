@@ -35,3 +35,10 @@ madrassa_parent.list.children:
     _controller: '\Drupal\madrassa_parent\Controller\UserController::listChildren'
   requirements:
     _role: administrator+parent_role+webmaster
+
+madrassa_parent.edit:
+  path: '/parent/{parentId}/edit'
+  defaults:
+    _controller: '\Drupal\madrassa_parent\Controller\UserController::parentEdit'
+  requirements:
+    _role: administrator+parent_role+webmaster

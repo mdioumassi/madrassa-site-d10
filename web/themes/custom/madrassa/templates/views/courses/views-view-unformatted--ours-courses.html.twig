@@ -18,45 +18,48 @@
 {% if title %}
 	<h3>{{ title }}</h3>
 {% endif %}
-<div class="row">
-	{% for row in rows %}
-		{% set course = row.content['#row']._entity %}
-		{% set level = row.content['#row']._relationship_entities['reverse__madrassa_level__field_course_id'] %}
-		{% if level is not empty %}
-			<div class="col-4">
-				<div class="w3-card-4 mb-4">
-					<header class="w3-container w3-indigo">
-						{# <input class="w3-radio float-end mt-2" type="radio" name="levelId" value=""> #}
-						<h2>{{ level.label.value }}</h2>
-					</header>
+<div class="container">
+	<div class="row">
+		{% for row in rows %}
+			{% set course = row.content['#row']._entity %}
+			{% set level = row.content['#row']._relationship_entities['reverse__madrassa_level__field_course_id'] %}
+			{% if level is not empty %}
+				<div class="col-4">
+					<div class="w3-card-4 mb-4">
+						<header
+							class="w3-container w3-indigo">
+							{# <input class="w3-radio float-end mt-2" type="radio" name="levelId" value=""> #}
+							<h2>{{ level.label.value }}</h2>
+						</header>
 
-					<div class="w3-container">
-						<table class="w3-table w3-bordered">
-							<tr>
-								<td>Tarif:</td>
-								<td>
-									<span class="display-4">{{ level.field_tariff.value }}€</span>/an</td>
-							</tr>
-							<tr>
-								<td>Frais d'inscription:</td>
-								<td>{{ level.field_registration_fees.value ~ ' €'  }}</td>
-							</tr>
-							<tr>
-								<td>Horaires:</td>
-								<td>{{ level.field_hours.value ~ ' h/semaine'  }}</td>
-							</tr>
-						</table>
-						{% if level.field_description.value %}
-							<strong>Description:</strong>
-							{{ level.field_description.value|raw }}
-						{% endif %}
+						<div class="w3-container">
+							<table class="w3-table w3-bordered">
+								<tr>
+									<td>Tarif:</td>
+									<td>
+										<span class="display-4">{{ level.field_tariff.value }}€</span>/an</td>
+								</tr>
+								<tr>
+									<td>Frais d'inscription:</td>
+									<td>{{ level.field_registration_fees.value ~ ' €'  }}</td>
+								</tr>
+								<tr>
+									<td>Horaires:</td>
+									<td>{{ level.field_hours.value ~ ' h/semaine'  }}</td>
+								</tr>
+							</table>
+							{% if level.field_description.value %}
+								<strong>Description:</strong>
+								{{ level.field_description.value|raw }}
+							{% endif %}
+						</div>
+						<footer class="w3-container w3-green">
+							<h5>{{course.label.value}}</h5>
+						</footer>
 					</div>
-					<footer class="w3-container w3-green">
-						<h5>{{course.label.value}}</h5>
-					</footer>
 				</div>
-			</div>
-		{% endif %}
+			{% endif %}
 
-	{% endfor %}
+		{% endfor %}
+	</div>
 </div>

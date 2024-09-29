@@ -8,70 +8,73 @@
 	{% set role = 'Adminitrateur' %}
 {% endif %}
 
-<div class="w3-card-2 mb-5">
-	<header class="w3-container w3-indigo">
-		<h1>{{ fullname }}<span class="float-end badge bg-success">{{ role }}</span></h1>
-	</header>
+<div class="container">
+	<div class="w3-card-2 mb-5">
+		<header class="w3-container w3-indigo">
+			<h1>{{ fullname }}<span class="float-end badge bg-success">{{ role }}</span>
+			</h1>
+		</header>
 
-	<div class="w3-container w3-padding-16">
-		<div class="row">
-			<div class="col-2 mt-3">
-				{% if user.user_picture is not empty %}
-					{{ drupal_field('user_picture', 'user', user.id) }}
-				{% else %}
-					<img src="/{{ photo }}" class="img-fluid rounded-circle picture-default-user" alt="{{ user.name.value }}">
-				{% endif %}
-			</div>
-			<div class="col">
-				<div class="row">
-					<div class="col">
-						<label>
-							Nom utilisateur:</label>
-						<input id="username" type="text" class="form-control" value="{{ user.name.value }}">
-					</div>
-					<div class="col">
-						<label>
-							E-mail:</label>
-						<input id="email" type="text" class="form-control" value="{{ user.mail.value }}"></div>
-					<div class="col">
-						<label>
-							Mot de passe:</label>
-						<input id="pass" type="password" class="form-control" value="{{ user.pass.value }}">
-					</div>
+		<div class="w3-container w3-padding-16">
+			<div class="row">
+				<div class="col-2 mt-3">
+					{% if user.user_picture is not empty %}
+						{{ drupal_field('user_picture', 'user', user.id) }}
+					{% else %}
+						<img src="/{{ photo }}" class="img-fluid rounded-circle picture-default-user" alt="{{ user.name.value }}">
+					{% endif %}
 				</div>
-				<div class="row mt-3">
-					<div class="col">
-						<label>Civilité</label>
-						<select id="field_civilite" class="form-select">
-							<option value="Monsieur" {% if user.field_civility.value == 'mr' %} selected {% endif %}>Monsieur</option>
-							<option value="Madame" {% if user.field_civility.value == 'mme' %} selected {% endif %}>Madame</option>
-							<option value="Mademoiselle" {% if user.field_civility.value == 'mlle' %} selected {% endif %}>Mademoiselle</option>
-						</select>
+				<div class="col">
+					<div class="row">
+						<div class="col">
+							<label>
+								Nom utilisateur:</label>
+							<input id="username" type="text" class="form-control" value="{{ user.name.value }}">
+						</div>
+						<div class="col">
+							<label>
+								E-mail:</label>
+							<input id="email" type="text" class="form-control" value="{{ user.mail.value }}"></div>
+						<div class="col">
+							<label>
+								Mot de passe:</label>
+							<input id="pass" type="password" class="form-control" value="{{ user.pass.value }}">
+						</div>
 					</div>
-					<div class="col">
-						<label>
-							Prénom:</label>
-						<input id="field_firstname" type="text" class="form-control" value="{{ user.field_firstname.value }}">
+					<div class="row mt-3">
+						<div class="col">
+							<label>Civilité</label>
+							<select id="field_civilite" class="form-select">
+								<option value="Monsieur" {% if user.field_civility.value == 'mr' %} selected {% endif %}>Monsieur</option>
+								<option value="Madame" {% if user.field_civility.value == 'mme' %} selected {% endif %}>Madame</option>
+								<option value="Mademoiselle" {% if user.field_civility.value == 'mlle' %} selected {% endif %}>Mademoiselle</option>
+							</select>
+						</div>
+						<div class="col">
+							<label>
+								Prénom:</label>
+							<input id="field_firstname" type="text" class="form-control" value="{{ user.field_firstname.value }}">
+						</div>
+						<div class="col">
+							<label>
+								Nom:</label>
+							<input id="field_lastname" type="text" class="form-control" value="{{ user.field_lastname.value }}">
+						</div>
 					</div>
-					<div class="col">
-						<label>
-							Nom:</label>
-						<input id="field_lastname" type="text" class="form-control" value="{{ user.field_lastname.value }}">
+					<div class="row mt-3">
+						<div class="col">
+							<label>
+								Téléphone:</label>
+							<input id="field_phone" type="text" class="form-control" value="{{ user.field_phone.value }}">
+						</div>
+						<div class="col">
+							<label>
+								Adresse:</label>
+							<input id="field_adresse" type="text" class="form-control" value="{{ user.field_address.value }}">
+						</div>
 					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col">
-						<label>
-							Téléphone:</label>
-						<input id="field_phone" type="text" class="form-control" value="{{ user.field_phone.value }}">
-					</div>
-					<div class="col">
-						<label>
-							Adresse:</label>
-						<input id="field_adresse" type="text" class="form-control" value="{{ user.field_address.value }}">
-					</div>
-				</div>
 
+				</div>
 			</div>
 		</div>
 	</div>

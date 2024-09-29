@@ -4,6 +4,9 @@
 /**
  * hook_form_alter()
  */
+
+use Drupal\Core\Url;
+
 // function madrassa_content_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
 //   if (in_array($form_id, ['node_dashboard_form', 'node_dashboard_edit_form'])) {
 //   //  dd($form['field_items']);
@@ -29,8 +32,22 @@ function madrassa_content_page_attachments(array &$attachments) {
  * Implements hook_user_login().
  */
 function madrassa_content_user_login($account) {
-  // dd($account);
-  
+  $logged_in = \Drupal::currentUser()->isAuthenticated();
+  // dd($logged_in);
+  if ($logged_in) {
+    $roles = $account->getRoles();
+    if (in_array('administrator', $roles)) {
+      // $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/admin/dashboard');
+      // $response->send();
+    }
+  }
+  // foreach ($account->get('roles') as $role) {
+  //   if ($role->entity->id() == 'administrator') {
+  //     // $url = Url::fromRoute('madrassa_content.dashboard');
+  //     $response = new \Symfony\Component\HttpFoundation\RedirectResponse('/admin/dashboard');
+  //     $response->send();
+  //   }
+  // }
 }
 
 /**

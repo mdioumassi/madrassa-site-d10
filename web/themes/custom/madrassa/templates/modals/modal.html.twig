@@ -1,25 +1,5 @@
 {{ attach_library('madrassa/modal') }}
 <!-- Modal -->
-{# <div id="{{ modal_id }}" class="modal fade modal-ytm" role="dialog">
-  <div class="modal-dialog modal-xl">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">{{ header_title_modal }}</h4>
-      </div>
-      <div class="modal-body">
-        {{ modal_content }}
-      </div>
-      <div class="modal-footer">
-        {{ footer_modal|raw }}
-      </div>
-    </div>
-
-  </div>
-</div> #}
-<!-- Modal -->
 <div class="modal fade" id="{{ modal_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog {{ size }} modal-dialog-scrollable">
     <div class="modal-content">
